@@ -5,7 +5,7 @@
 }
 .top{
 	width: 100%;
-	height: auto;
+	height: 100px;
 	background: white;
 	box-shadow: 0px 0px 10px 10px #00000033;
 	position: fixed;
@@ -409,4 +409,11 @@ strong>span{
 	right: 10%;
 	height: 80px;
 	opacity: 0.4;
+}
+.target-fix{
+	position: relative;
+	top: -100px;
+	display: block;
+	height: 0;
+	overflow: hidden;
 }
