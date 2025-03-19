@@ -15,13 +15,14 @@
 		<div class="top">
 			<img src="img/Group 1.svg" alt="logo">
 			<ul>
-				<li><a href="" class="selected">首页</a></li>
-				<li><a href="">赛事</a></li>
-				<li><a href="">成员</a></li>
-				<li><a href="">规则</a></li>
-				<li><a href="">联系我们</a></li>
+				<li><a href="#" class="selected">首页</a></li>
+				<li><a href="#game">赛事</a></li>
+				<li><a href="#mate">成员</a></li>
+				<li><a href="#rule">规则</a></li>
+				<li><a href="#contact">联系我们</a></li>
 			</ul>
 		</div>
+		<a name="banner" class="target-fix"></a>
 		<div class="banner" id="bottom">
 			<h1>TanYau.LEAGUE,</h1>
 			<h2>麻雀の真実を求もう。</h2>
@@ -29,7 +30,7 @@
 			<p id="short_intro">
 				面向 THU 求真书院同学的立直麻将团体。<br>致力于推广立直麻将，以更科学的视角解读和研究麻将技术。
 			</p>
-			<a href="">加入我们</a>
+			<a href="#contact">加入我们</a>
 			<ul>
 				<li><img src="img/1m.svg" alt=""></li>
 				<li><img src="img/9m.svg" alt=""></li>
@@ -46,6 +47,7 @@
 				<li><img src="img/7z.svg" alt=""></li>
 			</ul>
 		</div>
+		<a name="game" class="target-fix"></a>
 		<div class="game">
 			<div class="rightpart">
 				<h1>リーチ麻雀、</h1>
@@ -89,6 +91,7 @@
 				</ul>
 			</div>
 		</div>
+		<a name="mate" class="target-fix"></a>
 		<div class="mate">
 			<h1>团体成员<span>リーグメンバー</span></h1>
 			<ul>
@@ -112,6 +115,7 @@
 			</ul>
 			
 		</div>
+		<a name="rule" class="target-fix"></a>
 		<div class="rule">
 			<h1>—— 团体规则 ——</h1>
 			<h2>リーグルール</h2>
@@ -126,7 +130,7 @@
 				<li><p>不得以团体的名义或使用团体的名字、图标等作为个人私用，特别是营利或非法的目的；</p></li>
 				<li><p>行为违反法律法规和学校规定。</p></li>
 			</ol>
-			<p>违反以上规则的，特别是第 2-4 条，经讨论，一般不建议再作为本团体的成员。</p>
+			<p>违反以上规则的，特别是第 2-4 条，经讨论，一般建议退出团体。</p>
 			<strong> <p>二&nbsp;&nbsp;&nbsp;&nbsp;比赛规则 </p><span></span></strong>
 			<p>计分赛事采用雀魂段位战四人南的规则，但采用 4 赤宝牌而不是 3 赤宝牌，没有长考限制。最后精算点的规则与 M.LEAGUE 相同，即（终局得分-25000)/1000+顺位马，顺位马 一位 / 二位 / 三位 / 四位 分别为 +50 / +10 / -10 / -30.</p>
 			<p>比赛犯规及处理：</p>
@@ -146,10 +150,11 @@
 			<p>为避免麻将与赌博之嫌、团体决定不设置任何与金钱有关的竞技奖赏。</p>
 			<div class="clear"></div>
 		</div>
+		<a name="contact" class="target-fix"></a>
 		<div class="contact">
 			<h1>联系我们</h1>
-			<p>提交加入团体意愿：联系微信号 harakiseki 并注明班级和来意。我们很欢迎你的加入！</p>
-			<p>合作意向：微信号 harakiseki / 电话 18200320102.</p>
+			<p><b>提交加入团体意愿：</b>联系微信号 harakiseki 或 robotsang 并注明班级和来意。我们很欢迎你的加入！</p>
+			<p><b>合作意向交流：</b>微信号 harakiseki、robotsang.</p>
 			<img src="img/9renn/1m.svg" alt="" id="firstimg">
 			<img src="img/9renn/1m.svg" alt="">
 			<img src="img/9renn/1m.svg" alt="">
@@ -171,4 +176,22 @@
 			<img src="img/Group 1w.svg" alt="">
 		</div>
 	</body>
+	<script type="text/javascript">
+		const directory = document.querySelectorAll('.target-fix');
+		const links = document.querySelectorAll('.top a');
+		window.addEventListener('scroll', function() {
+		  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		  let ed=-1;
+		  for(let i=0;i<directory.length;i++){
+			  if(directory[i].offsetTop<=scrollTop+10){
+				  ed=i;
+			  }
+		  }
+		  links[ed].classList.add("selected");
+		  for(let i=0;i<directory.length;i++){
+				if(i!=ed)links[i].classList.remove("selected");
+		  }
+		});
+		
+	</script>
 </html>
