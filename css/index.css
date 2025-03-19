@@ -119,7 +119,7 @@
 	width: 100px;
 }
 .game{
-	height: auto;
+	height: 600px;
 	width: 100%;
 	background: white;
 	z-index: -1;
@@ -151,7 +151,6 @@
 	margin-top: 60px;
 	float: left;
 	width: 500px;
-	padding-bottom: 170px;
 }
 .game .leftpart h3{
 	display: inline-block;
@@ -237,4 +236,177 @@
 }
 .game .rightpart a span{
 	font-family: consolas;
+}
+
+.mate{
+	height: auto;
+	width: 100%;
+	background: #eee;
+}
+.mate h1{
+	padding-top: 50px;
+	margin-left: 10%;
+	font-size: 50px;
+}
+.mate h1::before{
+	content: "▌";
+	color:#c52922;
+}
+.mate h1 span{
+	font-family: "Noto Serif JP";
+	font-size: 40px;
+	color:#c52922;
+	padding-left: 10px;
+}
+.mate ul{
+	list-style: none;
+	margin-left: 10%;
+	padding-bottom: 100px;
+}
+.mate ul ol{
+	list-style: none;
+	margin-left: 3%;
+	margin-top: 5px;
+}
+.mate ul>li{
+	margin-left: 5%;
+	margin-top: 20px;
+}
+.mate ul>li>img{
+	height: 25px;
+	box-shadow: 0px 0px 0px 3px #c52922;
+}
+.mate ul>li span{
+	font-size:30px;
+	margin-left: 5px;
+	font-weight: bold;
+	color:#c52922;
+	font-family: "Noto Serif SC";
+}
+.mate ul ol li{
+	font-size: 20px;
+	display: inline;
+	margin-right: 50px;
+}
+.rule{
+	height: auto;
+	width: 100%;
+	background: #fff;
+}
+.rule>h1{
+	color: #22519dff;
+	font-size: 60px;
+	text-align: center;
+	padding-top: 50px;
+}
+.rule>h2{
+	text-align: center;
+	font-family: "Noto Serif JP";
+}
+.rule>h3{
+	text-align: center;
+	font-family: "Noto Serif SC";
+	font-weight: 100;
+	font-size: 15px;
+}
+strong{
+	
+	font-size: 18px;
+	background: #eee;
+	padding: 5px 5%;
+	display: inline-block;
+	width: 50%;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 20px;
+	font-family: "Noto Serif SC";
+	margin: 20px 20%;
+	position: relative;
+	margin-top: 50px;
+}
+strong>p{
+	float: left;
+	position: absolute;
+	left: 5%;
+}
+strong>span{
+	clear: both;
+	display: inline-block;
+	height: 14px;
+	width: 14px;
+	background: #22519d;
+	border-radius: 7px;
+	position: absolute;
+	margin-top: 8px;
+	left: 50%;
+}
+.rule>p{
+	font-size: 16px;
+	width: 50%;
+	margin-left: 25%;
+	text-indent: 2em;
+	line-height: 25px;
+	margin-bottom: 3px;
+}
+.rule>ol{
+	margin-left: 30%;
+}
+.rule ol p{
+	font-size: 16px;
+	width: 64%;
+	line-height: 25px;
+}
+.rule .clear{
+	width: 100%;
+	height: 100px;
+}
+.contact{
+	height: 520px;
+	width: 100%;
+	background: #eee;
+}
+.contact h1{
+	font-size: 60px;
+	margin-left: 10%;
+	padding-top: 40px;
+}
+.contact h1::before{
+	content: "▌";
+	color: #881c21;
+}
+.contact p{
+	font-size: 18px;
+	margin-left: 10%;
+	margin-top: 10px;
+}
+.contact img{
+	display: inline-block;
+	height: 100px;
+	margin-top: 160px;
+	float: right;
+}
+.contact img:hover{
+	margin-top: 150px;
+}
+.contact img#firstimg{
+	margin-right: 10%;
+}
+.footer{
+	height: 150px;
+	width: 100%;
+	background: #383838;
+	padding-top: 50px;
+	position: relative;
+}
+.footer p{
+	color: #999;
+	font-weight: 100;
+	margin-left: 10%;
+}
+.footer img{
+	position: absolute;
+	top: 50px;
+	right: 10%;
+	height: 80px;
+	opacity: 0.4;
 }
