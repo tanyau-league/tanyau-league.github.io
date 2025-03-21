@@ -19,7 +19,7 @@
 				<li><a href="#game">赛事</a></li>
 				<li><a href="#mate">成员</a></li>
 				<li><a href="#rule">规则</a></li>
-				<li><a href="#contact">联系</a></li>
+				<li><a href="#contact">联络</a></li>
 			</ul>
 		</div>
 		<a name="banner" class="target-fix"></a>
@@ -192,6 +192,10 @@
 				if(i!=ed)links[i].classList.remove("selected");
 		  }
 		});
+		 window.onresize = () => {
+			 if(window.innerWidth<686)document.querySelector('.top ul').style.display="none";
+			 else document.querySelector('.top ul').style.display="block";
+			}
 		
 	</script>
 </html>
