@@ -158,125 +158,56 @@
 	margin-top: 60px;
 	width: 500px;
 }
-.game .leftpart .MainTitle h3{
-	margin-top: 10px;
+.game .ranklist{
+	margin-left: 10%;
+	margin-top: 60px;
+	margin-right: 10%;
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+.game .ranklist .Title1, .game .ranklist .Title2, .game .ranklist .Title3{
+	margin-top: 250px;
+	width: 300px;
 	display: inline-block;
-	font-size: 30px;
-	padding: 5px 50px;
-	font-weight: bold;
-	background: #fa1754;
-	background-size: 50px 50px;
-	background-image: linear-gradient(45deg, #00000010 25%, transparent 25%, transparent),
-				   linear-gradient(-45deg, #00000010 25%, transparent 25%, transparent),
-				   linear-gradient(45deg, transparent 75%, #00000010 75%),
-				   linear-gradient(-45deg, transparent 75%, #00000010 75%);
-	border-radius: 5px;
-	line-height: 50px;
-	height: 50px;
-	width: auto;
-	color: white;
 }
-.game .leftpart .Title1 h3{
-	font-family: 'KaiTi';
-	margin-top: 10px;
-	display: inline-block;
-	font-size: 30px;
-	padding: 5px 50px;
-	font-weight: bold;
-	background: #f3a412;
-	background-size: 50px 50px;
-	background-image: linear-gradient(45deg, #00000010 25%, transparent 25%, transparent),
-				   linear-gradient(-45deg, #00000010 25%, transparent 25%, transparent),
-				   linear-gradient(45deg, transparent 75%, #00000010 75%),
-				   linear-gradient(-45deg, transparent 75%, #00000010 75%);
-	border-radius: 5px;
-	line-height: 50px;
-	height: 50px;
-	width: auto;
-	color: white;
+.game .ranklist .Title1 ul, .game .ranklist .Title2 ul, .game .ranklist .Title3 ul{
+	margin-top:0px;
 }
-.game .leftpart .Title2 h3{
-	font-family: 'KaiTi';
-	margin-top: 10px;
-	display: inline-block;
-	font-size: 30px;
-	padding: 5px 50px;
-	font-weight: bold;
-	background: #ff3e0e;
-	background-size: 50px 50px;
-	background-image: linear-gradient(45deg, #00000010 25%, transparent 25%, transparent),
-				   linear-gradient(-45deg, #00000010 25%, transparent 25%, transparent),
-				   linear-gradient(45deg, transparent 75%, #00000010 75%),
-				   linear-gradient(-45deg, transparent 75%, #00000010 75%);
-	border-radius: 5px;
-	line-height: 50px;
-	height: 50px;
-	width: auto;
-	color: white;
-}
-.game .leftpart .Title3 h3{
-	font-family: 'KaiTi';
-	margin-top: 10px;
-	display: inline-block;
-	font-size: 30px;
-	padding: 5px 50px;
-	font-weight: bold;
-	background: #0e62ff;
-	background-size: 50px 50px;
-	background-image: linear-gradient(45deg, #00000010 25%, transparent 25%, transparent),
-				   linear-gradient(-45deg, #00000010 25%, transparent 25%, transparent),
-				   linear-gradient(45deg, transparent 75%, #00000010 75%),
-				   linear-gradient(-45deg, transparent 75%, #00000010 75%);
-	border-radius: 5px;
-	line-height: 50px;
-	height: 50px;
-	width: auto;
-	color: white;
-}
-.game .leftpart>span{
-	font-size: 20px;
-	line-height: 30px;
-	font-weight: 500;
-	margin-left: 350px;
-	font-family: "Noto Serif SC";
-}
-.game .leftpart ul{
-	margin-top: 20px;
-}
-
-.game .leftpart ul,.game .leftpart ul ol{
+.game .ranklist .Title1 ul,.game .ranklist .Title1 ul ol, .game .ranklist .Title2 ul,.game .ranklist .Title2 ul ol, .game .ranklist .Title3 ul,.game .ranklist .Title3 ul ol{
 	list-style: none;
-	
 }
-.game .leftpart ul>li{
+.game .ranklist .Title1 ul>li, .game .ranklist .Title2 ul>li, .game .ranklist .Title3 ul>li{
 	height: 30px;
-	width: 400px;
+	width: 270px;
 	padding: 5px;
 	padding-left: 20px;
-	background: linear-gradient(90deg,#3b863e,60%,transparent);
 	margin-bottom: 10px;
 	border-radius: 5px;
 }
-.game .leftpart ul ol li{
-	float: left;
+.game .ranklist .Title1 ul ol li, .game .ranklist .Title2 ul ol li, .game .ranklist .Title3 ul ol li{
+	float:left;
 }
-.game .leftpart ul ol li span{
-	font-family: 'simhei';
-	font-weight: bold;
-	display: inline-block;
-	width: 200px;
-	text-align: right;
-}
-.game .leftpart ul ol li p{
-	color: white;
+.game .ranklist .Title1 ul ol li svg text, .game .ranklist .Title2 ul ol li svg text, .game .ranklist .Title3 ul ol li svg text{
+	font-family: 'Hei';
 	font-weight: 600;
 }
-.game .leftpart ul ol li span,.game .leftpart ul ol li p{
+.game .ranklist .Title1 ul ol li span, .game .ranklist .Title2 ul ol li span, .game .ranklist .Title3 ul ol li span{
+	font-family: 'simhei';
+	font-weight: bold;
+	float: right;
+	text-align: right;
+}
+.game .ranklist .Title1 ul ol li p, .game .ranklist .Title2 ul ol li p, .game .ranklist .Title3 ul ol li p{
+	color: rgb(0, 0, 0);
+	font-weight: 600;
+}
+.game .ranklist .Title1 ul ol li span,.game .ranklist .Title1 ul ol li p, .game .ranklist .Title2 ul ol li span,.game .ranklist .Title2 ul ol li p, .game .ranklist .Title3 ul ol li span,.game .ranklist .Title3 ul ol li p{
 	font-size: 20px;
 	line-height: 30px;
 }
-.game .leftpart ul ol li{
-	width: 200px;
+.game .ranklist .Title1 ul ol li, .game .ranklist .Title2 ul ol li, .game .ranklist .Title3 ul ol li{
+	width: 250px;
 }
 .game .rightpart a{
 	font-size: 30px;
