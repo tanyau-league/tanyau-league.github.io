@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>TanYauLEAGUE</title>
+	<link rel="icon" href="img/main.ico">
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +22,17 @@
 		<img src="img/Group 1.svg" alt="logo">
 		<ul>
 			<li><a href="#" class="selected">首页</a></li>
-			<li><a href="#game">赛事</a></li>
+			<li>
+				<div class="dropdown">
+					<a class="dropbtn" href="#game-main">
+						赛事
+					</a>
+					<div class="dropdown-content">
+						<a href="#game" style="margin-top:10px">对战成绩</a>
+						<a href="#event" style="margin-top: 0">赛程安排</a>
+					</div>
+				</div>
+			</li>
 			<li><a href="#mate">成员</a></li>
 			<li><a href="#rule">规则</a></li>
 			<li><a href="#contact">联络</a></li>
@@ -51,6 +62,8 @@
 			<li><img src="img/7z.svg" alt=""></li>
 		</ul>
 	</div>
+	<a name="game-main" class="target-fix"></a>
+	<div class="game-main"></div>
 	<a name="game" class="target-fix"></a>
 	<div class="game">
 		<div class="rightpart">
@@ -307,6 +320,34 @@
 			</div>
 		</div>
 	</div>
+	<a name="event" class="target-fix"></a>
+	<div class="event">
+		<div class="coming-event" style="background-image: url(img/events.jpg)">
+			<h3>Coming Event:</h3>
+			<p>类别: 比赛</p>
+			<p>日期: 3/29</p>
+			<p>地点: 紫荆17一楼会客厅</p>
+			<p>参赛成员:</p>
+			<div class="container1">
+				<img src="img/members/2yrold.jpg" width="120" height="120">
+				<span class="nametag">2yrold</span>
+			</div>
+			<div class="container2">
+				<img src="img/members/Dawn.jpg" width="120" height="120">
+				<span class="nametag">Dawn</span>
+			</div>
+			<div class="container3">
+				<img src="img/members/Haraki.jpg" width="120" height="120">
+				<span class="nametag">Haraki</span>
+			</div>
+			<div class="container4">
+				<img src="img/members/Xiaobukeai.jpg" width="120" height="120">
+				<span class="nametag">Xiaobukeai</span>
+			</div>
+		</div>
+	</div>
+	<div class="historical-link" style="text-align: center"><br><br><a href="historical_events.html">Historical
+			Events</a></div>
 	<a name="mate" class="target-fix"></a>
 	<div class="mate">
 		<h1>团体成员<span>リーグメンバー</span></h1>
@@ -417,7 +458,7 @@
 	<div class="footer">
 		<p>本团体的图标·名字等与现实人物、事情无关。</p>
 		<p>本团体为非盈利组织，仅为爱好者组织的个人团体。</p>
-		<p>页面编辑：Haraki&2yrold &nbsp;&nbsp;&nbsp;&nbsp; 最后编辑日期：2025 年 3 月 25 日</p>
+		<p>页面编辑：Haraki&2yrold &nbsp;&nbsp;&nbsp;&nbsp; 最后编辑日期：2025 年 3 月 29 日</p>
 		<img src="img/Group 1w.svg" alt="">
 	</div>
 	<div id="clickEffectContainer"></div>
@@ -529,17 +570,25 @@
 <script type="text/javascript">
 	const directory = document.querySelectorAll('.target-fix');
 	const links = document.querySelectorAll('.top a');
+	const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+	const dropbtn = document.querySelector('.dropbtn');
 	window.addEventListener('scroll', function () {
 		let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 		let ed = -1;
+		links.forEach(link => link.classList.remove("selected"));
+		dropbtn.classList.remove("selected");
 		for (let i = 0; i < directory.length; i++) {
 			if (directory[i].offsetTop <= scrollTop + 10) {
 				ed = i;
 			}
 		}
-		links[ed].classList.add("selected");
-		for (let i = 0; i < directory.length; i++) {
-			if (i != ed) links[i].classList.remove("selected");
+		if (ed !== -1) {
+			links[ed].classList.add("selected");
+			const selectedLink = links[ed];
+			const isDropdownItem = Array.from(dropdownLinks).includes(selectedLink);
+			if (isDropdownItem) {
+				dropbtn.classList.add("selected");
+			}
 		}
 	});
 	window.onresize = () => {
