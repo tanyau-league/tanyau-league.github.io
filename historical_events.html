@@ -1,51 +1,139 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-	    <title>Historical Events</title>
-	    <link rel="icon" href="img/main.ico">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;500;700;900&display=swap"
-		rel="stylesheet">
-	    <link
-		href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-		rel="stylesheet">
-	    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-	    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
-        <style>
-            .contest{
-                display: block;
-                height: auto;
-	            width: 100%;
-                background-color:#e7e7e7;
-                box-shadow: 10px 5px 5px black;
-            }
-        </style>
-    </head>
-    <body>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Historical Events</title>
+    <link rel="icon" href="img/main.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;500;700;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+    <style>
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+        }
+
+        .sort-btn {
+            padding: 8px 15px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .sort-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .contest {
+            display: block;
+            height: auto;
+            width: 100%;
+            background-color: #e7e7e7;
+            box-shadow: 10px 5px 5px black;
+        }
+
+        .contests-container {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <button class="sort-btn" id="sortButton">按日期排序</button>
+    </div>
+
+    <div class="contests-container" id="contestsContainer">
         <div class="contest">
             <p>类别: 比赛</p>
-			<p>日期: 3/1</p>
-			<p>地点: 紫荆17一楼会客厅</p>
-			<p>参赛成员: 2yrold Dawn Haraki Xiaobukeai</p>
+            <p>日期: 3/1</p>
+            <p>地点: 紫荆17一楼会客厅</p>
+            <p>参赛成员: 2yrold Dawn Haraki Xiaobukeai</p>
             <p>结果: +5.3 +73.7 -19.6 -59.4</p>
         </div>
         <br>
         <div class="contest">
             <p>类别: 比赛</p>
-			<p>日期: 3/15</p>
-			<p>地点: 紫荆17一楼会客厅</p>
-			<p>参赛成员: 2yrold Dawn Haraki Xiaobukeai</p>
+            <p>日期: 3/15</p>
+            <p>地点: 紫荆17一楼会客厅</p>
+            <p>参赛成员: 2yrold Dawn Haraki Xiaobukeai</p>
             <p>结果: +53.6 -54.6 +12.1 -11.1</p>
         </div>
         <br>
         <div class="contest">
             <p>类别: 比赛</p>
-			<p>日期: 3/22</p>
-			<p>地点: 紫荆12 A104</p>
-			<p>参赛成员: 2yrold Xiaobukeai 多元外卷人 Koihs</p>
+            <p>日期: 3/22</p>
+            <p>地点: 紫荆12 A104</p>
+            <p>参赛成员: 2yrold Xiaobukeai 多元外卷人 Koihs</p>
             <p>结果: +63.0 -48.1 +6.0 -20.9</p>
         </div>
-    </body>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sortButton = document.getElementById('sortButton');
+            const contestsContainer = document.getElementById('contestsContainer');
+            let isAscending = true;
+
+            sortButton.addEventListener('click', function () {
+
+                const contests = Array.from(contestsContainer.querySelectorAll('.contest'));
+
+
+                contests.forEach(contest => {
+                    const nextElement = contest.nextElementSibling;
+                    if (nextElement && nextElement.tagName === 'BR') {
+                        contestsContainer.removeChild(nextElement);
+                    }
+                    contestsContainer.removeChild(contest);
+                });
+
+
+                contests.sort((a, b) => {
+                    const dateA = getDateFromContest(a);
+                    const dateB = getDateFromContest(b);
+
+                    return isAscending ? dateA - dateB : dateB - dateA;
+                });
+
+
+                contests.forEach((contest, index) => {
+                    contestsContainer.appendChild(contest);
+                    if (index < contests.length - 1) {
+                        contestsContainer.appendChild(document.createElement('br'));
+                    }
+                });
+
+
+                isAscending = !isAscending;
+                sortButton.textContent = isAscending ? '按日期顺序' : '按日期逆序';
+            });
+
+
+            function getDateFromContest(contestElement) {
+                const dateText = contestElement.querySelector('p:nth-child(2)').textContent;
+                const dateStr = dateText.replace('日期: ', '').trim();
+                const [month, day] = dateStr.split('/').map(Number);
+                return new Date(2025, month - 1, day);
+            }
+        });
+    </script>
+</body>
+
 </html>
