@@ -1,19 +1,21 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 	font-family: 'Noto Sans SC';
 	font-size: 16px;
 }
-.top{
+
+.top {
 	width: 100%;
 	height: 100px;
 	background: white;
 	box-shadow: 0px 0px 10px 10px #00000033;
 	position: fixed;
-	top:0;
+	top: 0;
 	z-index: 100;
 }
-.top img{
+
+.top img {
 	height: 60px;
 	width: auto;
 	display: inline;
@@ -21,18 +23,21 @@
 	margin-left: 10%;
 	float: left;
 }
-.top ul{
+
+.top ul {
 	list-style: none;
 	float: right;
 	width: auto;
 	margin-right: 2%;
 }
-.top ul li{
+
+.top ul li {
 	float: left;
 	height: 100px;
 	width: 20%;
 }
-.top ul li a{
+
+.top ul li a {
 	display: inline-block;
 	border-radius: 5px;
 	font-size: 20px;
@@ -40,55 +45,112 @@
 	margin-top: 30px;
 	padding: 0 20px;
 	font-weight: bold;
-	color:black;
+	color: black;
 	text-decoration: none;
 	text-align: center;
 }
-.top ul li a.selected{
+
+.top ul li a.selected {
 	background: #3b863e;
 	color: white;
 }
-.banner{
+
+.dropbtn {
+	border: none;
+	outline: none;
+	display: inline-block;
+	border-radius: 5px;
+	font-size: 20px;
+	line-height: 40px;
+	margin-top: 30px;
+	padding: 0 20px;
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+	text-align: center;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #dcdcdc;
+	min-width: 120px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown-content a {
+	display: inline-block;
+	border-radius: 5px;
+	font-size: 20px;
+	line-height: 20px;
+	margin: 0;
+	padding: 0 0px;
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+	text-align: center;
+}
+
+.dropdown-content a:hover {
+	background-color: #ffffff;
+}
+
+.banner {
 	height: 100vh;
 	width: 100%;
-	background: #3b863e; 
+	background: #3b863e;
 	background-size: 100px 100px;
 	background-image: linear-gradient(45deg, #00000008 25%, transparent 25%, transparent),
-				   linear-gradient(-45deg, #00000008 25%, transparent 25%, transparent),
-				   linear-gradient(45deg, transparent 75%, #00000008 75%),
-				   linear-gradient(-45deg, transparent 75%, #00000008 75%);
+		linear-gradient(-45deg, #00000008 25%, transparent 25%, transparent),
+		linear-gradient(45deg, transparent 75%, #00000008 75%),
+		linear-gradient(-45deg, transparent 75%, #00000008 75%);
 	overflow: hidden;
 }
-.banner h1{
-	color:white;
+
+.banner h1 {
+	color: white;
 	padding-top: 160px;
 	margin-left: 10%;
 	font-family: "Kanit";
 	font-size: 100px;
 	line-height: 80px;
 }
-.banner h2{
-	color:white;
+
+.banner h2 {
+	color: white;
 	margin-left: 10%;
 	font-family: "Noto Serif JP";
 	font-size: 60px;
 	font-weight: 1000;
 }
-.banner #short_intro{
+
+.banner #short_intro {
 	color: #ffffffcc;
 	font-size: 20px;
 	margin-left: 10%;
 	width: 26%;
 }
-.banner ul{
+
+.banner ul {
 	list-style: none;
 	float: right;
 	margin-right: 10%;
 	position: relative;
 	bottom: 0;
-	
 }
-.banner a{
+
+.banner a {
 	display: block;
 	margin-left: 10%;
 	color: #3b863e;
@@ -106,7 +168,8 @@
 	font-family: "Noto Serif SC";
 	z-index: 30;
 }
-.banner a::after{
+
+.banner a::after {
 	content: " >";
 	font-size: 36px;
 	font-family: consolas;
@@ -114,17 +177,21 @@
 	position: relative;
 	top: -2.5px;
 }
-.banner ul li{
+
+.banner ul li {
 	display: inline-block;
 	margin-right: 5px;
 }
-.banner ul li:nth-child(1){
+
+.banner ul li:nth-child(1) {
 	padding-left: 110px;
 }
-.banner ul li img{
+
+.banner ul li img {
 	width: 100px;
 }
-.game{
+
+.game {
 	height: auto;
 	width: 100%;
 	background: white;
@@ -132,19 +199,22 @@
 	padding-top: 100px;
 	padding-bottom: 100px;
 }
-.game .rightpart{
+
+.game .rightpart {
 	float: right;
 	width: auto;
 	margin-right: 5%;
 }
-.game .rightpart h1{
-	color:black;
+
+.game .rightpart h1 {
+	color: black;
 	padding-top: 60px;
 	font-family: "Noto Serif JP";
 	font-size: 100px;
 	line-height: 100px;
 }
-.game .rightpart h2{
+
+.game .rightpart h2 {
 	float: right;
 	font-size: 25px;
 	line-height: 50px;
@@ -153,31 +223,48 @@
 	line-height: 30px;
 	font-family: "Noto Serif SC";
 }
-.game .leftpart{
+
+.game .leftpart {
 	margin-left: 10%;
 	margin-top: 60px;
 	width: 500px;
 }
-.game .ranklist{
+
+.game .ranklist {
 	margin-left: 10%;
 	margin-top: 60px;
 	margin-right: 10%;
 	display: flex;
 	justify-content: space-between;
-	gap: 20px;
+	gap: 15px;
 }
-.game .ranklist .Title1, .game .ranklist .Title2, .game .ranklist .Title3{
-	margin-top: 250px;
+
+.game .ranklist .Title1,
+.game .ranklist .Title2,
+.game .ranklist .Title3 {
+	margin-top: 240px;
 	width: 300px;
 	display: inline-block;
 }
-.game .ranklist .Title1 ul, .game .ranklist .Title2 ul, .game .ranklist .Title3 ul{
-	margin-top:0px;
+
+.game .ranklist .Title1 ul,
+.game .ranklist .Title2 ul,
+.game .ranklist .Title3 ul {
+	margin-top: 0px;
 }
-.game .ranklist .Title1 ul,.game .ranklist .Title1 ul ol, .game .ranklist .Title2 ul,.game .ranklist .Title2 ul ol, .game .ranklist .Title3 ul,.game .ranklist .Title3 ul ol{
+
+.game .ranklist .Title1 ul,
+.game .ranklist .Title1 ul ol,
+.game .ranklist .Title2 ul,
+.game .ranklist .Title2 ul ol,
+.game .ranklist .Title3 ul,
+.game .ranklist .Title3 ul ol {
 	list-style: none;
 }
-.game .ranklist .Title1 ul>li, .game .ranklist .Title2 ul>li, .game .ranklist .Title3 ul>li{
+
+.game .ranklist .Title1 ul>li,
+.game .ranklist .Title2 ul>li,
+.game .ranklist .Title3 ul>li {
 	height: 30px;
 	width: 270px;
 	padding: 5px;
@@ -185,40 +272,62 @@
 	margin-bottom: 10px;
 	border-radius: 5px;
 }
-.game .ranklist .Title1 ul ol li, .game .ranklist .Title2 ul ol li, .game .ranklist .Title3 ul ol li{
-	float:left;
+
+.game .ranklist .Title1 ul ol li,
+.game .ranklist .Title2 ul ol li,
+.game .ranklist .Title3 ul ol li {
+	float: left;
 }
-.game .ranklist .Title1 ul ol li svg text, .game .ranklist .Title2 ul ol li svg text, .game .ranklist .Title3 ul ol li svg text{
+
+.game .ranklist .Title1 ul ol li svg text,
+.game .ranklist .Title2 ul ol li svg text,
+.game .ranklist .Title3 ul ol li svg text {
 	font-family: 'Hei';
 	font-weight: 600;
 }
-.game .ranklist .Title1 ul ol li span, .game .ranklist .Title2 ul ol li span, .game .ranklist .Title3 ul ol li span{
+
+.game .ranklist .Title1 ul ol li span,
+.game .ranklist .Title2 ul ol li span,
+.game .ranklist .Title3 ul ol li span {
 	font-family: 'simhei';
 	font-weight: bold;
 	float: right;
 	text-align: right;
 }
-.game .ranklist .Title1 ul ol li p, .game .ranklist .Title2 ul ol li p, .game .ranklist .Title3 ul ol li p{
+
+.game .ranklist .Title1 ul ol li p,
+.game .ranklist .Title2 ul ol li p,
+.game .ranklist .Title3 ul ol li p {
 	color: rgb(0, 0, 0);
 	font-weight: 600;
 }
-.game .ranklist .Title1 ul ol li span,.game .ranklist .Title1 ul ol li p, .game .ranklist .Title2 ul ol li span,.game .ranklist .Title2 ul ol li p, .game .ranklist .Title3 ul ol li span,.game .ranklist .Title3 ul ol li p{
+
+.game .ranklist .Title1 ul ol li span,
+.game .ranklist .Title1 ul ol li p,
+.game .ranklist .Title2 ul ol li span,
+.game .ranklist .Title2 ul ol li p,
+.game .ranklist .Title3 ul ol li span,
+.game .ranklist .Title3 ul ol li p {
 	font-size: 20px;
 	line-height: 30px;
 }
-.game .ranklist .Title1 ul ol li, .game .ranklist .Title2 ul ol li, .game .ranklist .Title3 ul ol li{
+
+.game .ranklist .Title1 ul ol li,
+.game .ranklist .Title2 ul ol li,
+.game .ranklist .Title3 ul ol li {
 	width: 250px;
 }
-.game .rightpart a{
+
+.game .rightpart a {
 	font-size: 30px;
 	padding: 5px 50px;
 	font-weight: bold;
 	background: #3b863e;
 	background-size: 50px 50px;
 	background-image: linear-gradient(45deg, #00000010 25%, transparent 25%, transparent),
-				   linear-gradient(-45deg, #00000010 25%, transparent 25%, transparent),
-				   linear-gradient(45deg, transparent 75%, #00000010 75%),
-				   linear-gradient(-45deg, transparent 75%, #00000010 75%);
+		linear-gradient(-45deg, #00000010 25%, transparent 25%, transparent),
+		linear-gradient(45deg, transparent 75%, #00000010 75%),
+		linear-gradient(-45deg, transparent 75%, #00000010 75%);
 	border-radius: 5px;
 	line-height: 50px;
 	height: 50px;
@@ -230,83 +339,208 @@
 	text-align: right;
 	margin-right: 70px;
 }
-.game .rightpart a span{
+
+.game .rightpart a span {
 	font-family: consolas;
 }
 
-.mate{
+.event .coming-event {
+	display: block;
+	height: auto;
+	width: 100%;
+}
+
+.event .coming-event h3 {
+	display: block;
+	padding-top: 10px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	font-family: Bold;
+	font-weight: 600;
+	font-size: 36px;
+}
+
+.event .coming-event p {
+	margin-left: 20px;
+}
+
+.event .coming-event .container1,
+.event .coming-event .container2,
+.event .coming-event .container3,
+.event .coming-event .container4 {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	background-color: white;
+	height: 300px;
+	width: 200px;
+	border-radius: 10px;
+	margin-left: 60px;
+}
+
+.event .coming-event .container1::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100px;
+	height: 75px;
+	background-color: #9400D3;
+	clip-path: polygon(0 100%, 100% 100%, 100% 0);
+	border-bottom-right-radius: 10px;
+}
+
+.event .coming-event .container2::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100px;
+	height: 75px;
+	background-color: #4169e1;
+	clip-path: polygon(0 100%, 100% 100%, 100% 0);
+	border-bottom-right-radius: 10px;
+}
+
+.event .coming-event .container3::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100px;
+	height: 75px;
+	background-color: #0ea09d;
+	clip-path: polygon(0 100%, 100% 100%, 100% 0);
+	border-bottom-right-radius: 10px;
+}
+
+.event .coming-event .container4::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100px;
+	height: 75px;
+	background-color: #F874C6;
+	clip-path: polygon(0 100%, 100% 100%, 100% 0);
+	border-bottom-right-radius: 10px;
+}
+
+.nametag {
+	position: absolute;
+	bottom: 10px;
+	right: 15px;
+	color: white;
+	font-style: italic;
+	font-size: 16px;
+	font-weight: 600;
+	text-shadow: 2px 2px 5px black;
+	z-index: 1;
+	transform: translate(20%, -20%);
+}
+
+.event .coming-event .container1 img,
+.event .coming-event .container2 img,
+.event .coming-event .container3 img,
+.event .coming-event .container4 img {
+	position: relative;
+	top: 80px;
+	left: 40px;
+}
+
+.historical-link a {
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: 500;
+	color: #3a742f;
+}
+
+.mate {
 	height: auto;
 	width: 100%;
 	background: #eee;
 }
-.mate h1{
+
+.mate h1 {
 	padding-top: 50px;
 	margin-left: 10%;
 	font-size: 50px;
 }
-.mate h1::before{
+
+.mate h1::before {
 	content: "▌";
-	color:#c52922;
+	color: #c52922;
 }
-.mate h1 span{
+
+.mate h1 span {
 	font-family: "Noto Serif JP";
 	font-size: 40px;
-	color:#c52922;
+	color: #c52922;
 	padding-left: 10px;
 }
-.mate ul{
+
+.mate ul {
 	list-style: none;
 	margin-left: 10%;
 	padding-bottom: 100px;
 }
-.mate ul ol{
+
+.mate ul ol {
 	list-style: none;
 	margin-left: 3%;
 	margin-top: 5px;
 }
-.mate ul>li{
+
+.mate ul>li {
 	margin-left: 5%;
 	margin-top: 20px;
 }
-.mate ul>li>img{
+
+.mate ul>li>img {
 	height: 25px;
 	box-shadow: 0px 0px 0px 3px #c52922;
 }
-.mate ul>li span{
-	font-size:30px;
+
+.mate ul>li span {
+	font-size: 30px;
 	margin-left: 5px;
 	font-weight: bold;
-	color:#c52922;
+	color: #c52922;
 	font-family: "Noto Serif SC";
 }
-.mate ul ol li{
+
+.mate ul ol li {
 	font-size: 20px;
 	display: inline;
 	margin-right: 50px;
 }
-.rule{
+
+.rule {
 	height: auto;
 	width: 100%;
 	background: #fff;
 }
-.rule>h1{
+
+.rule>h1 {
 	color: #22519dff;
 	font-size: 60px;
 	text-align: center;
 	padding-top: 50px;
 }
-.rule>h2{
+
+.rule>h2 {
 	text-align: center;
 	font-family: "Noto Serif JP";
 }
-.rule>h3{
+
+.rule>h3 {
 	text-align: center;
 	font-family: "Noto Serif SC";
 	font-weight: 100;
 	font-size: 15px;
 }
-strong{
-	
+
+strong {
 	font-size: 18px;
 	background: #eee;
 	padding: 5px 5%;
@@ -320,13 +554,15 @@ strong{
 	position: relative;
 	margin-top: 50px;
 }
-strong>p{
+
+strong>p {
 	float: left;
 	position: absolute;
 	left: 5%;
 	z-index: 10;
 }
-strong>span{
+
+strong>span {
 	clear: both;
 	display: inline-block;
 	height: 14px;
@@ -338,7 +574,8 @@ strong>span{
 	left: 50%;
 	z-index: 1;
 }
-.rule>p{
+
+.rule>p {
 	font-size: 16px;
 	width: 50%;
 	margin-left: 25%;
@@ -346,70 +583,84 @@ strong>span{
 	line-height: 25px;
 	margin-bottom: 3px;
 }
-.rule>ol{
+
+.rule>ol {
 	margin-left: 30%;
 }
-.rule ol p{
+
+.rule ol p {
 	font-size: 16px;
 	width: 64%;
 	line-height: 25px;
 }
-.rule .clear{
+
+.rule .clear {
 	width: 100%;
 	height: 100px;
 }
-.contact{
+
+.contact {
 	height: 520px;
 	width: 100%;
 	background: #eee;
 	overflow: hidden;
 }
-.contact h1{
+
+.contact h1 {
 	font-size: 60px;
 	margin-left: 10%;
 	padding-top: 40px;
 }
-.contact h1::before{
+
+.contact h1::before {
 	content: "▌";
 	color: #881c21;
 }
-.contact p{
+
+.contact p {
 	font-size: 18px;
 	margin-left: 10%;
 	margin-top: 10px;
 }
-.contact img{
+
+.contact img {
 	display: inline-block;
 	height: 100px;
 	margin-top: 160px;
 	float: right;
 }
-.contact img:hover{
+
+.contact img:hover {
 	margin-top: 150px;
 }
-.contact img#firstimg{
+
+.contact img#firstimg {
 	margin-right: 1%;
 }
-.footer{
+
+.footer {
 	height: 150px;
 	width: 100%;
 	background: #383838;
 	padding-top: 50px;
 	position: relative;
 }
-.footer p{
+
+.footer p {
 	color: #999;
 	font-weight: 100;
 	margin-left: 10%;
 }
-.footer img{
+
+.footer img {
 	position: absolute;
 	top: 50px;
 	right: 10%;
 	height: 80px;
 	opacity: 0.4;
 }
-.target-fix{
+
+.target-fix {
 	position: relative;
 	top: -100px;
 	display: block;
