@@ -344,108 +344,135 @@
 	font-family: consolas;
 }
 
-.event .coming-event {
-	display: block;
-	height: auto;
+.event-card {
+	background: white;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 	width: 100%;
+	max-width: 600px;
+	transition: all 0.3s ease;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.event .coming-event h3 {
-	display: block;
-	padding-top: 10px;
-	margin-bottom: 5px;
-	margin-left: 20px;
-	font-family: Bold;
-	font-weight: 600;
-	font-size: 36px;
+.event-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-.event .coming-event p {
-	margin-left: 20px;
-}
-
-.event .coming-event .container1,
-.event .coming-event .container2,
-.event .coming-event .container3,
-.event .coming-event .container4 {
-	display: inline-block;
-	vertical-align: top;
-	position: relative;
-	background-color: white;
-	height: 300px;
-	width: 200px;
-	border-radius: 10px;
-	margin-left: 60px;
-}
-
-.event .coming-event .container1::after {
-	content: "";
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 100px;
-	height: 75px;
-	background-color: #9400D3;
-	clip-path: polygon(0 100%, 100% 100%, 100% 0);
-	border-bottom-right-radius: 10px;
-}
-
-.event .coming-event .container2::after {
-	content: "";
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 100px;
-	height: 75px;
-	background-color: #4169e1;
-	clip-path: polygon(0 100%, 100% 100%, 100% 0);
-	border-bottom-right-radius: 10px;
-}
-
-.event .coming-event .container3::after {
-	content: "";
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 100px;
-	height: 75px;
-	background-color: #0ea09d;
-	clip-path: polygon(0 100%, 100% 100%, 100% 0);
-	border-bottom-right-radius: 10px;
-}
-
-.event .coming-event .container4::after {
-	content: "";
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 100px;
-	height: 75px;
-	background-color: #F874C6;
-	clip-path: polygon(0 100%, 100% 100%, 100% 0);
-	border-bottom-right-radius: 10px;
-}
-
-.nametag {
-	position: absolute;
-	bottom: 10px;
-	right: 15px;
+.event-header {
+	padding: 25px;
 	color: white;
-	font-style: italic;
-	font-size: 16px;
-	font-weight: 600;
-	text-shadow: 2px 2px 5px black;
-	z-index: 1;
-	transform: translate(20%, -20%);
+	background: linear-gradient(45deg, #e74c3c, #c0392b);
+	position: relative;
 }
 
-.event .coming-event .container1 img,
-.event .coming-event .container2 img,
-.event .coming-event .container3 img,
-.event .coming-event .container4 img {
-	position: relative;
-	top: 80px;
-	left: 40px;
+.event-type {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	background: rgba(255, 255, 255, 0.2);
+	padding: 5px 15px;
+	border-radius: 30px;
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+.event-title {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.event-title i {
+	font-size: 2rem;
+	margin-right: 15px;
+}
+
+.event-title h2 {
+	font-size: 1.8rem;
+	font-weight: 600;
+}
+
+.event-date {
+	font-size: 1.1rem;
+	display: flex;
+	align-items: center;
+}
+
+.event-date i {
+	margin-right: 8px;
+	font-size: 1.2rem;
+}
+
+.event-content {
+	padding: 25px;
+}
+
+.info-item {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.info-icon {
+	width: 40px;
+	height: 40px;
+	background: #f8f9fa;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 15px;
+	flex-shrink: 0;
+	color: #e74c3c;
+	font-size: 1.2rem;
+}
+
+.info-text h3 {
+	font-size: 1.1rem;
+	color: #2c3e50;
+	margin-bottom: 5px;
+	font-weight: 600;
+}
+
+.info-text p {
+	color: #555;
+	line-height: 1.6;
+}
+
+.participants-section {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: 1px solid #eee;
+}
+
+.section-title {
+	font-size: 1.2rem;
+	color: #2c3e50;
+	margin-bottom: 15px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+}
+
+.section-title i {
+	margin-right: 10px;
+	color: #e74c3c;
+}
+
+.participants-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.participant {
+	background: #f8f9fa;
+	padding: 8px 15px;
+	border-radius: 30px;
+	font-size: 0.95rem;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
 .historical-link a {
