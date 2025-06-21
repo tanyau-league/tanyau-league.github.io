@@ -168,9 +168,170 @@
 				color: white;
 				border: none;
 			}
+			.kessan{
+				height: 76vh;
+				width: 76vw;
+				background: #eeeeeef6;
+				position: absolute;
+				padding: 2vh 2vw;
+				top: 10vh;
+				left: 10vw;
+				z-index: 100;
+				border: 0.2vh solid black;
+				border-radius: 1vh;
+			}
+			.haiiro{
+				height: 100vh;
+				width: 100vw;
+				background: #333333aa;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 10;
+			}
+			.kessan button{
+				background: white;
+				border: 0.1vh solid black;
+				font-size: 3vh;
+				height: 6vh;
+				width: 20vh;
+				line-height: 6vh;
+			}
+			.kessan h2{
+				font-size: 7vh;
+				text-align: center;
+				margin-bottom: 1vh;
+			}
+			.namelen #playerA,.namelen #playerB{
+				color: white;
+				font-size: 3vh;
+				padding: 1vh 2vh;
+			}
+			.namelen #playerA{
+				background-color: #e40;
+			}
+			.namelen #playerB{
+				background-color: #1fbc9d;
+			}
+			.namelen{
+				font-size: 3vh;
+				padding: 2vh 0;
+			}
+			.kessan{
+				font-size: 3vh;
+			}
+			.kessan input{
+				height: 3vh;
+				width: 3vw;
+				border-radius: 0.5vh;
+				border: none;
+			}
+			#fan,#fu{
+				list-style: none;
+			}
+			#fan li{
+				float: left;
+				height: 3vh;
+				font-size: 3vh;
+				line-height: 3vh;
+				padding: 1vh;
+				background: white;
+				margin-right: 2vh;
+				border: 0.1vh solid black;
+				border-radius: 0.2vh;
+				margin-bottom: 2vh;
+				cursor: pointer;
+			}
+			#fu li{
+				float: left;
+				height: 3vh;
+				font-size: 3vh;
+				line-height: 3vh;
+				padding: 1vh 3vh;
+				background: white;
+				margin-right: 2vh;
+				border: 0.1vh solid black;
+				border-radius: 0.2vh;
+				margin-bottom: 2vh;
+				cursor: pointer;
+			}
+			.fandiv{
+				width: 100%;
+				height: 22vh;
+				margin-top: 2vh;
+			}
+			.fudiv{
+				width: 100%;
+				height: 16vh;
+			}
+			#fscore{
+				font-size: 4vh;
+				float: left;
+				background: white;
+				padding: 2vh 10vh;
+				border: 0.1vh solid black;
+				
+			}
+			#submit{
+				position: absolute;
+				bottom: 2.5vh;
+				right: 2vw;
+				background: #e40;
+				color: white;
+				border: 0.1vh solid black;
+				font-size: 4vh;
+				height: 9vh;
+				width: 30vh;
+				line-height: 9vh;
+			}
 		</style>
 	</head>
 	<body>
+		<div class="haiiro"></div>
+		<div class="kessan">
+			<button id="cancel" onclick="modoru(1)">取消</button><h2>点数变动</h2>
+			<div class="namelen">
+				<span id="playerA">选手A</span>
+				<span id="oyaku">（庄/闲）</span>
+				<span id="agariway">自摸/荣和</span>
+				<span id="playerB">无/选手B</span>
+			</div>
+			<div class="fandiv">
+				<ul id="fan">
+					<li onclick="fan(1)">&nbsp;&nbsp;&nbsp;1番&nbsp;&nbsp;&nbsp;</li>
+					<li onclick="fan(2)">&nbsp;&nbsp;&nbsp;2番&nbsp;&nbsp;&nbsp;</li>
+					<li onclick="fan(3)">&nbsp;&nbsp;&nbsp;3番&nbsp;&nbsp;&nbsp;</li>
+					<li onclick="fan(4)">&nbsp;&nbsp;&nbsp;4番&nbsp;&nbsp;&nbsp;</li>
+					<li onclick="fan(5)">满贯（5番）</li>
+					<li onclick="fan(6)">跳满（6~7番）</li>
+					<li onclick="fan(7)">倍满（8~10番）</li>
+					<li onclick="fan(8)">三倍满（11~12番）</li>
+					<li onclick="fan(9)">役满（13番以上）</li>
+					<li onclick="fan(10)">&nbsp;两倍役满&nbsp;</li>
+					<li onclick="fan(11)">&nbsp;三倍役满&nbsp;</li>
+					<li onclick="fan(12)">&nbsp;四倍役满&nbsp;</li>
+					<li onclick="fan(13)">&nbsp;五倍役满&nbsp;</li>
+					<li onclick="fan(14)">&nbsp;六倍役满&nbsp;</li>
+				</ul>
+			</div>
+			<div class="fudiv">
+				<ul id="fu">
+					<li onclick="fu(1)">20符</li>
+					<li onclick="fu(2)">25符</li>
+					<li onclick="fu(3)">30符</li>
+					<li onclick="fu(4)">40符</li>
+					<li onclick="fu(5)">50符</li>
+					<li onclick="fu(6)">60符</li>
+					<li onclick="fu(7)">70符</li>
+					<li onclick="fu(8)">80符</li>
+					<li onclick="fu(9)">90符</li>
+					<li onclick="fu(10)">100符</li>
+					<li onclick="fu(11)">110符</li>
+				</ul>
+			</div>
+			<p id="fscore">114514 点 ALL/无</p>
+			<button id="submit" onclick="submit()">确认</button>
+		</div>
 		<ol>
 			<li>
 				<div id="mainpage">
@@ -185,30 +346,30 @@
 				<div id="game">
 					<div class="jicha">
 						<h1>25000</h1>
-						<button class="tsumo">自摸</button><button class="agari">荣和</button>
+						<button class="tsumo" onclick="tsumo(1)">自摸</button><button class="agari">荣和</button>
 						<button class="reach" onclick="reach(1)">立直</button>
 						<span class="kaze">東</span><input placeholder="请输入选手名">
 					</div>
 					<div class="shimocha">
 						<h1>25000</h1>
-						<button class="tsumo">自摸</button><button class="agari">荣和</button>
+						<button class="tsumo" onclick="tsumo(2)">自摸</button><button class="agari">荣和</button>
 						<button class="reach" onclick="reach(2)">立直</button>
 						<span class="kaze">南</span><input placeholder="请输入选手名">
 					</div>
 					<div class="toicha">
 						<h1>25000</h1>
-						<button class="tsumo">自摸</button><button class="agari">荣和</button>
+						<button class="tsumo" onclick="tsumo(3)">自摸</button><button class="agari">荣和</button>
 						<button class="reach" onclick="reach(3)">立直</button>
 						<span class="kaze">西</span><input placeholder="请输入选手名">
 					</div>
 					<div class="kamicha">
 						<h1>25000</h1>
-						<button class="tsumo">自摸</button><button class="agari">荣和</button>
+						<button class="tsumo" onclick="tsumo(4)">自摸</button><button class="agari">荣和</button>
 						<button class="reach" onclick="reach(4)">立直</button>
 						<span class="kaze">北</span><input placeholder="请输入选手名">
 					</div>
 					<div class="naka">
-						<p id="honnba">东一局 0 本场</p>
+						<p id="honnba">东1局 0 本场</p>
 						<p id="kyoutaku">立直棒 0</p>
 						<button>流局</button>
 					</div>
@@ -237,6 +398,15 @@
 			}
 			
 		}
+		var elem_fans=document.querySelectorAll("#fan li");
+		var elem_fus=document.querySelectorAll("#fu li");
+		var selected_fan=-1,selected_fu=-1;
+		var oyaku=0;//0 亲 1 子
+		var agaway=0;//0 自摸 1荣和
+		var pAname="",pBname="";
+		var agarisha=0,fsA=0,fsB=0;
+		const fusu=[0,20,25,30,40,50,60,70,80,90,100,110];//符数
+		const upscore=[0,0,0,0,0,8000,12000,16000,24000,32000,64000,96000,128000,160000,192000];//子家超5番荣和点数
 		function refresh_data(){
 			var kaze="东";
 			if(round>4)kaze="南";
@@ -244,6 +414,50 @@
 			elem_kyoutaku.innerText="立直棒 "+kyoutaku;
 			for(let i=1;i<=4;i++){
 				elem_player[i-1].querySelector("h1").innerText=score[i];
+			}
+			
+			document.querySelector("#playerA").innerText=pAname;
+			document.querySelector("#playerB").style.display="inline";
+			document.querySelector("#playerB").innerText=pBname;
+			if(oyaku==0)document.querySelector("#oyaku").innerText="（亲）";
+			else document.querySelector("#oyaku").innerText="（子）";
+			if(agaway==0){
+				document.querySelector("#agariway").innerText="自摸";
+				document.querySelector("#playerB").style.display="none";
+			}
+			else document.querySelector("#agariway").innerText="荣和";
+			
+			for(let i=1;i<=elem_fans.length;i++){
+				if(i==selected_fan){
+					elem_fans[i-1].style.backgroundColor="#e40";
+					elem_fans[i-1].style.color="white";
+				}else{
+					elem_fans[i-1].style.backgroundColor="#fff";
+					elem_fans[i-1].style.color="black";
+				}
+			}
+			for(let i=1;i<=elem_fus.length;i++){
+				if(i==selected_fu){
+					elem_fus[i-1].style.backgroundColor="#7118ee";
+					elem_fus[i-1].style.color="white";
+				}else{
+					elem_fus[i-1].style.backgroundColor="#fff";
+					elem_fus[i-1].style.color="black";
+				}
+			}
+			if((selected_fu!=-1&&selected_fan!=-1)||(selected_fan>=5)){
+				// 点数计算
+				let temp=0;
+				if(oyaku==0&&agaway==0){//亲自摸
+					if(selected_fan>=5)temp=parseInt(upscore[selected_fan]/2);
+					else{
+						temp=2*fusu[selected_fu]*4*(2**selected_fan);
+						if(temp>4000)temp=4000;
+						temp=Math.ceil(temp/100)*100;
+					}
+					document.getElementById("fscore").innerText=temp+" ALL";
+					fsA=temp;
+				}
 			}
 		}
 		function reach(n){
@@ -267,6 +481,50 @@
 				refresh_data();
 			}
 		}
+		
+		function fan(n){
+			selected_fan=n;
+			refresh_data();
+		}
+		function fu(n){
+			selected_fu=n;
+			refresh_data();
+		}
+		function modoru(n){
+			if(n==1){
+				selected_fan=-1;
+				selected_fu=-1;
+				document.querySelector(".haiiro").style.display="none";
+				document.querySelector(".kessan").style.display="none";
+			}
+		}
+		function tsumo(n){
+			agarisha=n;
+			if((round-1)%4+1==n){
+				oyaku=0;
+			}else oyaku=1;
+			agaway=0;
+			pAname=elem_player[n-1].querySelector("input").value;
+			document.querySelector(".haiiro").style.display="block";
+			document.querySelector(".kessan").style.display="block";
+			refresh_data();
+		}
+		function submit(){
+			document.querySelector(".haiiro").style.display="none";
+			document.querySelector(".kessan").style.display="none";
+			if(oyaku==0&&agaway==0){//亲自摸
+				score[agarisha]+=fsA*3;
+				for(let i=1;i<=4;i++){
+					if(i!=agarisha){
+						score[i]-=fsA;
+					}
+				}
+			}
+			refresh_data();
+		}
+		
+		document.querySelector(".haiiro").style.display="none";
+		document.querySelector(".kessan").style.display="none";
 		wap(1)
 		 window.onload=function () {
 			document.addEventListener('touchstart',function (event) {
