@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Yauchann | TanYauLEAGUE</title>
+		<link rel="icon" href="main.ico">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;500;700;900&display=swap"
+			rel="stylesheet">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet">
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				font-family: 'Noto Sans SC';
+			}
+			body>ol{
+				list-style: none;
+			}
+			body>ol>li{
+				position: absolute;
+			}
+			body>ol>li>div{
+				height: 100vh;
+				width: 100vw;
+				background: white;
+			}
+			#mainpage img{
+				display: block;
+				margin: 0 auto;
+				height: 10vh;
+				padding-top: 5vh;
+			}
+			#mainpage h1{
+				font-family: 'Kanit';
+				font-weight: 100;
+				text-align: center;
+				font-size: 10vh;
+				padding-top: 10vh;
+				line-height: 8vh;
+			}
+			#mainpage p{
+				font-weight: 100;
+				text-align: center;
+				font-size: 5vh;
+				padding-bottom: 3vh;
+			}
+			#mainpage button{
+				background: #eee;
+				display: block;
+				margin: 0 auto;
+				font-size: 5vh;
+				font-weight: 100;
+				border: 0.1vh black solid;
+				padding: 8vh 10vh;
+			}
+			#mainpage span{
+				display: block;
+				text-align: center;
+				font-weight: 100;
+				font-size: 3vh;
+				padding: 2vh;
+			}
+			#game button.reach{
+				width: 50vh;
+				height:6vh;
+				background: #eee;
+				border: 0.1vh black solid;
+				font-size: 4vh;
+				line-height: 6vh;
+				font-weight: 500;
+				display: block;
+			}
+			#game .kaze{
+				font-size: 4vh;
+				padding-right: 2vh;
+			}
+			#game input{
+				font-size: 3vh;
+				height: 4vh;
+				line-height: 4vh;
+				text-align: center;
+			}
+			#game h1{
+				text-align: center;
+				font-size: 10vh;
+				padding-right: 5vh;
+			}
+			#game h1 span{
+				font-size: 5vh;
+			}
+			#game button.tsumo,button.agari{
+				height: 6vh;
+				font-size: 4vh;
+				line-height: 6vh;
+				width: 20vh;
+				border: 0.1vh black solid;
+				margin-bottom: 1vh;
+				color: white;
+			}
+			#game button.tsumo{
+				background: #e40;
+			}
+			#game button.agari{
+				background: #e81;
+				margin-left: 10vh;
+			}
+			#game .jicha{
+				width: 50vh;
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				margin-left: -25vh;
+			}
+			#game .toicha{
+				width: 50vh;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				margin-left: -25vh;
+				rotate: 180deg; 
+			}
+			#game .kamicha{
+				width: 50vh;
+				position: absolute;
+				left: -5vh;
+				top: 50%;
+				margin-top: -16vh;
+				rotate: 90deg; 
+			}
+			#game .shimocha{
+				width: 50vh;
+				position: absolute;
+				right: -5vh;
+				top: 50%;
+				margin-top: -16vh;
+				rotate: -90deg; 
+			}
+			#game .naka{
+				height: 30vh;
+				width: 30vh;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -15vh;
+				margin-left: -15vh;
+				background: #eee;
+				border: 0.1vh black solid;
+				
+			}
+			#game .naka p{
+				text-align: center;
+				font-size: 4vh;
+			}
+			#game .naka p#honnba{
+				margin-top: 8vh;
+			}
+		</style>
+	</head>
+	<body>
+		<ol>
+			<li>
+				<div id="mainpage">
+					<img src="Group 1.svg" alt="">
+					<h1>Yauchann</h1>
+					<p>立直麻将对局计分</p>
+					<button onclick="wap(1)">开始</button>
+					<span>在平板上获得更好的使用体验<br>by Haraki</span>
+				</div>
+			</li>
+			<li>
+				<div id="game">
+					<div class="jicha">
+						<h1><span>1位</span>25000</h1>
+						<button class="tsumo">自摸</button><button class="agari">荣和</button>
+						<button class="reach">立直</button>
+						<span class="kaze">東</span><input placeholder="请输入选手名">
+					</div>
+					<div class="kamicha">
+						<h1><span>4位</span>25000</h1>
+						<button class="tsumo">自摸</button><button class="agari">荣和</button>
+						<button class="reach">立直</button>
+						<span class="kaze">北</span><input placeholder="请输入选手名">
+					</div>
+					<div class="toicha">
+						<h1><span>3位</span>25000</h1>
+						<button class="tsumo">自摸</button><button class="agari">荣和</button>
+						<button class="reach">立直</button>
+						<span class="kaze">西</span><input placeholder="请输入选手名">
+					</div>
+					<div class="shimocha">
+						<h1><span>2位</span>25000</h1>
+						<button class="tsumo">自摸</button><button class="agari">荣和</button>
+						<button class="reach">立直</button>
+						<span class="kaze">南</span><input placeholder="请输入选手名">
+					</div>
+					<div class="naka">
+						<p id="honnba">东一局0本场</p>
+						<p id="kyoutaku">立直棒 0</p>
+					</div>
+				</div>
+			</li>
+		</ol>
+	</body>
+	<script type="text/javascript">
+		const all_pages=document.querySelectorAll("body>ol>li")
+		function wap(n){
+			for(let i=0;i<all_pages.length;i++){
+				if(i==n){
+					all_pages[i].style.display="block";
+				}else{
+					all_pages[i].style.display="none";
+				}
+			}
+		}
+		wap(1)
+	</script>
+</html>
