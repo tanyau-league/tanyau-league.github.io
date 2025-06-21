@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>rules</title>
+	<link rel="icon" href="img/main.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;500;700;900&display=swap"
+		rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Noto Sans SC', sans-serif;
+		}
+
+		body {
+			background: #3b863e;
+			background-size: 100px 100px;
+			background-image: linear-gradient(45deg, #00000008 25%, transparent 25%, transparent),
+				linear-gradient(-45deg, #00000008 25%, transparent 25%, transparent),
+				linear-gradient(45deg, transparent 75%, #00000008 75%),
+				linear-gradient(-45deg, transparent 75%, #00000008 75%);
+			min-height: 100vh;
+			padding: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.top {
+			width: 100%;
+			height: 100px;
+			background: white;
+			box-shadow: 0px 0px 10px 10px #00000033;
+			position: fixed;
+			top: 0;
+			z-index: 100;
+		}
+
+		.top img {
+			height: 100px;
+			width: auto;
+			display: inline;
+			padding: 20px;
+			margin-left: 10%;
+			float: left;
+		}
+
+		.container {
+			margin-top: 100px;
+			max-width: 1200px;
+			width: 100%;
+			background: rgba(255, 255, 255, 0.95);
+			border-radius: 20px;
+			box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+			overflow: hidden;
+		}
+
+		header {
+			background: linear-gradient(45deg, #e74c3c, #c0392b);
+			color: white;
+			text-align: center;
+			padding: 40px 20px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		header::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-dasharray="10,5"/></svg>');
+			z-index: 0;
+		}
+
+		h1 {
+			font-size: 3.5rem;
+			margin-bottom: 10px;
+			position: relative;
+			z-index: 2;
+			text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+		}
+
+		.subtitle {
+			font-size: 1.4rem;
+			opacity: 0.9;
+			max-width: 800px;
+			margin: 0 auto;
+			position: relative;
+			z-index: 2;
+		}
+
+		.rules-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+			gap: 30px;
+			padding: 40px;
+		}
+
+		@media (max-width: 768px) {
+			.rules-container {
+				grid-template-columns: 1fr;
+				padding: 20px;
+			}
+		}
+
+		.rule-section {
+			background: white;
+			border-radius: 15px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+			padding: 30px;
+			transition: all 0.3s ease;
+			border-left: 5px solid #e74c3c;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.rule-section:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+		}
+
+		.rule-section::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(to right, rgba(106, 17, 203, 0.03), transparent);
+			z-index: 0;
+		}
+
+		.section-header {
+			display: flex;
+			align-items: center;
+			margin-bottom: 25px;
+			position: relative;
+			z-index: 2;
+		}
+
+		.section-icon {
+			width: 60px;
+			height: 60px;
+			background: linear-gradient(45deg, #e74c3c, #c0392b);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-right: 20px;
+			flex-shrink: 0;
+		}
+
+		.section-icon i {
+			font-size: 2rem;
+			color: white;
+		}
+
+		.section-title {
+			font-size: 1.8rem;
+			color: #2c3e50;
+			font-weight: 700;
+		}
+
+		.rule-list {
+			position: relative;
+			z-index: 2;
+		}
+
+		.rule-item {
+			display: flex;
+			margin-bottom: 20px;
+			padding-bottom: 20px;
+			border-bottom: 1px dashed #eee;
+		}
+
+		.rule-item:last-child {
+			margin-bottom: 0;
+			padding-bottom: 0;
+			border-bottom: none;
+		}
+
+		.rule-number {
+			width: 40px;
+			height: 40px;
+			background: #e74c3c;
+			color: white;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: bold;
+			font-size: 1.2rem;
+			margin-right: 15px;
+			flex-shrink: 0;
+		}
+
+		.rule-content {
+			flex: 1;
+		}
+
+		.rule-content h3 {
+			font-size: 1.3rem;
+			margin-bottom: 8px;
+			color: #2c3e50;
+		}
+
+		.rule-content p {
+			color: #555;
+			line-height: 1.8;
+		}
+
+		.highlight-box {
+			background: linear-gradient(to right, #f8f9fa, #e9ecef);
+			border-left: 4px solid #e74c3c;
+			padding: 20px;
+			border-radius: 8px;
+			margin-top: 20px;
+			position: relative;
+			z-index: 2;
+		}
+
+		.formula {
+			background: #2e5098;
+			color: white;
+			padding: 25px;
+			border-radius: 12px;
+			margin: 20px 0;
+			font-family: 'Courier New', monospace;
+			font-size: 1.4rem;
+			text-align: center;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+		}
+
+		.point-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 20px 0;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+		}
+
+		.point-table th {
+			background: #e74c3c;
+			color: white;
+			padding: 15px;
+			text-align: center;
+		}
+
+		.point-table td {
+			padding: 15px;
+			text-align: center;
+			border-bottom: 1px solid #eee;
+		}
+
+		.point-table tr:nth-child(even) {
+			background: #f8f9fa;
+		}
+
+		.footer {
+			text-align: center;
+			padding: 30px;
+			background: rgba(0, 0, 0, 0.03);
+			color: #666;
+			font-size: 0.9rem;
+			border-top: 1px solid #eee;
+		}
+
+		.important-note {
+			background: linear-gradient(to right, #fff8e1, #ffecb3);
+			border-left: 4px solid #ff9800;
+			padding: 20px;
+			border-radius: 8px;
+			margin-top: 30px;
+			position: relative;
+			z-index: 2;
+		}
+
+		.important-note h3 {
+			display: flex;
+			align-items: center;
+			color: #e65100;
+			margin-bottom: 15px;
+		}
+
+		.important-note h3 i {
+			margin-right: 10px;
+		}
+
+		.rule-tag {
+			display: inline-block;
+			background: #e3f2fd;
+			color: #1565c0;
+			padding: 4px 12px;
+			border-radius: 30px;
+			font-size: 0.85rem;
+			margin: 5px 5px 5px 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="top">
+		<img src="img/Group 1.svg" alt="logo">
+	</div>
+	<div class="container">
+		<header>
+			<h1><i class="fas fa-dice"></i> 麻雀积分赛规则</h1>
+			<p class="subtitle">TanYauLEAGUE比赛规则与计分系统详解</p>
+		</header>
+
+		<div class="rules-container">
+			<div class="rule-section">
+				<div class="section-header">
+					<div class="section-icon">
+						<i class="fas fa-flag-checkered"></i>
+					</div>
+					<h2 class="section-title">基本规则</h2>
+				</div>
+
+				<div class="rule-list">
+					<div class="rule-item">
+						<div class="rule-number">1</div>
+						<div class="rule-content">
+							<h3>初始点数与结束条件</h3>
+							<p>每人初始点数：<strong>25,000点</strong>，比赛形式为半庄战（东风战+南风战）。</p>
+							<p>一回战结束当且仅当南四局出现以下情况：</p>
+							<ul style="padding-left: 20px; margin-top: 10px;">
+								<li>非庄家和牌</li>
+								<li>庄家流局扣牌宣布no听</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="rule-item">
+						<div class="rule-number">2</div>
+						<div class="rule-content">
+							<h3>点数规则</h3>
+							<p>对局中点数小于零依然继续比赛，并且仍然可以立直。</p>
+						</div>
+					</div>
+
+					<div class="rule-item">
+						<div class="rule-number">3</div>
+						<div class="rule-content">
+							<h3>得分计算</h3>
+							<p>比赛结束后每个人的得分(Pt)计算公式：</p>
+							<div class="formula">
+								Pt = (终局点数 - 30000) / 1000 + 顺位马
+							</div>
+							<p>顺位马分配：</p>
+							<div class="point-table">
+								<table>
+									<tr>
+										<th>顺位</th>
+										<th>马点</th>
+									</tr>
+									<tr>
+										<td>一位</td>
+										<td>+50</td>
+									</tr>
+									<tr>
+										<td>二位</td>
+										<td>+10</td>
+									</tr>
+									<tr>
+										<td>三位</td>
+										<td>-10</td>
+									</tr>
+									<tr>
+										<td>四位</td>
+										<td>-30</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="rule-section">
+				<div class="section-header">
+					<div class="section-icon">
+						<i class="fas fa-gavel"></i>
+					</div>
+					<h2 class="section-title">和牌与流局规则</h2>
+				</div>
+
+				<div class="rule-list">
+					<div class="rule-item">
+						<div class="rule-number">1</div>
+						<div class="rule-content">
+							<h3>和牌规则</h3>
+							<p>采用头跳规则：放铳者逆时针最近和牌者和牌有效，其余和牌无效。</p>
+						</div>
+					</div>
+
+					<div class="rule-item">
+						<div class="rule-number">2</div>
+						<div class="rule-content">
+							<h3>流局规则</h3>
+							<p>南四流局时，亲家未听的供托归当前一位所有。</p>
+							<p>承认以下途中流局：</p>
+							<div style="margin-top: 10px;">
+								<span class="rule-tag">四风连打</span>
+								<span class="rule-tag">四家立直</span>
+								<span class="rule-tag">九种九牌</span>
+								<span class="rule-tag">四杠散了</span>
+							</div>
+							<p>承认流局满贯。</p>
+						</div>
+					</div>
+
+					<div class="rule-item">
+						<div class="rule-number">3</div>
+						<div class="rule-content">
+							<h3>听牌与立直规则</h3>
+							<p>听0张同样算作听牌（如听已经被开杠出四张的坎张）。</p>
+							<p>流局时，没立直的玩家即使听牌也可以扣牌宣布没听（no听）。</p>
+							<p>不允许诈立（必须实际听牌才能立直）。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="rule-section">
+				<div class="section-header">
+					<div class="section-icon">
+						<i class="fas fa-dragon"></i>
+					</div>
+					<h2 class="section-title">宝牌与杠牌规则</h2>
+				</div>
+
+				<div class="rule-list">
+					<div class="rule-item">
+						<div class="rule-number">1</div>
+						<div class="rule-content">
+							<h3>宝牌规则（幸运规则）</h3>
+							<p>承认以下宝牌类型及役种：</p>
+							<div style="margin-top: 10px;">
+								<span class="rule-tag">一发</span>
+								<span class="rule-tag">杠宝牌</span>
+								<span class="rule-tag">里宝牌</span>
+								<span class="rule-tag">赤宝牌</span>
+							</div>
+							<p>采用四赤规则（每副牌有四张赤宝牌）。</p>
+						</div>
+					</div>
+
+					<div class="rule-item">
+						<div class="rule-number">2</div>
+						<div class="rule-content">
+							<h3>开杠规则</h3>
+							<p>暗杠：立刻翻宝牌指示牌。</p>
+							<p>明杠（加杠）：在打出牌后翻宝牌指示牌。</p>
+							<p>承认国士无双抢暗杠。</p>
+						</div>
+					</div>
+
+					<div class="rule-item">
+						<div class="rule-number">3</div>
+						<div class="rule-content">
+							<h3>特殊规则</h3>
+							<p>立直后开暗杠如果改变待牌视作振听。</p>
+							<p>摸海底牌打出时不允许除了和牌以外的任何行动。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="rule-section">
+				<div class="section-header">
+					<div class="section-icon">
+						<i class="fas fa-crown"></i>
+					</div>
+					<h2 class="section-title">符数与役满规则</h2>
+				</div>
+
+				<div class="rule-list">
+					<div class="rule-item">
+						<div class="rule-number">1</div>
+						<div class="rule-content">
+							<h3>符数计算</h3>
+							<p>连风雀头记作4符（例如：东场东家的西西雀头）。</p>
+						</div>
+					</div>
+
+					<div class="rule-item">
+						<div class="rule-number">2</div>
+						<div class="rule-content">
+							<h3>役满规则</h3>
+							<p>承认单个两倍役满和复合役满。</p>
+							<p>国士无双十三面和纯正九莲宝灯要求无振才能记作两倍役满。</p>
+							<p>累计役满上限为13翻（四倍满）。</p>
+						</div>
+					</div>
+
+					<div class="rule-item">
+						<div class="rule-number">3</div>
+						<div class="rule-content">
+							<h3>包牌规则</h3>
+							<p>包牌适用于最后一副露喂牌。</p>
+							<p>例如：大三元已经副露白发情况下打出中被碰，岭上不计包牌。</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="important-note">
+					<h3><i class="fas fa-exclamation-triangle"></i> 重要注意事项</h3>
+					<p>比赛过程中请严格遵守以上规则，任何争议情况以裁判现场裁定为准。特殊规则变动将在赛前通知所有参赛选手。</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>TanYauLEAGUE 最新赛季规则 | 最后更新: 2025年6月</p>
+			<p>规则解释权归TanYauLEAGUE所有</p>
+		</div>
+	</div>
+</body>
+
+</html>

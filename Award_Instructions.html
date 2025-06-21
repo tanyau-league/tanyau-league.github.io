@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awards</title>
+    <link rel="icon" href="img/main.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;500;700;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans SC';
+            font-size: 16px;
+        }
+
+        body {
+            background: #3b863e;
+            background-size: 100px 100px;
+            background-image: linear-gradient(45deg, #00000008 25%, transparent 25%, transparent),
+                linear-gradient(-45deg, #00000008 25%, transparent 25%, transparent),
+                linear-gradient(45deg, transparent 75%, #00000008 75%),
+                linear-gradient(-45deg, transparent 75%, #00000008 75%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top {
+            width: 100%;
+            height: 100px;
+            background: white;
+            box-shadow: 0px 0px 10px 10px #00000033;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top img {
+            height: 60px;
+            width: auto;
+            display: inline;
+            padding: 20px;
+            margin-left: 10%;
+            float: left;
+        }
+
+        /* 新增的奖项说明样式 */
+        .award-explanation {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .award-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .award-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            position: relative;
+        }
+
+        .award-icon {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 40px;
+            color: #ffd700;
+            /* 金色图标 */
+        }
+
+        .award-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        @media (min-width: 768px) {
+            .award-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <img src="img/Group 1.svg" alt="logo">
+    </div>
+    <!-- 奖项说明内容 -->
+    <main class="award-explanation">
+        <div class="award-section">
+            <h1>奖项说明</h1>
+            <p>以下是本赛事各项荣誉奖项的评定标准：</p>
+        </div>
+
+        <div class="award-grid">
+            <!-- 冠军 -->
+            <div class="award-section">
+                <h2 class="award-title">冠军 (Champion)</h2>
+                <div class="award-icon">👑</div>
+                <p class="award-description">
+                    授予个人PT总分最高的选手。PT总分是根据选手在所有比赛中的表现累积计算的综合得分，
+                    反映选手在整个赛季中的稳定性和竞技水平。
+                </p>
+            </div>
+
+            <!-- 最高得点奖 -->
+            <div class="award-section">
+                <h2 class="award-title">最高得点賞</h2>
+                <div class="award-icon">🏆</div>
+                <p class="award-description">
+                    授予在单场比赛中获得最高得分的选手。此奖项表彰选手在单场比赛中的出色发挥和卓越表现，
+                    记录为赛季最高得分。
+                </p>
+            </div>
+
+            <!-- 避四奖 -->
+            <div class="award-section">
+                <h2 class="award-title">避四賞</h2>
+                <div class="award-icon">🛡️</div>
+                <p class="award-description">
+                    授予参加了一半以上比赛且四位率最低的选手。评定标准为：
+                <ul>
+                    <li>参赛场次 ≥ 赛季总场次/2</li>
+                    <li>四位率 = 获得第四名的场次 ÷ 总参赛场次</li>
+                </ul>
+                四位率最低者获胜。
+                </p>
+            </div>
+
+            <!-- 全勤奖 -->
+            <div class="award-section">
+                <h2 class="award-title">全勤賞</h2>
+                <div class="award-icon">✅</div>
+                <p class="award-description">
+                    授予参加赛季所有比赛的选手。此奖项表彰选手的坚持和承诺，
+                    需要100%出席所有比赛场次才能获得。
+                </p>
+            </div>
+        </div>
+    </main>
+    <div id="clickEffectContainer"></div>
+    <script>
+        ; (function () {
+            const TEXTS = [];
+            const TEXT_COLORS = [];
+            const container = document.createElement('div');
+            container.id = 'clickEffectContainer';
+            container.style.cssText = `
+        position: fixed; top: 0; left: 0; 
+        width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+    `;
+            document.body.appendChild(container);
+            const EXCLUDE_SELECTORS = [
+                'button', 'a', 'input', 'select', 'textarea',
+                '[onclick]', '.nav-item', '.menu-btn'
+            ];
+            document.addEventListener('click', (e) => {
+                if (!EXCLUDE_SELECTORS.some(sel => e.target.closest(sel))) {
+                    createTextEffect(e.clientX, e.clientY);
+                    createPeachBlossomEffect(e.clientX, e.clientY);
+                    window.clickCount = (window.clickCount || 0) + 1;
+                }
+            }, true);
+            function createTextEffect(x, y) {
+                const effect = document.createElement('div');
+                effect.style.cssText = `
+            position: absolute;
+            left: ${x}px; top: ${y}px;
+            font: bold 18px 楷体, KaiTi;
+            color: ${TEXT_COLORS[window.clickCount % TEXT_COLORS.length]};
+            pointer-events: none;
+            user-select: none;
+            animation: float 2s forwards;
+            text-shadow: 0 0 5px rgba(255,255,255,0.7);
+            z-index: 10000;
+        `;
+                effect.textContent = TEXTS[window.clickCount % TEXTS.length];
+                container.appendChild(effect);
+                setTimeout(() => effect.remove(), 2000);
+            }
+            function createPeachBlossomEffect(x, y) {
+                const petalCount = 15;
+                const duration = 3000;
+                const petalSVG = encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="#FFEEF7" d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M8.5,8C9.3,8 10,8.7 10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8M12,11C13.1,11 14,11.9 14,13C14,14.1 13.1,15 12,15C10.9,15 10,14.1 10,13C10,11.9 10.9,11 12,11M19,17V19H5V17C5,14.8 8.1,13 12,13C15.9,13 19,14.8 19,17Z"/>
+                <path fill="#FFD6EB" d="M12,4C11.4,4 11,4.4 11,5C11,5.6 11.4,6 12,6C12.6,6 13,5.6 13,5C13,4.4 12.6,4 12,4Z"/>
+            </svg>
+        `);
+                for (let i = 0; i < petalCount; i++) {
+                    const petal = document.createElement('div');
+                    const size = 15 + Math.random() * 10;
+                    const rotation = Math.random() * 360;
+                    const delay = Math.random() * 500;
+                    petal.style.cssText = `
+                position: absolute;
+                left: ${x}px;
+                top: ${y}px;
+                width: ${size}px;
+                height: ${size}px;
+                background: url('data:image/svg+xml;utf8,${petalSVG}');
+                background-size: contain;
+                pointer-events: none;
+                z-index: 9998;
+                opacity: 0.9;
+                transform: rotate(${rotation}deg);
+                animation: petal-fall ${duration}ms ease-out ${delay}ms forwards;
+                filter: drop-shadow(0 0 2px rgba(255,200,230,0.7));
+            `;
+                    container.appendChild(petal);
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = 50 + Math.random() * 100;
+                    const endX = x + Math.cos(angle) * distance;
+                    const endY = y + Math.sin(angle) * distance + 100;
+                    const keyframes = `
+                @keyframes petal-fall-${i} {
+                    0% { 
+                        transform: translate(0, 0) rotate(${rotation}deg); 
+                        opacity: 0.9;
+                    }
+                    100% { 
+                        transform: translate(${endX - x}px, ${endY - y}px) rotate(${rotation + 180}deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+                    const style = document.createElement('style');
+                    style.textContent = keyframes;
+                    document.head.appendChild(style);
+                    petal.style.animationName = `petal-fall-${i}`;
+                    setTimeout(() => petal.remove(), duration + delay);
+                }
+            }
+            const style = document.createElement('style');
+            style.textContent = `
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+    `;
+            document.head.appendChild(style);
+        })();
+    </script>
+</body>
+
+</html>

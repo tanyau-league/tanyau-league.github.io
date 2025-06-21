@@ -15,6 +15,7 @@
 		rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -69,280 +70,77 @@
 		<div class="rightpart">
 			<h1>リーチ麻雀、</h1>
 			<h2>好牌合理放铳，烂牌坚决不怂<br>有人立直加杠，搏敌生于非洲</h2>
-			<a href="https://www.kdocs.cn/l/cpPCpUCMVaK0" target="_blank">详细对战数据 <span> >>> </span></a>
+			<a href="historical_rankings.html" target="_blank">往届对战数据 <span> >>> </span></a>
 		</div>
 		<div class="leftpart">
-			<img src="img/2025Spring.png" width="225" height="71">
+			<img src="img/2025Autumn.png" width="225" height="71">
 		</div>
 		<div class="ranklist">
 			<div class="Title1">
 				<h3 style="font-size:36px">個人スコア</h3><br>
-				<ul>
-					<li style="background-color: #3b863e">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="#3b863e">1</text>
-								</svg>
-								<p style="display:inline; color:white">2yrold</p><span
-									style="display:inline; color:white">+139.2</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black">2</text>
-								</svg>
-								<p style="display:inline">Haraki</p><span style="display:inline">+111.1</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black">3</text>
-								</svg>
-								<p style="display:inline">多元外卷人</p><span style="display:inline">-39.7</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black" style="font-weight:400">4</text>
-								</svg>
-								<p style="display:inline;font-weight: 400;">Dawn</p><span
-									style="display:inline">-40.5</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black" style="font-weight:400">5</text>
-								</svg>
-								<p style="display:inline;font-weight: 400;">Koihs</p><span
-									style="display:inline">-47.9</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black" style="font-weight:400">6</text>
-								</svg>
-								<p style="display:inline;font-weight: 400;">Xiaobukeai</p><span
-									style="display:inline">-131.5</span>
-							</li>
-						</ol>
-					</li>
-				</ul>
+				<ul id="pointRanking"></ul>
 			</div>
 			<div class="Title2">
 				<h3 style="font-size:36px">最高スコア</h3><br>
-				<ul>
-					<li style="background-color: #3b863e">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="#3b863e">1</text>
-								</svg>
-								<p style="display:inline; color:white">Haraki</p><span
-									style="display:inline; color:white">67,900</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black">2</text>
-								</svg>
-								<p style="display:inline">Dawn</p><span style="display:inline">62,000</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black">3</text>
-								</svg>
-								<p style="display:inline">Xiaobukeai</p><span style="display:inline">61,700</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black" style="font-weight:400">4</text>
-								</svg>
-								<p style="display:inline;font-weight: 400;">2yrold</p><span
-									style="display:inline">53,100</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black" style="font-weight:400">5</text>
-								</svg>
-								<p style="display:inline;font-weight: 400;">多元外卷人</p><span
-									style="display:inline">29,300</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black" style="font-weight:400">6</text>
-								</svg>
-								<p style="display:inline;font-weight: 400;">Koihs</p><span
-									style="display:inline">21,400</span>
-							</li>
-						</ol>
-					</li>
-				</ul>
+				<ul id="highScoreRanking"></ul>
 			</div>
 			<div class="Title3">
 				<h3 style="font-size:36px">4着回避率</h3><br>
-				<ul>
-					<li style="background-color: #3b863e">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="#3b863e">1</text>
-								</svg>
-								<p style="display:inline; color:white">Koihs</p><span
-									style="display:inline; color:white">1.000</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black">2</text>
-								</svg>
-								<p style="display:inline">2yrold</p><span style="display:inline">0.933</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black">3</text>
-								</svg>
-								<p style="display:inline">Haraki</p><span style="display:inline">0.75</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black" style="font-weight:400">4</text>
-								</svg>
-								<p style="display:inline;font-weight: 400;">多元外卷人</p><span
-									style="display:inline">0.667</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black" style="font-weight:400">5</text>
-								</svg>
-								<p style="display:inline;font-weight: 400;">Xiaobukeai</p><span
-									style="display:inline">0.647</span>
-							</li>
-						</ol>
-					</li>
-					<li style="background-color: #ffffff">
-						<ol>
-							<li>
-								<svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-									<circle cx="12" cy="16" r="12" fill="white" />
-									<text x="12" y="22" font-family="Times New Roman" font-size="16"
-										text-anchor="middle" fill="black" style="font-weight:400">6</text>
-								</svg>
-								<p style="display:inline;font-weight: 400;">Dawn</p><span
-									style="display:inline">0.643</span>
-							</li>
-						</ol>
-					</li>
-				</ul>
+				<ul id="avoidanceRanking"></ul>
 			</div>
 		</div>
 	</div>
 	<a name="event" class="target-fix"></a>
 	<div class="event">
-		<div class="coming-event" style="background-image: url(img/events.jpg)">
-			<h3>Coming Event:</h3>
-			<p>类别: 比赛</p>
-			<p>日期: 5/24</p>
-			<p>地点: 紫荆17一楼会客厅</p>
-			<p>参赛成员:</p>
-			<div class="container1">
-				<img src="img/members/2yrold.jpg" width="120" height="120">
-				<span class="nametag">2yrold</span>
+		<h1 style="font-size: 48px; text-align: center;">Coming Events:</h1>
+		<div class="event-card">
+			<div class="event-header">
+				<span class="event-type">赛季开始</span>
+				<div class="event-title">
+					<i class="fas fa-flag-checkered"></i>
+					<h2>2025年秋季赛开赛</h2>
+				</div>
+				<div class="event-date">
+					<i class="far fa-calendar"></i> 2025年9月
+				</div>
 			</div>
-			<div class="container2">
-				<img src="img/members/Dawn.jpg" width="120" height="120">
-				<span class="nametag">Dawn</span>
-			</div>
-			<div class="container3">
-				<img src="img/members/Haraki.jpg" width="120" height="120">
-				<span class="nametag">Haraki</span>
-			</div>
-			<div class="container4">
-				<img src="img/members/Xiaobukeai.jpg" width="120" height="120">
-				<span class="nametag">Xiaobukeai</span>
+
+			<div class="event-content">
+				<div class="info-item">
+					<div class="info-icon">
+						<i class="fas fa-calendar-day"></i>
+					</div>
+					<div class="info-text">
+						<h3>比赛轮次</h3>
+						<p>15场正式比赛</p>
+					</div>
+				</div>
+
+				<div class="info-item">
+					<div class="info-icon">
+						<i class="fas fa-clock"></i>
+					</div>
+					<div class="info-text">
+						<h3>比赛频率</h3>
+						<p>每周举办1到2轮比赛</p>
+					</div>
+				</div>
+
+				<div class="participants-section">
+					<div class="section-title">
+						<i class="fas fa-users"></i>
+						<h3>参赛选手</h3>
+					</div>
+					<div class="participants-list">
+						<div class="participant">2yrold</div>
+						<div class="participant">Haraki</div>
+						<div class="participant">Dawn</div>
+						<div class="participant">Xiaobukeai</div>
+						<div class="participant">zhunzhun</div>
+						<div class="participant">Koihs</div>
+						<div class="participant">多元外卷人</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -368,6 +166,7 @@
 					<li>2yrold</li>
 					<li>Dawn</li>
 					<li>Haraki</li>
+					<li>zhunzhun</li>
 				</ol>
 			</li>
 		</ul>
@@ -401,8 +200,7 @@
 		<strong>
 			<p>二&nbsp;&nbsp;&nbsp;&nbsp;比赛规则 </p><span></span>
 		</strong>
-		<p>计分赛事采用雀魂段位战四人南的规则，但采用 4 赤宝牌而不是 3 赤宝牌，没有长考限制。最后精算点的规则与 M.LEAGUE 相同，即（终局得分-30000)/1000+顺位马，顺位马 一位 / 二位 / 三位 /
-			四位 分别为 +50 / +10 / -10 / -30. 同分时按东南西北顺序分配顺位马.</p>
+		<p><a href="rule.html">积分赛规则</a></p>
 		<p>比赛犯规及处理：</p>
 		<ol>
 			<li>
@@ -458,11 +256,167 @@
 	<div class="footer">
 		<p>本团体的图标·名字等与现实人物、事情无关。</p>
 		<p>本团体为非盈利组织，仅为爱好者组织的个人团体。</p>
-		<p>页面编辑：Haraki&2yrold &nbsp;&nbsp;&nbsp;&nbsp; 最后编辑日期：2025 年 5 月 18 日</p>
+		<p>页面编辑：Haraki&2yrold &nbsp;&nbsp;&nbsp;&nbsp; 最后编辑日期：2025 年 6 月 19 日</p>
 		<img src="img/Group 1w.svg" alt="">
 	</div>
 	<div id="clickEffectContainer"></div>
 	<script>
+		// 玩家数据结构定义（类似C语言的结构体）
+		class Player {
+			constructor(name, point, highScore, avoidanceRate) {
+				this.name = name;
+				this.point = point;
+				this.highScore = highScore;
+				this.avoidanceRate = avoidanceRate;
+			}
+		}
+		// 玩家数据库（类似结构体数组）
+		const playerDatabase = [
+			new Player("2yrold", 0, 0, 0),
+			new Player("Haraki", 0, 0, 0),
+			new Player("多元外卷人", 0, 0, 0),
+			new Player("Dawn", 0, 0, 0),
+			new Player("Koihs", 0, 0, 0),
+			new Player("Xiaobukeai", 0, 0, 0),
+			new Player("zhunzhun", 0, 0, 0)
+		];
+		// 玩家数据操作接口
+		const PlayerManager = {
+			// 获取所有玩家数据
+			getAllPlayers: function () {
+				return [...playerDatabase];
+			},
+
+			// 按名称查找玩家
+			getPlayerByName: function (name) {
+				return playerDatabase.find(player => player.name === name);
+			},
+
+			// 更新玩家数据
+			updatePlayer: function (name, data) {
+				const player = this.getPlayerByName(name);
+				if (player) {
+					Object.assign(player, data);
+					return true;
+				}
+				return false;
+			},
+
+			// 添加新玩家
+			addPlayer: function (name, point = 0, highScore = 0, avoidanceRate = 0) {
+				if (!this.getPlayerByName(name)) {
+					playerDatabase.push(new Player(name, point, highScore, avoidanceRate));
+					return true;
+				}
+				return false;
+			},
+
+			// 删除玩家
+			removePlayer: function (name) {
+				const index = playerDatabase.findIndex(p => p.name === name);
+				if (index !== -1) {
+					playerDatabase.splice(index, 1);
+					return true;
+				}
+				return false;
+			},
+
+			// 按积分排序
+			sortByPoints: function () {
+				return [...playerDatabase].sort((a, b) => b.point - a.point);
+			},
+
+			// 按最高分排序
+			sortByHighScore: function () {
+				return [...playerDatabase].sort((a, b) => b.highScore - a.highScore);
+			},
+
+			// 按回避率排序
+			sortByAvoidanceRate: function () {
+				return [...playerDatabase].sort((a, b) => b.avoidanceRate - a.avoidanceRate);
+			}
+		};
+		// 排行榜渲染器
+		const RankRenderer = {
+			// 生成单个玩家项的HTML
+			_generatePlayerHTML: function (player, rank, criteria) {
+				const isFirst = rank === 0;
+				const bgColor = isFirst ? "#3b863e" : "#ffffff";
+				const textColor = isFirst ? "white" : "black";
+				const fontWeight = rank >= 3 ? "400" : "normal";
+
+				// 根据标准格式化值
+				let value;
+				if (criteria === 'point') {
+					value = (player.point >= 0 ? "+" : "") + player.point.toFixed(1);
+				} else if (criteria === 'highScore') {
+					value = player.highScore.toLocaleString();
+				} else {
+					value = player.avoidanceRate.toFixed(3);
+				}
+
+				return `
+        <li style="background-color: ${bgColor}">
+            <ol>
+                <li>
+                    <svg width="24px" height="40px" style="vertical-align: middle;position: relative">
+                        <circle cx="12" cy="16" r="12" fill="white" />
+                        <text x="12" y="22" font-family="Times New Roman" font-size="16"
+                            text-anchor="middle" fill="${isFirst ? "#3b863e" : "black"}" 
+                            ${rank >= 3 ? 'style="font-weight:400"' : ''}>${rank + 1}
+                        </text>
+                    </svg>
+                    <p style="display:inline; color:${textColor}; ${rank >= 3 ? 'font-weight:400;' : ''}">
+                        ${player.name}
+                    </p>
+                    <span style="display:inline; color:${textColor}">${value}</span>
+                </li>
+            </ol>
+        </li>`;
+			},
+
+			// 渲染单个排行榜
+			renderRanking: function (containerId, players, criteria) {
+				const container = document.getElementById(containerId);
+				if (!container) return;
+
+				container.innerHTML = players.map((player, index) =>
+					this._generatePlayerHTML(player, index, criteria)
+				).join("");
+			},
+
+			// 渲染所有排行榜
+			renderAllRankings: function () {
+				this.renderRanking('pointRanking', PlayerManager.sortByPoints(), 'point');
+				this.renderRanking('highScoreRanking', PlayerManager.sortByHighScore(), 'highScore');
+				this.renderRanking('avoidanceRanking', PlayerManager.sortByAvoidanceRate(), 'avoidanceRate');
+			}
+		};
+		// 页面加载时初始化排行榜
+		document.addEventListener('DOMContentLoaded', function () {
+			RankRenderer.renderAllRankings();
+		});
+		// 示例：其他模块如何使用这些接口
+		/*
+		// 1. 更新玩家数据
+		PlayerManager.updatePlayer("Haraki", {
+			point: 150.5,
+			highScore: 72000,
+			avoidanceRate: 0.78
+		});
+		// 2. 添加新玩家
+		PlayerManager.addPlayer("NewPlayer", 85.3, 45000, 0.85);
+		// 3. 获取玩家信息
+		const dawnInfo = PlayerManager.getPlayerByName("Dawn");
+		console.log(dawnInfo.point); // 输出Dawn的积分
+		// 4. 删除玩家
+		PlayerManager.removePlayer("Xiaobukeai");
+		// 5. 更新后重新渲染排行榜
+		RankRenderer.renderAllRankings();
+		// 6. 获取排序后的玩家列表
+		const topPlayers = PlayerManager.sortByPoints();
+		console.log(topPlayers[0].name); // 输出积分最高的玩家
+		*/
 		; (function () {
 			const TEXTS = [];
 			const TEXT_COLORS = [];
