@@ -1264,13 +1264,12 @@
 			logs.push(s);
 		}
 		show_round();
-		function isSafari() {
-			var ua = navigator.userAgent.toLowerCase();
-			return ua.indexOf('safari') != -1 && ua.indexOf('chrome') == -1;
+		if(navigator.userAgent.toLowerCase().indexOf('chrome') != -1){
+			document.querySelector(".naka").style.marginTop="-18vh";
+			document.querySelector(".naka2").style.marginTop="-18vh";
+			document.querySelector("#game .jicha").style.marginBottom="6vh";
 		}
 		 window.onload=function () {
-			 if(isSafari()){
-				 
 				document.addEventListener('touchstart',function (event) {
 				  if(event.touches.length>1){
 					event.preventDefault();
@@ -1287,7 +1286,6 @@
 				document.addEventListener('gesturestart', function (event) {
 				  event.preventDefault();
 				});
-			 }
 		  }
 	</script>
 </html>
