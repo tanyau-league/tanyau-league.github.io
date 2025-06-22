@@ -436,20 +436,140 @@
 				margin-top: 4vh;
 				color: white;
 			}
-			.ryk #len{
-				float: left;
-				margin-left: 10vh;
-				background-color: #e40;
+			.correct{
+				height: 5vh;
+				width: 8vh;
+				font-size: 2.5vh;
+				background: #eee;
+				border: 0.1vh black solid;
+				text-align: center;
+				line-height: 5vh;
+				position: absolute;
+				top:35vh;
+				left: 50%;
+				margin-left: 17vh;
 			}
-			.ryk #rin{
+			.correction{
+				height: 76vh;
+				width: 76vw;
+				background: #eeeeeef6;
+				padding: 2vh 2vw;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+				z-index: 100;
+				border: 0.2vh solid black;
+				border-radius: 1vh;
+			}
+			.correction button{
+				background: white;
+				border: 0.1vh solid black;
+				font-size: 3vh;
+				height: 6vh;
+				width: 20vh;
+				line-height: 6vh;
+			}
+			.correction h2{
+				font-size: 7vh;
+				text-align: center;
+				margin-bottom: 1vh;
+			}
+			.correction ul{
+				list-style: none;
+				margin-left: 5vw;
+				width: 61vw;
+			}
+			.correction li{
+				font-size: 3vh;
+				line-height: 3vh;
+				padding: 1vh 0;
+			}
+			.correction input{
+				font-size: 3vh;
+				line-height: 3vh;
+				margin-left: 2vh;
+				text-align: center;
 				float: right;
-				margin-right: 10vh;
-				background-color: #1fbc9d;
 			}
+			.correction .submit{
+				position: absolute;
+				bottom: 5vh;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+			}
+			.result{
+				height: 66vh;
+				width: 66vw;
+				background: #eeeeeef6;
+				padding: 2vh 2vw;
+				margin-top: 15vh;
+				margin-left: 15vw;
+				border: 0.2vh solid black;
+				border-radius: 1vh;
+			}
+			.result>h1{
+				font-size: 5vh;
+				text-align: center;
+				padding: 2vh 0;
+			}
+			.result ul{
+				list-style: none;
+				font-size: 3vh;
+				margin-top: 2vh;
+			}
+			.result ul.res li{
+				background-color: white;
+				width: 60.4vw;
+				padding: 2vh 4vh;
+				margin-bottom: 1vh;
+				border: 0.1vh #000 solid;
+				border-radius: 0.5vh;
+				
+			}
+			.result ul.res li .respoint{
+				margin-left: 2vh;
+			}
+			.respoint,.resscore{
+				float: right;
+			}
+			.resi{
+				margin-right: 2vh;
+			}
+			.result button{
+				height: 8vh;
+				background-color: white;
+				width: 15vw;
+				font-size: 3vh;
+				border: 0.1vh #000 solid;
+				border-radius: 0.5vh;
+				margin-top: 1vh;
+			}
+			
 		</style>
 	</head>
 	<body>
 		<div class="haiiro"></div>
+		
+		<div class="correction">
+			<button onclick="modoru(1)">取消</button>
+			<h2>修正</h2>
+			<ul>
+				<li>当前局（1~8）<input type="text"></li>
+				<li>本场数<input type="text"></li>
+				<li>供托数<input type="text"></li>
+				<li>选手1 <span></span> 点数<input type="text"></li>
+				<li>选手2 <span></span> 点数<input type="text"></li>
+				<li>选手3 <span></span> 点数<input type="text"></li>
+				<li>选手4 <span></span> 点数<input type="text"></li>
+				<br>
+				<li>核算总点数 <span></span></li>
+			</ul>
+			<button class="submit" onclick="correct()">确认</button>
+		</div>
 		<div class="kessan">
 			<button onclick="modoru(1)">取消</button><h2>点数变动</h2>
 			<div class="namelen">
@@ -525,28 +645,28 @@
 						<button class="tsumo" onclick="tsumo(1)">自摸</button>
 						<button class="agari" onclick="ron(1)">荣和</button>
 						<button class="reach" onclick="reach(1)">立直</button>
-						<span class="kaze">東</span><input placeholder="请输入选手名" value="haraki">
+						<span class="kaze">東</span><input placeholder="请输入选手名" value="">
 					</div>
 					<div class="shimocha">
 						<h1>25000</h1>
 						<button class="tsumo" onclick="tsumo(2)">自摸</button>
 						<button class="agari" onclick="ron(2)">荣和</button>
 						<button class="reach" onclick="reach(2)">立直</button>
-						<span class="kaze">南</span><input placeholder="请输入选手名" value="2yrold">
+						<span class="kaze">南</span><input placeholder="请输入选手名" value="">
 					</div>
 					<div class="toicha">
 						<h1>25000</h1>
 						<button class="tsumo" onclick="tsumo(3)">自摸</button>
 						<button class="agari" onclick="ron(3)">荣和</button>
 						<button class="reach" onclick="reach(3)">立直</button>
-						<span class="kaze">西</span><input placeholder="请输入选手名" value="dawn">
+						<span class="kaze">西</span><input placeholder="请输入选手名" value="">
 					</div>
 					<div class="kamicha">
 						<h1>25000</h1>
 						<button class="tsumo" onclick="tsumo(4)">自摸</button>
 						<button class="agari" onclick="ron(4)">荣和</button>
 						<button class="reach" onclick="reach(4)">立直</button>
-						<span class="kaze">北</span><input placeholder="请输入选手名" value="xiaobukeai">
+						<span class="kaze">北</span><input placeholder="请输入选手名" value="">
 					</div>
 					<div class="naka">
 						<p id="honnba">东1局 0 本场</p>
@@ -556,8 +676,35 @@
 					<div class="naka2">
 						<button onclick="tsuki(0)">下一局</button>
 					</div>
+					<div class="correct" onclick="shuusei()">修正</div>
 					<!-- 
 					<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=3&id=3071025351&auto=0&height=66"></iframe> -->
+				</div>
+			</li>
+			<li>
+				<div class="result">
+					<h1>结果报告</h1>
+					<ul class="res">
+						<li>
+							<span class="resi">1位 </span><span class="resname">选手 1</span>
+							<span class="respoint">+0.0 点</span><span class="resscore">25000 点</span>
+						</li>
+						<li>
+							<span class="resi">2位 </span><span class="resname">选手 2</span>
+							<span class="respoint">+0.0 点</span><span class="resscore">25000 点</span>
+						</li>
+						<li>
+							<span class="resi">3位 </span><span class="resname">选手 3</span>
+							<span class="respoint">+0.0 点</span><span class="resscore">25000 点</span>
+						</li>
+						<li>
+							<span class="resi">4位 </span><span class="resname">选手 4</span>
+							<span class="respoint">+0.0 点</span><span class="resscore">25000 点</span>
+						</li>
+					</ul>
+					<button style="margin-right: 10vw;">新的对局</button>
+					<button style="margin-right: 10vw;">数据文件</button>
+					<button>文本记录</button>
 				</div>
 			</li>
 		</ol>
@@ -582,6 +729,121 @@
 					all_pages[i].style.display="none";
 				}
 			}
+			if(n==2){
+				//计算分数
+				let furui_score=[0,score[1],score[2],score[3],score[4]];
+				let rank=[0,1,1,1,1];
+				let ichii_cnt=0,nii_cnt=0,sani_cnt=0;//一位count
+				for(let i=1;i<=4;i++){
+					for(let j=1;j<=4;j++){
+						if(score[j]>score[i])rank[i]++;
+					}
+					if(rank[i]==1)ichii_cnt++;
+					if(rank[i]==2)nii_cnt++;
+					if(rank[i]==3)sani_cnt++;
+				}
+				//如果有供托
+				if(ichii_cnt==1){
+					for(let i=1;i<=4;i++)if(rank[i]==1)score[i]+=kyoutaku*1000;	
+				}else if(ichii_cnt==2){
+					for(let i=1;i<=4;i++)if(rank[i]==1)score[i]+=kyoutaku*500;	
+				}else if(ichii_cnt==3){
+					let signal_a=1;
+					for(let i=1;i<=4;i++)if(rank[i]==1)score[i]+=Math.floor(kyoutaku/3)*1000;	
+					kyoutaku=kyoutaku%3;
+					for(let i=1;i<=4;i++){
+						if(rank[i]==1){
+							if(signal_a==1){
+								signal_a=0;score[i]+=kyoutaku*400;
+							}else score[i]+=kyoutaku*300;
+						}
+					}
+				}
+				kyoutaku=0;
+				//顺位点分配
+				if(ichii_cnt==1){
+					if(nii_cnt==1){
+						if(sani_cnt==1){//1234
+							for(let i=1;i<=4;i++){
+								if(rank[i]==1)score[i]+=50000;
+								else if(rank[i]==2)score[i]+=10000;
+								else if(rank[i]==3)score[i]+=-10000;
+								else if(rank[i]==4)score[i]+=-30000;
+							}
+						}else{//1233
+							for(let i=1;i<=4;i++){
+								if(rank[i]==1)score[i]+=50000;
+								else if(rank[i]==2)score[i]+=10000;
+								else if(rank[i]==3)score[i]+=-20000;
+							}
+						}
+					}else if(nii_cnt==2){//1224
+						for(let i=1;i<=4;i++){
+							if(rank[i]==1)score[i]+=50000;
+							else if(rank[i]==2)score[i]+=0;
+							else if(rank[i]==4)score[i]+=-30000;
+						}
+					}else if(nii_cnt==3){//1222
+						for(let i=1;i<=4;i++){
+							if(rank[i]==1)score[i]+=50000;
+							else if(rank[i]==2)score[i]+=-10000;
+						}
+					}
+				}else if(ichii_cnt==2){
+					if(sani_cnt==1){//1134
+						for(let i=1;i<=4;i++){
+							if(rank[i]==1)score[i]+=30000;
+							else if(rank[i]==3)score[i]+=-10000;
+							else if(rank[i]==4)score[i]+=-30000;
+						}
+					}else{//1133
+						for(let i=1;i<=4;i++){
+							if(rank[i]==1)score[i]+=30000;
+							else if(rank[i]==3)score[i]+=-20000;
+						}
+					}
+				}else if(ichii_cnt==3){//1114
+					let signal_b=1;
+					for(let i=1;i<=4;i++){
+						if(signal_b==1&&rank[i]==1){
+							score[i]+=200;
+							signal_b=0;
+						}
+						if(rank[i]==1)score[i]+=16600;
+						else if(rank[i]==4)score[i]+=-30000;
+					}
+				}
+				point=[0,0,0,0,0]
+				for(let i=1;i<=4;i++)point[i]=(score[i]-30000)/100
+				console.log(furui_score,rank,score,point)
+				let order=[0,1,2,3,4];
+				for(let i=1;i<=4;i++){
+					for(j=i+1;j<=4;j++){
+						if(rank[order[j]]<rank[order[i]]){
+							let tem=order[i];
+							order[i]=order[j];
+							order[j]=tem;
+						}
+					}
+				}
+				console.log(order);
+				for(let i=1;i<=4;i++){
+					document.querySelectorAll(".res .resi")[i-1].innerText=rank[order[i]]+" 位 ";
+					document.querySelectorAll(".res .resname")[i-1].innerText=elem_player[order[i]-1].querySelector("input").value;
+					document.querySelectorAll(".res .resscore")[i-1].innerText=furui_score[order[i]];
+					let pt=point[order[i]];
+					let str="";
+					if(pt>=0)str="+"+Math.floor(pt/10.0)+"."+pt%10;
+					else str="▲"+Math.floor(-pt/10.0)+"."+(-pt)%10;
+					document.querySelectorAll(".res .respoint")[i-1].innerText=str;
+					
+				}
+				score[1]=furui_score[1];
+				score[2]=furui_score[2];
+				score[3]=furui_score[3];
+				score[4]=furui_score[4];
+				
+			}
 			
 		}
 		var elem_fans=document.querySelectorAll("#fan li");
@@ -600,7 +862,6 @@
 			if(round==9){
 				wap(2)
 			}
-			//?
 			nowoya=(round-1)%4+1;
 				
 			var kaze="东";
@@ -774,6 +1035,7 @@
 				document.querySelector(".haiiro").style.display="none";
 				document.querySelector(".kessan").style.display="none";
 				document.querySelector(".ryk").style.display="none";
+				document.querySelector(".correction").style.display="none";
 			}
 		}
 		function tsumo(n){
@@ -964,11 +1226,48 @@
 			houchuusha=(agarisha-1+n+4)%4+1;
 			refresh_data();
 		}
+		function shuusei(){
+			
+			document.querySelector(".correction").style.display="block";
+			document.querySelectorAll(".correction input")[0].value=round;
+			document.querySelectorAll(".correction input")[1].value=honnba;
+			document.querySelectorAll(".correction input")[2].value=kyoutaku;
+			for(let i=0;i<4;i++){
+				document.querySelectorAll(".correction input")[3+i].value=score[i+1];
+				document.querySelectorAll(".correction span")[i].innerText=elem_player[i].querySelector("input").value;
+			}
+			calc();
+		}
+		function correct(){
+			round=parseInt(document.querySelectorAll(".correction input")[0].value);
+			honnba=parseInt(document.querySelectorAll(".correction input")[1].value);
+			kyoutaku=parseInt(document.querySelectorAll(".correction input")[2].value);
+			for(let i=0;i<4;i++){
+				score[i+1]=parseInt(document.querySelectorAll(".correction input")[3+i].value);
+			}
+			document.querySelector(".correction").style.display="none";
+			refresh_data();
+		}
 		document.querySelector(".naka2").style.display="none";
 		document.querySelector(".haiiro").style.display="none";
 		document.querySelector(".kessan").style.display="none";
 		document.querySelector(".ryk").style.display="none";
-		wap(1)
+		document.querySelector(".correction").style.display="none";
+		wap(0)
+		
+		for(let i=0;i<7;i++){
+			document.querySelectorAll(".correction input")[i].oninput=calc;
+		}
+		function calc(){
+			let ans=0;
+			ans+=parseInt(document.querySelectorAll(".correction input")[2].value)*1000;
+			for(let i=0;i<4;i++)ans+=parseInt(document.querySelectorAll(".correction input")[3+i].value);
+			document.querySelectorAll(".correction span")[4].innerText=ans;
+		}
+		var logs=[];
+		function logx(s){
+			logs.push(s);
+		}
 		show_round();
 		 window.onload=function () {
 			document.addEventListener('touchstart',function (event) {
