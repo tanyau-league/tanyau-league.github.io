@@ -547,6 +547,10 @@
 				border-radius: 0.5vh;
 				margin-top: 1vh;
 			}
+			.correction .planb{
+				width: 30vw;
+				margin-left: 10vw;
+			}
 			
 		</style>
 	</head>
@@ -565,7 +569,8 @@
 				<li>选手3 <span></span> 点数<input type="text"></li>
 				<li>选手4 <span></span> 点数<input type="text"></li>
 				<br>
-				<li>核算总点数 <span></span></li>
+				<li>核算总点数 <span></span> <button class="planb" onclick="chr()">地址栏不可隐藏点我</button></li>
+				
 			</ul>
 			<button class="submit" onclick="correct()">确认</button>
 		</div>
@@ -713,6 +718,7 @@
 		var score=[0,25000,25000,25000,25000];
 		var kyoutaku=0;
 		var round=1,honnba=0;
+		var chrome_used=0;
 		var nowoya=1;
 		var elem_honnba=document.getElementById("honnba"),elem_kyoutaku=document.getElementById("kyoutaku");
 		var elem_player=document.querySelectorAll("#game .jicha,#game .shimocha,#game .toicha,#game .kamicha");
@@ -862,7 +868,21 @@
 				wap(2)
 			}
 			nowoya=(round-1)%4+1;
-				
+			
+			if(chrome_used==1){
+				document.querySelector(".planb").style.backgroundColor="#15a8c5";
+				document.querySelector(".planb").style.color="#fff";
+				document.querySelector(".naka").style.marginTop="-18vh";
+				document.querySelector(".naka2").style.marginTop="-18vh";
+				document.querySelector("#game .jicha").style.marginBottom="6vh";
+			}else{
+				document.querySelector(".planb").style.backgroundColor="#fff";
+				document.querySelector(".planb").style.color="#000";
+				document.querySelector(".naka").style.marginTop="-15vh";
+				document.querySelector(".naka2").style.marginTop="-15vh";
+				document.querySelector("#game .jicha").style.marginBottom="0";
+			}
+			
 			var kaze="东";
 			if(round>4)kaze="南";
 			elem_honnba.innerText=kaze+((round-1)%4+1)+"局 "+honnba+" 本场";
@@ -1263,12 +1283,11 @@
 		function logx(s){
 			logs.push(s);
 		}
-		show_round();
-		if(navigator.userAgent.toLowerCase().indexOf('chrome') != -1){
-			document.querySelector(".naka").style.marginTop="-18vh";
-			document.querySelector(".naka2").style.marginTop="-18vh";
-			document.querySelector("#game .jicha").style.marginBottom="6vh";
+		function chr(){
+			chrome_used=1-chrome_used;
+			refresh_data();
 		}
+		show_round();
 		 window.onload=function () {
 				document.addEventListener('touchstart',function (event) {
 				  if(event.touches.length>1){
