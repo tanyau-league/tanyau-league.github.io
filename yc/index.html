@@ -71,11 +71,11 @@
 				width: 50vh;
 				height:5vh;
 				background: #eee;
-				border: 0.1vh black solid;
 				font-size: 3vh;
 				line-height: 5vh;
 				font-weight: 500;
 				border-radius: 3vh;
+				border: #000 0.1vh solid;
 				display: block;
 			}
 			#game .kaze{
@@ -101,16 +101,22 @@
 				font-size: 3.5vh;
 				line-height: 5vh;
 				width: 25vh;
-				border: 0.1vh black solid;
 				margin-bottom: 1vh;
 				color: white;
+				border:none;
+				border-top: #000 0.1vh solid;
+				border-bottom: #000 0.1vh solid;
 			}
 			#game button.tsumo{
 				background: #e40;
+				border-radius: 3vh 0 0 3vh;
+				border-left: #000 0.1vh solid;
 			}
 			#game button.agari{
 				background: #e81;
 				float: right;
+				border-radius:0 3vh  3vh 0;
+				border-right: #000 0.1vh solid;
 			}
 			#game .jicha{
 				width: 50vh;
@@ -398,7 +404,7 @@
 			.ryk .tas.kamicha{
 				position: absolute;
 				bottom: 4.5vh;
-				left: -0.5vh;
+				left: -0.52vh;
 				rotate: 90deg;
 			}
 			.ryk .tas.toicha{
@@ -410,7 +416,7 @@
 			.ryk .tas.shimocha{
 				position: absolute;
 				top: 4.5vh;
-				right: -0.5vh;
+				right: -0.52vh;
 				rotate: 270deg;
 			}
 			
@@ -425,16 +431,9 @@
 				margin: auto;
 				font-size: 5vh;
 				line-height: 5vh;
-			}
-			.ryk #len,.ryk #rin{
-				background: white;
-				border: 0.1vh solid black;
-				font-size: 4vh;
-				height: 20vh;
-				width: 25vh;
-				line-height: 6vh;
-				margin-top: 4vh;
-				color: white;
+				background: #fff;
+				border: 0.1vh #000 solid;
+				border-radius: 0.5vh;
 			}
 			.correct{
 				height: 5vh;
@@ -997,17 +996,13 @@
 		
 		function reach(n){
 			if(!reached[n]){
-				console.log(n+" reached ,-1000")
-				console.log(elem_player[n-1].querySelector("input").value+" 立直-1000")
 				score[n]-=1000;
 				kyoutaku++;
 				reached[n]=1;
 				elem_player[n-1].querySelector(".reach").innerText="●";
-				elem_player[n-1].querySelector(".reach").style.color="red";
+				elem_player[n-1].querySelector(".reach").style.color="#ee1f34";
 				refresh_data();
 			}else{
-				console.log(n+" cancelledReach ,+1000")
-				console.log(elem_player[n-1].querySelector("input").value+" 取消立直+1000")
 				score[n]+=1000;
 				kyoutaku--;
 				reached[n]=0;
@@ -1269,23 +1264,30 @@
 			logs.push(s);
 		}
 		show_round();
+		function isSafari() {
+			var ua = navigator.userAgent.toLowerCase();
+			return ua.indexOf('safari') != -1 && ua.indexOf('chrome') == -1;
+		}
 		 window.onload=function () {
-			document.addEventListener('touchstart',function (event) {
-			  if(event.touches.length>1){
-				event.preventDefault();
-			  }
-			});
-			var lastTouchEnd=0;
-			document.addEventListener('touchend',function (event) {
-			  var now=(new Date()).getTime();
-			  if(now-lastTouchEnd<=300){
-				event.preventDefault();
-			  }
-			  lastTouchEnd=now;
-			},false);
-			document.addEventListener('gesturestart', function (event) {
-			  event.preventDefault();
-			});
+			 if(isSafari()){
+				 
+				document.addEventListener('touchstart',function (event) {
+				  if(event.touches.length>1){
+					event.preventDefault();
+				  }
+				});
+				var lastTouchEnd=0;
+				document.addEventListener('touchend',function (event) {
+				  var now=(new Date()).getTime();
+				  if(now-lastTouchEnd<=300){
+					event.preventDefault();
+				  }
+				  lastTouchEnd=now;
+				},false);
+				document.addEventListener('gesturestart', function (event) {
+				  event.preventDefault();
+				});
+			 }
 		  }
 	</script>
 </html>
