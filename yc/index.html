@@ -551,7 +551,38 @@
 				width: 30vw;
 				margin-left: 10vw;
 			}
-			
+			.hint{
+				height: 86vh;
+				width: 86vw;
+				background: #eeeeeef6;
+				padding: 2vh 2vw;
+				margin-top: 5vh;
+				margin-left: 5vw;
+				border: 0.2vh solid black;
+				border-radius: 1vh;
+			}
+			.hint>h1{
+				font-size: 5vh;
+				text-align: center;
+				padding: 2vh 0;
+			}
+			.hint ul{
+				list-style: none;
+				font-size: 3vh;
+				margin-top: 2vh;
+			}
+			.tsukaikata{
+				margin: 1vh auto;
+				width:20vh;
+				height: 5vh;
+				background-color: #eee;
+				border: 0.1vh solid black;
+				border-radius: 0.5vh;
+				font-size: 3vh;
+				line-height: 5vh;
+				font-weight: 300;
+				text-align: center;
+			}
 		</style>
 	</head>
 	<body>
@@ -640,6 +671,7 @@
 					<p>立直麻将对局计分</p>
 					<button onclick="wap(1)">开始</button>
 					<span>在平板上获得更好的使用体验<br>by Haraki</span>
+					<div class="tsukaikata" onclick="wap(3)">使用说明</div>
 				</div>
 			</li>
 			<li>
@@ -709,6 +741,27 @@
 					<button style="margin-right: 10vw;">新的对局</button>
 					<button style="margin-right: 10vw;">数据文件</button>
 					<button>文本记录</button>
+				</div>
+			</li>
+			<li>
+				<div class="hint">
+					<h1>使用说明</h1>
+					<ul>
+						<li>如果要回到主页，直接刷新即可。</li>
+						<li>进入对局后，在每个方向的最外侧有输入选手名的输入框. 请按照东南西北对应座次输入。</li>
+						<li>自己进入立直状态，点击自家操作区的立直按钮。误操作再点击可以取消。</li>
+						<li>自己自摸，点自家的自摸按钮，然后选择番数符数。</li>
+						<li>自己荣和（他人放铳），点自家的荣和按钮，选择放铳者和番数符数。</li>
+						<li>和牌后点击中间的下一局进入下一局。</li>
+						<li>荒牌流局点中间流局按钮，四家各自选择是否听牌，以及是否达成流局满贯。</li>
+						<li>八局结束后进入结算，原点25000，返点30000，顺位马+50+10-10-30</li>
+						<li>目前所有规则均默认 tanyau-league 规则。</li>
+						<li>如果出现操作错误或存档丢失，可以点击修正按钮手动修正。</li>
+						<li>如果平板端等无法隐藏地址栏导致显示不全，可以点击修正按钮点击功能按钮。</li>
+						<li>————————————————————————</li>
+						<li>目前还缺少以下功能：途中流局、结算页面下方的三个按钮</li>
+						<li>联系方式：2150864207@qq.com</li>
+					</ul>
 				</div>
 			</li>
 		</ol>
