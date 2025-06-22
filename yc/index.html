@@ -69,24 +69,28 @@
 			}
 			#game button.reach{
 				width: 50vh;
-				height:6vh;
+				height:5vh;
 				background: #eee;
 				border: 0.1vh black solid;
-				font-size: 4vh;
-				line-height: 6vh;
+				font-size: 3vh;
+				line-height: 5vh;
 				font-weight: 500;
+				border-radius: 3vh;
 				display: block;
 			}
 			#game .kaze{
 				font-size: 4vh;
 				padding-right: 2vh;
+				line-height: 7vh;
 			}
 			#game input{
 				font-size: 3vh;
-				height: 4vh;
+				height: 5vh;
 				line-height: 4vh;
 				text-align: center;
-				width: 40vh;
+				width: 42vh;
+				float: right;
+				margin-top: 1vh;
 			}
 			#game h1{
 				text-align: center;
@@ -94,9 +98,9 @@
 			}
 			#game button.tsumo,button.agari{
 				height: 6vh;
-				font-size: 4vh;
-				line-height: 6vh;
-				width: 20vh;
+				font-size: 3.5vh;
+				line-height: 5vh;
+				width: 25vh;
 				border: 0.1vh black solid;
 				margin-bottom: 1vh;
 				color: white;
@@ -106,7 +110,7 @@
 			}
 			#game button.agari{
 				background: #e81;
-				margin-left: 10vh;
+				float: right;
 			}
 			#game .jicha{
 				width: 50vh;
@@ -310,12 +314,138 @@
 				width: 30vh;
 				line-height: 9vh;
 			}
+			.ryk{
+				height: 56vh;
+				width:56vh;
+				background: #eeeeeef6;
+				padding: 2vh 2vh;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+				z-index: 100;
+				border: 0.2vh solid black;
+				border-radius: 1vh;
+			}
+			.ryk button.kas{
+				background: white;
+				border: 0.1vh solid black;
+				font-size: 3vh;
+				height: 10vh;
+				width: 30vh;
+				line-height: 6vh;
+			}
+			.ryk button:nth-child(1){
+				height: 6vh;
+				width: 10vh;
+				background: white;
+				border: 0.1vh solid black;
+				font-size: 3vh;
+				line-height: 6vh;
+				position: absolute;
+				top:-8vh;
+				left: 0;
+			}
+			.ryk .kas.jicha{
+				position: absolute;
+				bottom: 2vh;
+				left: 50%;
+				margin-left: -15vh;
+			}
+			.ryk .kas.kamicha{
+				position: absolute;
+				top: 50%;
+				left: -8vh;
+				margin-top: -5vh;
+				rotate: 90deg;
+			}
+			.ryk .kas.toicha{
+				position: absolute;
+				top: 2vh;
+				left: 50%;
+				margin-left: -15vh;
+				rotate: 180deg;
+			}
+			.ryk .kas.shimocha{
+				position: absolute;
+				top: 50%;
+				right: -8vh;
+				margin-top: -5vh;
+				rotate: 270deg;
+			}
+			
+			.ryk button.tas{
+				background: white;
+				border: 0.1vh solid black;
+				font-size: 3vh;
+				height: 10vh;
+				width: 15vh;
+				line-height: 6vh;
+			}
+			.ryk .tas.jicha{
+				position: absolute;
+				bottom: 2vh;
+				right: 2vh;
+			}
+			.ryk .tas.kamicha{
+				position: absolute;
+				bottom: 4.5vh;
+				left: -0.5vh;
+				rotate: 90deg;
+			}
+			.ryk .tas.toicha{
+				position: absolute;
+				top: 2vh;
+				left: 2vh;
+				rotate: 180deg;
+			}
+			.ryk .tas.shimocha{
+				position: absolute;
+				top: 4.5vh;
+				right: -0.5vh;
+				rotate: 270deg;
+			}
+			
+			.ryk .ryuukyoku{
+				height: 20vh;
+				width: 20vh;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+				font-size: 5vh;
+				line-height: 5vh;
+			}
+			.ryk #len,.ryk #rin{
+				background: white;
+				border: 0.1vh solid black;
+				font-size: 4vh;
+				height: 20vh;
+				width: 25vh;
+				line-height: 6vh;
+				margin-top: 4vh;
+				color: white;
+			}
+			.ryk #len{
+				float: left;
+				margin-left: 10vh;
+				background-color: #e40;
+			}
+			.ryk #rin{
+				float: right;
+				margin-right: 10vh;
+				background-color: #1fbc9d;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="haiiro"></div>
 		<div class="kessan">
-			<button id="cancel" onclick="modoru(1)">取消</button><h2>点数变动</h2>
+			<button onclick="modoru(1)">取消</button><h2>点数变动</h2>
 			<div class="namelen">
 				<span id="playerA">选手A</span>
 				<span id="oyaku">（庄/闲）</span>
@@ -358,6 +488,18 @@
 			<p id="fscore">0 点 ALL/无</p>
 			<button id="submit" onclick="submit()">确认</button>
 		</div>
+		<div class="ryk">
+			<button onclick="modoru(1)">取消</button>
+			<button class="jicha kas" onclick="tennpai(1)">未听/听牌</button>
+			<button class="shimocha kas" onclick="tennpai(2)">未听/听牌</button>
+			<button class="toicha kas" onclick="tennpai(3)">未听/听牌</button>
+			<button class="kamicha kas" onclick="tennpai(4)">未听/听牌</button>
+			<button class="jicha tas" onclick="ryuumann(1)">流局满贯</button>
+			<button class="shimocha tas" onclick="ryuumann(2)">流局满贯</button>
+			<button class="toicha tas" onclick="ryuumann(3)">流局满贯</button>
+			<button class="kamicha tas" onclick="ryuumann(4)">流局满贯</button>
+			<button class="ryuukyoku" onclick="tsuki(1)">确认<br>流局</button>
+		</div>
 		<ol>
 			<li>
 				<div id="mainpage">
@@ -372,35 +514,39 @@
 				<div id="game">
 					<div class="jicha">
 						<h1>25000</h1>
-						<button class="tsumo" onclick="tsumo(1)">自摸</button><button class="agari">荣和</button>
+						<button class="tsumo" onclick="tsumo(1)">自摸</button>
+						<button class="agari">荣和</button>
 						<button class="reach" onclick="reach(1)">立直</button>
 						<span class="kaze">東</span><input placeholder="请输入选手名" value="haraki">
 					</div>
 					<div class="shimocha">
 						<h1>25000</h1>
-						<button class="tsumo" onclick="tsumo(2)">自摸</button><button class="agari">荣和</button>
+						<button class="tsumo" onclick="tsumo(2)">自摸</button>
+						<button class="agari">荣和</button>
 						<button class="reach" onclick="reach(2)">立直</button>
 						<span class="kaze">南</span><input placeholder="请输入选手名" value="2yrold">
 					</div>
 					<div class="toicha">
 						<h1>25000</h1>
-						<button class="tsumo" onclick="tsumo(3)">自摸</button><button class="agari">荣和</button>
+						<button class="tsumo" onclick="tsumo(3)">自摸</button>
+						<button class="agari">荣和</button>
 						<button class="reach" onclick="reach(3)">立直</button>
 						<span class="kaze">西</span><input placeholder="请输入选手名" value="dawn">
 					</div>
 					<div class="kamicha">
 						<h1>25000</h1>
-						<button class="tsumo" onclick="tsumo(4)">自摸</button><button class="agari">荣和</button>
+						<button class="tsumo" onclick="tsumo(4)">自摸</button>
+						<button class="agari">荣和</button>
 						<button class="reach" onclick="reach(4)">立直</button>
 						<span class="kaze">北</span><input placeholder="请输入选手名" value="xbka">
 					</div>
 					<div class="naka">
 						<p id="honnba">东1局 0 本场</p>
 						<p id="kyoutaku">立直棒 0</p>
-						<button>流局</button>
+						<button onclick="ryuukyoku()">流局</button>
 					</div>
 					<div class="naka2">
-						<button onclick="tsuki()">下一局</button>
+						<button onclick="tsuki(0)">下一局</button>
 					</div>
 				</div>
 			</li>
@@ -413,7 +559,7 @@
 		var round=1,honnba=0;
 		var nowoya=1;
 		var elem_honnba=document.getElementById("honnba"),elem_kyoutaku=document.getElementById("kyoutaku");
-		var elem_player=document.querySelectorAll(".jicha,.shimocha,.toicha,.kamicha");
+		var elem_player=document.querySelectorAll("#game .jicha,#game .shimocha,#game .toicha,#game .kamicha");
 		var reached=[0,0,0,0,0];
 		function wap(n){
 			if(n==1){
@@ -437,7 +583,13 @@
 		var agarisha=0,fsA=0,fsB=0,firstagarisha=0;
 		const fusu=[0,20,25,30,40,50,60,70,80,90,100,110];//符数
 		const upscore=[0,0,0,0,0,8000,12000,16000,24000,32000,64000,96000,128000,160000,192000];//子家超5番荣和点数
+		
+		var tennpaied=[0,0,0,0,0];
+		var ryuumanned=[0,0,0,0,0];
 		function refresh_data(){
+			if(round==9){
+				wap(2)
+			}
 			//?
 			nowoya=(round-1)%4+1;
 				
@@ -453,6 +605,24 @@
 				elem_player[i-1].querySelector(".kaze").innerText=kazelist[(i-nowoya+8)%4];
 			}
 			
+			for(let i=1;i<=4;i++){
+				if(tennpaied[i]==1){
+					document.querySelectorAll(".ryk button.kas")[i-1].innerText="听牌";
+					document.querySelectorAll(".ryk button.kas")[i-1].style.backgroundColor="#58a335";
+					document.querySelectorAll(".ryk button.kas")[i-1].style.color="#fff";
+				}else{
+					document.querySelectorAll(".ryk button.kas")[i-1].innerText="未听";
+					document.querySelectorAll(".ryk button.kas")[i-1].style.backgroundColor="#fff";
+					document.querySelectorAll(".ryk button.kas")[i-1].style.color="#000";
+				}
+				if(ryuumanned[i]==1){
+					document.querySelectorAll(".ryk button.tas")[i-1].style.backgroundColor="#6f33a3";
+					document.querySelectorAll(".ryk button.tas")[i-1].style.color="#fff";
+				}else{
+					document.querySelectorAll(".ryk button.tas")[i-1].style.backgroundColor="#fff";
+					document.querySelectorAll(".ryk button.tas")[i-1].style.color="#000";
+				}
+			}
 			
 			document.querySelector("#playerA").innerText=pAname;
 			document.querySelector("#playerB").style.display="inline";
@@ -529,8 +699,6 @@
 				reached[n]=1;
 				elem_player[n-1].querySelector(".reach").innerText="●";
 				elem_player[n-1].querySelector(".reach").style.color="red";
-				elem_player[n-1].querySelector(".reach").style.borderRadius="3vh";
-				elem_player[n-1].querySelector(".reach").style.fontSize="3vh";
 				refresh_data();
 			}else{
 				console.log(n+" cancelledReach ,+1000")
@@ -540,8 +708,6 @@
 				reached[n]=0;
 				elem_player[n-1].querySelector(".reach").innerText="立直";
 				elem_player[n-1].querySelector(".reach").style.color="black";
-				elem_player[n-1].querySelector(".reach").style.borderRadius="none";
-				elem_player[n-1].querySelector(".reach").style.fontSize="4vh";
 				refresh_data();
 			}
 		}
@@ -560,6 +726,7 @@
 				selected_fu=-1;
 				document.querySelector(".haiiro").style.display="none";
 				document.querySelector(".kessan").style.display="none";
+				document.querySelector(".ryk").style.display="none";
 			}
 		}
 		function tsumo(n){
@@ -616,30 +783,97 @@
 					reached[i]=0;
 					elem_player[i-1].querySelector(".reach").innerText="立直";
 					elem_player[i-1].querySelector(".reach").style.color="black";
-					elem_player[i-1].querySelector(".reach").style.borderRadius="none";
-					elem_player[i-1].querySelector(".reach").style.fontSize="4vh";
 				}
 			}
+			
 			owari();
 			refresh_data();
+			document.getElementById("fscore").innerText="待输入";
+			fsA=fsB=0;
 		}
 		function owari(){
 			document.querySelector(".naka2").style.display="block";
 		}
-		function tsuki(){
-			if(firstagarisha==nowoya){
+		function tsuki(n){
+			if(n==0){
+				if(firstagarisha==nowoya){
+					honnba++;
+				}else{
+					honnba=0;
+					round++;
+				}
+				document.querySelector(".naka2").style.display="none";
+				show_round();
+				refresh_data();
+			}else if(n==1){
+				//流局
 				honnba++;
-			}else{
-				honnba=0;
-				round++;
+				if(tennpaied[nowoya]!=1)round++;
+				//不听罚符
+				let tp_cnt=0;
+				for(let i=1;i<=4;i++)if(tennpaied[i])tp_cnt++;
+				if(tp_cnt==1){
+					for(let i=1;i<=4;i++){
+						if(tennpaied[i])score[i]+=3000;
+						else score[i]-=1000;
+					}
+				}else if(tp_cnt==2){
+					for(let i=1;i<=4;i++){
+						if(tennpaied[i])score[i]+=1500;
+						else score[i]-=1500;
+					}
+				}else if(tp_cnt==3){
+					for(let i=1;i<=4;i++){
+						if(tennpaied[i])score[i]+=1000;
+						else score[i]-=3000;
+					}
+				}
+				//流局满贯
+				for(let i=1;i<=4;i++){
+					if(ryuumanned[i]){
+						if(i==nowoya){
+							score[i]+=12000;
+							for(let j=1;j<=4;j++){
+								if(i!=j)score[j]-=4000;
+							}
+						}else{
+							score[i]+=8000;
+							for(let j=1;j<=4;j++){
+								if(i!=j&&nowoya!=j)score[j]-=2000;
+								else if(j==nowoya)score[j]-=4000;
+							}
+						}
+					}
+				}
+				show_round();
+				for(let j=1;j<=4;j++){
+					tennpaied[j]=0;
+					ryuumanned[j]=0;
+				}
+				refresh_data();
+				
+				document.querySelector(".haiiro").style.display="none";
+				document.querySelector(".ryk").style.display="none";
 			}
-			document.querySelector(".naka2").style.display="none";
-			show_round();
+			tennpaied=[0,0,0,0,0];
+		}
+		function ryuukyoku(){
+			document.querySelector(".haiiro").style.display="block";
+			document.querySelector(".ryk").style.display="block";
+			
+		}
+		function tennpai(n){
+			tennpaied[n]=1-tennpaied[n];
+			refresh_data();
+		}
+		function ryuumann(n){
+			ryuumanned[n]=1-ryuumanned[n];
 			refresh_data();
 		}
 		document.querySelector(".naka2").style.display="none";
 		document.querySelector(".haiiro").style.display="none";
 		document.querySelector(".kessan").style.display="none";
+		document.querySelector(".ryk").style.display="none";
 		wap(1)
 		show_round();
 		 window.onload=function () {
