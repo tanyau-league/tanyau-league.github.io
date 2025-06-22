@@ -474,8 +474,9 @@
 						<div class="rule-number">3</div>
 						<div class="rule-content">
 							<h3>特殊规则</h3>
-							<p>立直后开暗杠如果改变待牌视作振听。</p>
+							<p>立直后开暗杠不能改变待牌。</p>
 							<p>摸海底牌打出时不允许除了和牌以外的任何行动。</p>
+							<p>终局时如果出现同分按照初始座次东南西北的顺序进行排名</p>
 						</div>
 					</div>
 				</div>
@@ -530,6 +531,111 @@
 			<p>规则解释权归TanYauLEAGUE所有</p>
 		</div>
 	</div>
+	<div id="clickEffectContainer"></div>
+	<script>
+		; (function () {
+			const TEXTS = [];
+			const TEXT_COLORS = [];
+			const container = document.createElement('div');
+			container.id = 'clickEffectContainer';
+			container.style.cssText = `
+        position: fixed; top: 0; left: 0; 
+        width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+    `;
+			document.body.appendChild(container);
+			const EXCLUDE_SELECTORS = [
+				'button', 'a', 'input', 'select', 'textarea',
+				'[onclick]', '.nav-item', '.menu-btn'
+			];
+			document.addEventListener('click', (e) => {
+				if (!EXCLUDE_SELECTORS.some(sel => e.target.closest(sel))) {
+					createTextEffect(e.clientX, e.clientY);
+					createPeachBlossomEffect(e.clientX, e.clientY);
+					window.clickCount = (window.clickCount || 0) + 1;
+				}
+			}, true);
+			function createTextEffect(x, y) {
+				const effect = document.createElement('div');
+				effect.style.cssText = `
+            position: absolute;
+            left: ${x}px; top: ${y}px;
+            font: bold 18px 楷体, KaiTi;
+            color: ${TEXT_COLORS[window.clickCount % TEXT_COLORS.length]};
+            pointer-events: none;
+            user-select: none;
+            animation: float 2s forwards;
+            text-shadow: 0 0 5px rgba(255,255,255,0.7);
+            z-index: 10000;
+        `;
+				effect.textContent = TEXTS[window.clickCount % TEXTS.length];
+				container.appendChild(effect);
+				setTimeout(() => effect.remove(), 2000);
+			}
+			function createPeachBlossomEffect(x, y) {
+				const petalCount = 15;
+				const duration = 3000;
+				const petalSVG = encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="#FFEEF7" d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M8.5,8C9.3,8 10,8.7 10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8M12,11C13.1,11 14,11.9 14,13C14,14.1 13.1,15 12,15C10.9,15 10,14.1 10,13C10,11.9 10.9,11 12,11M19,17V19H5V17C5,14.8 8.1,13 12,13C15.9,13 19,14.8 19,17Z"/>
+                <path fill="#FFD6EB" d="M12,4C11.4,4 11,4.4 11,5C11,5.6 11.4,6 12,6C12.6,6 13,5.6 13,5C13,4.4 12.6,4 12,4Z"/>
+            </svg>
+        `);
+				for (let i = 0; i < petalCount; i++) {
+					const petal = document.createElement('div');
+					const size = 15 + Math.random() * 10;
+					const rotation = Math.random() * 360;
+					const delay = Math.random() * 500;
+					petal.style.cssText = `
+                position: absolute;
+                left: ${x}px;
+                top: ${y}px;
+                width: ${size}px;
+                height: ${size}px;
+                background: url('data:image/svg+xml;utf8,${petalSVG}');
+                background-size: contain;
+                pointer-events: none;
+                z-index: 9998;
+                opacity: 0.9;
+                transform: rotate(${rotation}deg);
+                animation: petal-fall ${duration}ms ease-out ${delay}ms forwards;
+                filter: drop-shadow(0 0 2px rgba(255,200,230,0.7));
+            `;
+					container.appendChild(petal);
+					const angle = Math.random() * Math.PI * 2;
+					const distance = 50 + Math.random() * 100;
+					const endX = x + Math.cos(angle) * distance;
+					const endY = y + Math.sin(angle) * distance + 100;
+					const keyframes = `
+                @keyframes petal-fall-${i} {
+                    0% { 
+                        transform: translate(0, 0) rotate(${rotation}deg); 
+                        opacity: 0.9;
+                    }
+                    100% { 
+                        transform: translate(${endX - x}px, ${endY - y}px) rotate(${rotation + 180}deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+					const style = document.createElement('style');
+					style.textContent = keyframes;
+					document.head.appendChild(style);
+					petal.style.animationName = `petal-fall-${i}`;
+					setTimeout(() => petal.remove(), duration + delay);
+				}
+			}
+			const style = document.createElement('style');
+			style.textContent = `
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+    `;
+			document.head.appendChild(style);
+		})();
+	</script>
 </body>
 
 </html>
