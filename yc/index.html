@@ -31,6 +31,9 @@
 				width: 100vw;
 				background: white;
 			}
+			#mainpage{
+				z-index:1000;
+			}
 			#mainpage img{
 				display: block;
 				margin: 0 auto;
@@ -159,7 +162,7 @@
 				margin-left: -15vh;
 				background: #eee;
 				border: 0.1vh black solid;
-				
+				border-radius: 0.5vh;
 			}
 			#game .naka p{
 				text-align: center;
@@ -177,6 +180,7 @@
 				background: #458;
 				color: white;
 				border: none;
+				border-radius: 0.5vh;
 			}
 			#game .naka2{
 				height: 30vh;
@@ -189,6 +193,7 @@
 				background: #eee;
 				border: 0.1vh black solid;
 				z-index: 10;
+				border-radius: 0.5vh;
 			}
 			#game .naka2 button{
 				font-size: 4vh;
@@ -196,10 +201,11 @@
 				width: 20vh;
 				display: block;
 				margin: 5vh;
-				background: #0037ff;
+				background: #264fe2;
 				color: white;
 				border: none;
 				border: 0.1vh black solid;
+				border-radius: 0.5vh;
 			}
 			.kessan{
 				height: 76vh;
@@ -341,6 +347,9 @@
 				border: 0.2vh solid black;
 				border-radius: 1vh;
 			}
+			.ryk button{
+				border-radius: 0.5vh;
+			}
 			.ryk button.kas{
 				background: white;
 				border: 0.1vh solid black;
@@ -359,6 +368,17 @@
 				position: absolute;
 				top:-8vh;
 				left: 0;
+			}
+			.ryk button.chuuto{
+				height: 6vh;
+				width: 30vh;
+				background: white;
+				border: 0.1vh solid black;
+				font-size: 3vh;
+				line-height: 6vh;
+				position: absolute;
+				bottom:-8vh;
+				left: 0vh;
 			}
 			.ryk .kas.jicha{
 				position: absolute;
@@ -568,7 +588,7 @@
 			}
 			.hint ul{
 				list-style: none;
-				font-size: 3vh;
+				font-size: 2.5vh;
 				margin-top: 2vh;
 			}
 			.tsukaikata{
@@ -582,6 +602,14 @@
 				line-height: 5vh;
 				font-weight: 300;
 				text-align: center;
+			}
+			.dm li{
+				font-family: consolas;
+			}
+			.wapp{
+				color: #42d;
+				text-decoration: #42d;
+				cursor: pointer;
 			}
 		</style>
 	</head>
@@ -653,6 +681,7 @@
 		</div>
 		<div class="ryk">
 			<button onclick="modoru(1)">取消</button>
+			<button class="chuuto" onclick="chuuto()">途中流局</button>
 			<button class="jicha kas" onclick="tennpai(1)">未听/听牌</button>
 			<button class="shimocha kas" onclick="tennpai(2)">未听/听牌</button>
 			<button class="toicha kas" onclick="tennpai(3)">未听/听牌</button>
@@ -738,15 +767,16 @@
 							<span class="respoint">+0.0 点</span><span class="resscore">25000 点</span>
 						</li>
 					</ul>
-					<button style="margin-right: 10vw;">新的对局</button>
-					<button style="margin-right: 10vw;">数据文件</button>
-					<button>文本记录</button>
+					<button style="margin: 0 11vw;" onclick="new_game()">新的对局</button>
+					<button onclick="data_out()">数据文件</button>
 				</div>
 			</li>
 			<li>
 				<div class="hint">
 					<h1>使用说明</h1>
 					<ul>
+						<li><a onclick="wap(0)" class="wapp">回到主页</a></li>
+						<li>建议使用平板横屏使用，本软件的设计目标是电子场风盘。</li>
 						<li>如果要回到主页，直接刷新即可。</li>
 						<li>进入对局后，在每个方向的最外侧有输入选手名的输入框. 请按照东南西北对应座次输入。</li>
 						<li>自己进入立直状态，点击自家操作区的立直按钮。误操作再点击可以取消。</li>
@@ -758,9 +788,61 @@
 						<li>目前所有规则均默认 tanyau-league 规则。</li>
 						<li>如果出现操作错误或存档丢失，可以点击修正按钮手动修正。</li>
 						<li>如果平板端等无法隐藏地址栏导致显示不全，可以点击修正按钮点击功能按钮。</li>
-						<li>————————————————————————</li>
-						<li>目前还缺少以下功能：途中流局、结算页面下方的三个按钮</li>
-						<li>联系方式：2150864207@qq.com</li>
+						<li>——————————————————————————————————————</li>
+						<li><a onclick="wap(4)" class="wapp">关于数据文件 .yc 格式的解说</a></li>
+						<li><a onclick="wap(5)" class="wapp">开发者函数解释</a></li>
+						<li><a onclick="wap(6)" class="wapp">联系开发者</a></li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="hint">
+					<h1>数据文件.yc格式</h1>
+					<ul class="dm">
+						<li><a onclick="wap(3)" class="wapp">回到上一页</a></li>
+						<li>可以使用文本类阅读器打开，类似于 txt。</li>
+						<li>一共有多行，每一行是一个语句，语句的不同成分用空格分隔，句首单词代表本句种类。每行以 \r\n 结尾。</li>
+						<li>以下为所有语句种类：代表选手的数字 [X]等取值1~4 代表起家为东南西北顺</li>
+						<li>round [A] honnba [B] kyoutaku [C] 表示当前是第 [A] 场，本场数 [B]，供托 [C]。</li>
+						<li>reach [X] -1000 表示选手 [X] 立直</li>
+						<li>tsumo [X1] +[x1] [X2] -[x2] [X3] -[x3] [X4] -[x4] 表示 [X1] 自摸，选手后数字代表点数变动</li>
+						<li>ron [X1] +[x1] [X2] -[x2] 表示 [X1] 荣和 [X2]，选手后数字代表点数变动</li>
+						<li>agari_kyoutaku [X1] +[x1] 表示 [X1] 和牌后收取供托，选手后数字代表点数变动</li>
+						<li>howannpai_ryuukyoku [X1] [x1] [X2] [x2] [X3] [x3] [X4] [x4] 表示荒牌流局，后面为罚符</li>
+						<li>ryuumann [X1] +[x1] [X2] -[x2] [X3] -[x3] [X4] -[x4] 表示 [X1] 流局满贯，后面为点数变动</li>
+						<li>chuuto_ryuukyoku 表示中途流局</li>
+						<li>correct round [] honnba [] kyoutaku [] score 1 [] score 2 [] score 3 [] score 4 [] 表示手动修正，将前面的变量改为后面的值</li>
+						<li>score_check [X1] [x1] [X2] [x2] [X3] [x3] [X4] [x4] 表示四家分数，供检查用，可不处理</li>
+						<li>以上为操作语句. 当 round 语句 A=9 时代表半庄终止，输出 score_check 后会按如下格式依1234次序输出选手信息：</li>
+						<li>player [n] [name] [score] [rank] [pt] 表示选手 [n(1~4)] 的名字为 [name]，终局点数 [score]，排名 [rank]（同分同排名），[pt] 代表段位分*10</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="hint">
+					<h1>开发者函数解释</h1>
+					<ul class="dm">
+						<li><a onclick="wap(3)" class="wapp">回到上一页</a></li>
+						<li>以下均为 js 函数解释，可以在 console 中试验。</li>
+						<li>wap(n)：代表跳转到 n 页面. 0：主页，1：对局页面，2：结算页面，3：说明，4：数据格式说明，5：开发者函数解释，6：联系开发者</li>
+						<li>refresh_data()：刷新对局页面的渲染</li>
+						<li>logx("str")：输出日志到 logs</li>
+						<li>其他函数用法和变量请自行阅读，虽然代码逻辑较混乱.</li>
+						<li>禁用了缩放屏幕大小，以及safari强制的滑动缩放等。如果不能收起地址栏的平板，修正后中间板和自家板会向上移动。</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="hint">
+					<h1>联系开发者</h1>
+					<ul class="dm">
+						<li><a onclick="wap(3)" class="wapp">回到上一页</a></li>
+						<br>
+						<li style="font-size: 5vh; ">Haraki</li>
+						<li style="font-size: 3vh; ">2150864207@qq.com</li>
+						<br>
+						<li>本项目是为 <a href="https://tanyau-league.github.io/" target="_blank" class="wapp">Tanyau-league</a> 组织而创作的.</li>
+						<li>项目地址 <a href="https://github.com/tanyau-league/tanyau-league.github.io/tree/master/yc" target="_blank" class="wapp">https://github.com/tanyau-league/tanyau-league.github.io/tree/master/yc</a></li>
 					</ul>
 				</div>
 			</li>
@@ -776,8 +858,10 @@
 		var elem_honnba=document.getElementById("honnba"),elem_kyoutaku=document.getElementById("kyoutaku");
 		var elem_player=document.querySelectorAll("#game .jicha,#game .shimocha,#game .toicha,#game .kamicha");
 		var reached=[0,0,0,0,0];
+		var order=[0,1,2,3,4];
 		function wap(n){
 			if(n==1){
+				show_round()
 				refresh_data()
 			}
 			for(let i=0;i<all_pages.length;i++){
@@ -873,8 +957,7 @@
 				}
 				point=[0,0,0,0,0]
 				for(let i=1;i<=4;i++)point[i]=(score[i]-30000)/100
-				console.log(furui_score,rank,score,point)
-				let order=[0,1,2,3,4];
+				order=[0,1,2,3,4];
 				for(let i=1;i<=4;i++){
 					for(j=i+1;j<=4;j++){
 						if(rank[order[j]]<rank[order[i]]){
@@ -884,7 +967,6 @@
 						}
 					}
 				}
-				console.log(order);
 				for(let i=1;i<=4;i++){
 					document.querySelectorAll(".res .resi")[i-1].innerText=rank[order[i]]+" 位 ";
 					document.querySelectorAll(".res .resname")[i-1].innerText=elem_player[order[i]-1].querySelector("input").value;
@@ -900,6 +982,11 @@
 				score[2]=furui_score[2];
 				score[3]=furui_score[3];
 				score[4]=furui_score[4];
+				let s="";
+				for(let i=1;i<=4;i++){
+					s="player "+i+" "+elem_player[i-1].querySelector("input").value+" "+score[i]+" "+rank[i]+" "+point[i];
+					logx(s);
+				}
 				
 			}
 			
@@ -934,6 +1021,16 @@
 				document.querySelector(".naka").style.marginTop="-15vh";
 				document.querySelector(".naka2").style.marginTop="-15vh";
 				document.querySelector("#game .jicha").style.marginBottom="0";
+			}
+			
+			for(let i=1;i<=4;i++){
+				if(reached[i]){
+					elem_player[i-1].querySelector(".reach").innerText="●";
+					elem_player[i-1].querySelector(".reach").style.color="#ee1f34";
+				}else{
+					elem_player[i-1].querySelector(".reach").innerText="立直";
+					elem_player[i-1].querySelector(".reach").style.color="black";
+				}
 			}
 			
 			var kaze="东";
@@ -976,6 +1073,7 @@
 					document.querySelectorAll(".ryk button.tas")[i-1].style.color="#000";
 				}
 			}
+		
 			
 			document.querySelector("#playerA").innerText=pAname;
 			for(let i=1;i<=3;i++){
@@ -1061,10 +1159,7 @@
 			}
 		}
 		function show_round(){
-			console.log(round+" round(1~8) "+honnba+" honnba "+kyoutaku+" kyoutaku")
-			let kaz="东";
-			if(round>4)kaz="南";
-			console.log(kaz+((round-1)%4+1)+"局 "+honnba+" 本场 "+kyoutaku+" 场供")
+			logx("round "+round+" honnba "+honnba+" kyoutaku "+kyoutaku)
 		}
 		
 		function reach(n){
@@ -1072,15 +1167,18 @@
 				score[n]-=1000;
 				kyoutaku++;
 				reached[n]=1;
-				elem_player[n-1].querySelector(".reach").innerText="●";
-				elem_player[n-1].querySelector(".reach").style.color="#ee1f34";
+				logx("reach "+n+" -1000")
 				refresh_data();
 			}else{
 				score[n]+=1000;
 				kyoutaku--;
 				reached[n]=0;
-				elem_player[n-1].querySelector(".reach").innerText="立直";
-				elem_player[n-1].querySelector(".reach").style.color="black";
+				for(let i=logs.length-1;i>=0;i--){
+					if(logs[i]==("reach "+n)){
+						logs.splice(i,1);
+						break;
+					}
+				}
 				refresh_data();
 			}
 		}
@@ -1163,34 +1261,39 @@
 			if(agaway==1&&houchuusha==0)return;
 			if(oyaku==0&&agaway==0){//亲自摸
 				score[agarisha]+=fsA*3;
+				let s="tsumo "+agarisha+" +"+fsA*3+"";
 				for(let i=1;i<=4;i++){
 					if(i!=agarisha){
 						score[i]-=fsA;
+						s+=" "+i+" -"+fsA;
 					}
 				}
-				console.log(agarisha+" tsumo "+fsA+" all")
-				console.log(elem_player[agarisha-1].querySelector("input").value+" 自摸 "+fsA+" all")
+				logx(s)
 			}else if(oyaku==1&&agaway==0){//子自摸
 				score[agarisha]+=fsA*2+fsB;
+				let s="tsumo "+agarisha+" +"+(fsA*2+fsB)+"";
 				for(let i=1;i<=4;i++){
 					if(i!=agarisha&&i!=nowoya){
 						score[i]-=fsA;
+						s+=" "+i+" -"+fsA;
 					}else if(i==nowoya){
 						score[i]-=fsB;
+						s+=" "+i+" -"+fsB;
 					}
 				}
-				console.log(agarisha+" tsumo "+fsA+" "+fsB)
-				console.log(elem_player[agarisha-1].querySelector("input").value+" 自摸 "+fsA+" "+fsB)
+				logx(s)
 			}else if(oyaku==0&&agaway==1){//亲荣和
 				score[agarisha]+=fsA;
 				score[houchuusha]-=fsA;
+				logx("ron "+agarisha+" +"+fsA+" "+houchuusha+" -"+fsA)
 			}else if(oyaku==1&&agaway==1){//子荣和
 				score[agarisha]+=fsA;
 				score[houchuusha]-=fsA;
+				logx("ron "+agarisha+" +"+fsA+" "+houchuusha+" -"+fsA)
 			}
 			//交立直棒
 			score[agarisha]+=kyoutaku*1000;	
-			console.log(agarisha+" kyoutaku+ "+kyoutaku*1000);
+			if(kyoutaku!=0)logx("agari_kyoutaku "+agarisha+" +"+kyoutaku*1000)
 			kyoutaku=0;
 			for(let i=1;i<=4;i++){
 				reached[i]=0;
@@ -1221,45 +1324,52 @@
 				}
 				document.querySelector(".naka2").style.display="none";
 				show_round();
-				refresh_data();
 			}else if(n==1){
-				//流局
+				//荒牌流局
 				honnba++;
 				if(tennpaied[nowoya]!=1)round++;
+				let s="howannpai_ryuukyoku";
 				//不听罚符
 				let tp_cnt=0;
 				for(let i=1;i<=4;i++)if(tennpaied[i])tp_cnt++;
 				if(tp_cnt==1){
 					for(let i=1;i<=4;i++){
-						if(tennpaied[i])score[i]+=3000;
-						else score[i]-=1000;
+						if(tennpaied[i])score[i]+=3000,s+=" "+i+" +3000";
+						else score[i]-=1000,s+=" "+i+" -1000";
 					}
 				}else if(tp_cnt==2){
 					for(let i=1;i<=4;i++){
-						if(tennpaied[i])score[i]+=1500;
-						else score[i]-=1500;
+						if(tennpaied[i])score[i]+=1500,s+=" "+i+" +1500";
+						else score[i]-=1500,s+=" "+i+" -1500";
 					}
 				}else if(tp_cnt==3){
 					for(let i=1;i<=4;i++){
-						if(tennpaied[i])score[i]+=1000;
-						else score[i]-=3000;
+						if(tennpaied[i])score[i]+=1000,s+=" "+i+" +1000";
+						else score[i]-=3000,s+=" "+i+" -3000";
 					}
+				}else{
+					s+=" 1 0 2 0 3 0 4 0";
 				}
+				logx(s);
 				//流局满贯
 				for(let i=1;i<=4;i++){
 					if(ryuumanned[i]){
+						s="ryuumann";
 						if(i==nowoya){
 							score[i]+=12000;
+							s+=" "+i+" +12000";
 							for(let j=1;j<=4;j++){
-								if(i!=j)score[j]-=4000;
+								if(i!=j)score[j]-=4000,s+=" "+i+" -4000";
 							}
 						}else{
 							score[i]+=8000;
+							s+=" "+i+" +8000";
 							for(let j=1;j<=4;j++){
-								if(i!=j&&nowoya!=j)score[j]-=2000;
-								else if(j==nowoya)score[j]-=4000;
+								if(i!=j&&nowoya!=j)score[j]-=2000,s+=" "+i+" -2000";
+								else if(j==nowoya)score[j]-=4000,s+=" "+i+" -4000";
 							}
 						}
+						logx(s);
 					}
 				}
 				show_round();
@@ -1267,19 +1377,31 @@
 					tennpaied[j]=0;
 					ryuumanned[j]=0;
 				}
-				refresh_data();
 				
 				document.querySelector(".haiiro").style.display="none";
 				document.querySelector(".ryk").style.display="none";
+			}else if(n==2){
+				logx("chuuto_ryuukyoku")
+				honnba++;
+				show_round();
+				document.querySelector(".haiiro").style.display="none";
+				document.querySelector(".ryk").style.display="none";
+			}else{
+				return;
 			}
-			agarisha=0;
+			logx("score_check"+" 1 "+score[1]+" 2 "+score[2]+" 3 "+score[3]+" 4 "+score[4])
+			agarisha=0;houchuusha=0;
 			tennpaied=[0,0,0,0,0];
+			ryuumanned=[0,0,0,0,0];
+			reached=[0,0,0,0,0];
 			refresh_data();
 		}
 		function ryuukyoku(){
 			document.querySelector(".haiiro").style.display="block";
 			document.querySelector(".ryk").style.display="block";
-			
+		}
+		function chuuto(){
+			tsuki(2);
 		}
 		function tennpai(n){
 			tennpaied[n]=1-tennpaied[n];
@@ -1307,12 +1429,18 @@
 			calc();
 		}
 		function correct(){
+			let s="correct";
 			round=parseInt(document.querySelectorAll(".correction input")[0].value);
+			s+=" round "+document.querySelectorAll(".correction input")[0].value;
 			honnba=parseInt(document.querySelectorAll(".correction input")[1].value);
+			s+=" honnba "+document.querySelectorAll(".correction input")[1].value;
 			kyoutaku=parseInt(document.querySelectorAll(".correction input")[2].value);
+			s+=" kyoutaku "+document.querySelectorAll(".correction input")[0].value;
 			for(let i=0;i<4;i++){
 				score[i+1]=parseInt(document.querySelectorAll(".correction input")[3+i].value);
+				s+=" score "+(i+1)+" "+document.querySelectorAll(".correction input")[3+i].value;
 			}
+			logx(s);
 			document.querySelector(".correction").style.display="none";
 			refresh_data();
 		}
@@ -1334,13 +1462,41 @@
 		}
 		var logs=[];
 		function logx(s){
+			console.log(s);
 			logs.push(s);
 		}
 		function chr(){
 			chrome_used=1-chrome_used;
 			refresh_data();
 		}
-		show_round();
+		function data_out(){
+			let s="";
+			for(let i=0;i<logs.length;i++){
+				s+=logs[i];
+				s+="\r\n";
+			}
+			download("Mahjong"+Date.now()+".yc",s);
+		}
+		function new_game(){
+			score=[0,25000,25000,25000,25000];
+			kyoutaku=0,round=1,honnba=0,nowoya=order[1];
+			reached=[0,0,0,0,0];
+			selected_fan=-1,selected_fu=-1,oyaku=0,agaway=0,pAname="",pBname="";
+			agarisha=0,houchuusha=0,akarihouchuusha=0,fsA=0,fsB=0,firstagarisha=0;
+			tennpaied=[0,0,0,0,0];
+			ryuumanned=[0,0,0,0,0];
+			wap(1);
+			
+		}
+		function download(filename, text) {
+			var element = document.createElement('a');
+			element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+			element.setAttribute('download', filename);
+			element.style.display = 'none';
+			document.body.appendChild(element);
+			element.click();
+			document.body.removeChild(element);
+		}
 		 window.onload=function () {
 				document.addEventListener('touchstart',function (event) {
 				  if(event.touches.length>1){
