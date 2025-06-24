@@ -141,7 +141,7 @@ function refresh_data() {
 		document.querySelector("#game .jicha").style.marginBottom = "10vh";
 	} else {
 		document.querySelector(".planb").style.backgroundColor = "#fff";
-		document.querySelector(".planb").style.color = "#000";
+		document.querySelector(".planb").style.color = "#2e4058";
 		document.querySelector(".naka").style.marginTop = "-15vh";
 		document.querySelector(".next_round").style.marginTop = "-15vh";
 		document.querySelector("#game .kamicha").style.marginTop = "-16vh";
@@ -155,7 +155,7 @@ function refresh_data() {
 			elem_player[i - 1].querySelector(".reach").style.color = "#bc3636";
 		} else {
 			elem_player[i - 1].querySelector(".reach").innerText = "立直";
-			elem_player[i - 1].querySelector(".reach").style.color = "black";
+			elem_player[i - 1].querySelector(".reach").style.color = "#2e4058";
 		}
 	}
 
@@ -164,7 +164,11 @@ function refresh_data() {
 	elem_honnba.innerText = kaze + ((round - 1) % 4 + 1) + " 局 " + honnba + " 本场";
 	elem_kyoutaku.innerText = "立直棒 " + kyoutaku;
 	for (let i = 1; i <= 4; i++) elem_player[i - 1].querySelector("h1").innerText = score[i];
-	for (let i = 1; i <= 4; i++) elem_player[i - 1].querySelector(".kaze").innerText = kazelist[(i - nowoya + 8) % 4];
+	for (let i = 1; i <= 4; i++) {
+		elem_player[i - 1].querySelector(".kaze").innerText = kazelist[(i - nowoya + 8) % 4];
+		if((i - nowoya + 8) % 4==0)elem_player[i - 1].querySelector(".kaze").style.color="#fdc620";
+		else elem_player[i - 1].querySelector(".kaze").style.color="#eee";
+	}
 
 	let elem_pB = document.querySelectorAll(".playerB");
 	for (let i = 1; i <= 3; i++) {
@@ -173,7 +177,7 @@ function refresh_data() {
 			elem_pB[i - 1].style.color = "#fff";
 		} else {
 			elem_pB[i - 1].style.backgroundColor = "#fff";
-			elem_pB[i - 1].style.color = "#000";
+			elem_pB[i - 1].style.color = "#2e4058";
 		}
 	}
 
@@ -211,11 +215,11 @@ function refresh_data() {
 
 	for (let i = 1; i <= elem_fans.length; i++) {
 		elem_fans[i - 1].style.backgroundColor = (i == selected_fan ? "#e40" : "#fff");
-		elem_fans[i - 1].style.color = (i == selected_fan ? "#fff" : "#000");
+		elem_fans[i - 1].style.color = (i == selected_fan ? "#fff" : "#2e4058");
 	}
 	for (let i = 1; i <= elem_fus.length; i++) {
 		elem_fus[i - 1].style.backgroundColor = (i == selected_fu ? "#71e" : "#fff");
-		elem_fus[i - 1].style.color = (i == selected_fu ? "#fff" : "#000");
+		elem_fus[i - 1].style.color = (i == selected_fu ? "#fff" : "#2e4058");
 	}
 	if ((selected_fu != -1 && selected_fan != -1) || (selected_fan >= 5)) {
 		// 点数计算
