@@ -1,0 +1,601 @@
+html,body{
+	overflow: hidden;
+}
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 'Noto Sans SC';
+}
+body>ol{
+	list-style: none;
+}
+body>ol>li{
+	position: absolute;
+}
+body>ol>li>div{
+	height: 100vh;
+	width: 100vw;
+	background: white;
+}
+*{
+	border-radius: 0.5vh;
+	transition: background 0.1s;
+	color: #2e4058;
+}
+.window{
+	background: #eeeeeede;
+	box-shadow: 0 0 20vh #000;
+	border-radius: 1vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	z-index: 100;
+}
+.windowblur{
+	backdrop-filter: blur(0.8vh);
+}
+#mainpage{
+	z-index:1000;
+}
+#mainpage img{
+	display: block;
+	margin: 0 auto;
+	height: 5vh;
+	padding-top: 5vh;
+}
+#mainpage h1{
+	font-family: 'Kanit';
+	font-weight: 100;
+	text-align: center;
+	font-size: 10vh;
+	padding-top: 10vh;
+	line-height: 8vh;
+}
+#mainpage p{
+	font-weight: 100;
+	text-align: center;
+	font-size: 5vh;
+	padding-bottom: 3vh;
+}
+#mainpage button{
+	background: #eee;
+	display: block;
+	margin: 0 auto;
+	font-size: 5vh;
+	font-weight: 100;
+	border: 0.1vh black solid;
+	padding: 8vh 10vh;
+	border-radius: 0.5vh;
+}
+#mainpage span{
+	display: block;
+	text-align: center;
+	font-weight: 100;
+	font-size: 3vh;
+	padding: 2vh;
+}
+#game button.reach{
+	width: 50vh;
+	height:5vh;
+	background: #eee;
+	font-size: 3vh;
+	line-height: 5vh;
+	font-weight: 500;
+	border-radius: 3vh;
+	border: #000 0.1vh solid;
+	display: block;
+	box-shadow: 0 0 1vh #1e2b3b;
+}
+#game .kaze{
+	font-size: 4vh;
+	padding-right: 2vh;
+}
+#game{
+	background: url('bg.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#game input{
+	font-size: 3vh;
+	height: 5vh;
+	line-height: 4vh;
+	text-align: center;
+	width: 42vh;
+	float: right;
+	margin-top: 1vh;
+	background: #eee;
+	border: none;
+	box-shadow: 0 0.3vh 0.3vh #a7b4c8 inset;
+}
+#game h1{
+	text-align: center;
+	font-size: 10vh;
+	text-shadow: 0 0 2vh #1e2b3b;
+	color: #eee;
+}
+#game .kaze{
+	color: #eee;
+	font-weight: bold;
+}
+#game button.tsumo,button.agari{
+	height: 5vh;
+	font-size: 3vh;
+	line-height: 5vh;
+	width: 25vh;
+	margin-bottom: 1vh;
+	color: #eee;
+	border:none;
+	z-index: 5;
+}
+#game button.tsumo{
+	background: #bc3636;
+	border-radius: 1vh 0 0 1vh;
+	box-shadow: -0.5vh 0 0.5vh #1e2b3b;
+}
+#game button.agari{
+	background: #ce6114;
+	float: right;
+	border-radius:0 1vh  1vh 0;
+	box-shadow: 0.5vh 0 0.5vh #1e2b3b;
+}
+#game .jicha{
+	width: 50vh;
+	position: absolute;
+	bottom: 1vh;
+	left: 50%;
+	margin-left: -25vh;
+}
+#game .toicha{
+	width: 50vh;
+	position: absolute;
+	top: 1vh;
+	left: 50%;
+	margin-left: -25vh;
+	rotate: 180deg; 
+}
+#game .kamicha{
+	width: 50vh;
+	position: absolute;
+	left: -5vh;
+	top: 50%;
+	margin-top: -16vh;
+	rotate: 90deg; 
+}
+#game .shimocha{
+	width: 50vh;
+	position: absolute;
+	right: -5vh;
+	top: 50%;
+	margin-top: -16vh;
+	rotate: -90deg; 
+}
+#game .naka{
+	height: 30vh;
+	width: 30vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -15vh;
+	margin-left: -15vh;
+	background: #ffffffcc;
+	border: 0.1vh black solid;
+	border-radius: 0.5vh;
+	box-shadow: 0 0 1vh #1e2b3b;
+	backdrop-filter: blur(0.2vh);
+}
+#game .naka p{
+	text-align: center;
+	font-size: 4vh;
+	
+}
+#game .naka p#honnba{
+	margin-top: 6vh;
+}
+#game .naka button{
+	font-size: 4vh;
+	padding: 1vh 4vh;
+	display: block;
+	margin: 0 auto;
+	margin-top: 1vh;
+	background: #366;
+	color: white;
+	border: none;
+	border-radius: 0.5vh;
+}
+#game .next_round{
+	height: 30vh;
+	width: 30vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -15vh;
+	margin-left: -15vh;
+	background: #eee;
+	border: 0.1vh black solid;
+	z-index: 10;
+	border-radius: 0.5vh;
+}
+#game .next_round button{
+	font-size: 4vh;
+	height: 20vh;
+	width: 20vh;
+	display: block;
+	margin: 5vh;
+	background: #264fe2;
+	color: white;
+	border: none;
+	border: 0.1vh black solid;
+	border-radius: 0.5vh;
+}
+.kessan{
+	height: 76vh;
+	width: 76vw;
+	padding: 2vh 2vw;
+	background: #eeeeeeee;
+}
+.kessan #agariway{
+	font-weight: bold;
+	margin-right: 2vh;
+}
+.haiiro{
+	height: 100vh;
+	width: 100vw;
+	background: #00000033;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+.kessan button{
+	background: white;
+	border: 0.1vh solid black;
+	font-size: 3vh;
+	height: 6vh;
+	width: 20vh;
+	line-height: 6vh;
+}
+.kessan h2{
+	font-size: 7vh;
+	text-align: center;
+	margin-bottom: 1vh;
+}
+.namelen #playerA,.namelen .playerB{
+	color: white;
+	font-size: 3vh;
+	padding: 1vh 2vh;
+	line-height: 5vh;
+}
+.namelen #playerA{
+	background-color: #e40;
+}
+.namelen .playerB{
+	background-color: #fff;
+	color: black;
+	box-shadow: 0 0 0.3vh 0.1vh #1e2b3b;
+	margin-right: 1vh;
+}
+.namelen{
+	font-size: 3vh;
+	padding: 2vh 0;
+}
+.kessan{
+	font-size: 3vh;
+}
+.kessan input{
+	height: 3vh;
+	width: 3vw;
+	border-radius: 0.5vh;
+	border: none;
+}
+#fan,#fu{
+	list-style: none;
+}
+#fan li, #fu li{
+	float: left;
+	height: 4vh;
+	font-size: 3vh;
+	line-height: 4vh;
+	background: #fff;
+	margin-right: 2vh;
+	border-radius: 0.2vh;
+	margin-bottom: 1vh;
+	cursor: pointer;
+	box-shadow: 0 0.1vh 0.3vh 0.1vh #1e2b3b66;
+	border-radius: 0.7vh;
+}
+#fan li{
+	padding: 1vh;
+}
+#fu li{
+	padding: 1vh 3vh;
+}
+.fandiv{
+	width: 100%;
+	height: 22vh;
+	margin-top: 2vh;
+}
+.fudiv{
+	width: 100%;
+	height: 16vh;
+}
+#fscore{
+	font-size: 4vh;
+	float: left;
+	background: white;
+	padding: 2vh 10vh;
+	border: 0.1vh solid black;
+	
+}
+#submit{
+	position: absolute;
+	bottom: 2.5vh;
+	right: 2vw;
+	background: #e40;
+	color: white;
+	border: 0.1vh solid black;
+	font-size: 4vh;
+	height: 9vh;
+	width: 30vh;
+	line-height: 9vh;
+}
+.ryk{
+	height: 56vh;
+	width: 56vh;
+	padding: 2vh 2vh;
+}
+.ryk button{
+	border-radius: 0.5vh;
+}
+.ryk button.kas,.ryk button.tas{
+	background: white;
+	font-size: 3vh;
+	height: 10vh;
+	line-height: 6vh;
+	border: none;
+}
+.ryk button.kas{
+	width: 30vh;
+}
+.ryk button.tas{
+	width: 15vh;
+}
+.ryk button.cancel,.ryk button.chuuto{
+	height: 7vh;
+	background: #eeeeee;
+	font-size: 3vh;
+	line-height: 5vh;
+	position: absolute;
+	box-shadow: 0 0 1vh #1e2b3b;
+	left: 0;
+}
+.ryk button.cancel{
+	width: 10vh;
+	top: -8vh;
+}
+.ryk button.chuuto{
+	width: 30vh;
+	bottom: -8vh;
+}
+.ryk .kas.jicha{
+	position: absolute;
+	bottom: 2vh;
+	left: 50%;
+	margin-left: -17.5vh;
+}
+.ryk .kas.kamicha{
+	position: absolute;
+	top: 50%;
+	left: -8vh;
+	margin-top: -7.5vh;
+	rotate: 90deg;
+}
+.ryk .kas.toicha{
+	position: absolute;
+	top: 2vh;
+	left: 50%;
+	margin-left: -12.5vh;
+	rotate: 180deg;
+}
+.ryk .kas.shimocha{
+	position: absolute;
+	top: 50%;
+	right: -8vh;
+	margin-top: -2.5vh;
+	rotate: 270deg;
+}
+
+.ryk .tas.jicha{
+	position: absolute;
+	bottom: 2vh;
+	right: 2vh;
+}
+.ryk .tas.kamicha{
+	position: absolute;
+	bottom: 4.5vh;
+	left: -0.52vh;
+	rotate: 90deg;
+}
+.ryk .tas.toicha{
+	position: absolute;
+	top: 2vh;
+	left: 2vh;
+	rotate: 180deg;
+}
+.ryk .tas.shimocha{
+	position: absolute;
+	top: 4.5vh;
+	right: -0.52vh;
+	rotate: 270deg;
+}
+
+.ryk .ryuukyoku{
+	height: 20vh;
+	width: 20vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	font-size: 5vh;
+	line-height: 5vh;
+	background: #fff;
+	border: none;
+	box-shadow: 0 0 0.8vh 0vh #354f5d inset;
+	border-radius: 0.5vh;
+}
+.correct{
+	height: 5vh;
+	width: 8vh;
+	font-size: 2.5vh;
+	background: #326367;
+	color:#eee;
+	box-shadow: 0 0 0.5vh #1e2b3b;
+	border: 0.1vh black solid;
+	text-align: center;
+	line-height: 5vh;
+	position: absolute;
+	top:35vh;
+	left: 50%;
+	margin-left: 17vh;
+}
+.correction{
+	height: 76vh;
+	width: 56vw;
+	padding: 2vh 2vw;
+}
+.correction button{
+	background: white;
+	border: 0.1vh solid black;
+	font-size: 3vh;
+	height: 6vh;
+	width: 20vh;
+	line-height: 6vh;
+}
+.correction h2{
+	font-size: 7vh;
+	text-align: center;
+	margin-bottom: 1vh;
+}
+.correction ul{
+	list-style: none;
+	margin-left: 5vw;
+	width: 46vw;
+	margin-top: 3vh;
+}
+.correction li{
+	font-size: 3vh;
+	line-height: 4vh;
+	padding: 1vh 0;
+}
+.correction input{
+	font-size: 3vh;
+	line-height: 3vh;
+	margin-left: 2vh;
+	text-align: center;
+	float: right;
+	border: 0.1vh #000 solid;
+}
+.correction .submit{
+	position: absolute;
+	bottom: 5vh;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+.result{
+	height: 66vh;
+	width: 66vw;
+	background: #eeeeeef6;
+	padding: 2vh 2vw;
+	margin-top: 15vh;
+	margin-left: 15vw;
+	border: 0.2vh solid black;
+	border-radius: 1vh;
+}
+.result>h1{
+	font-size: 5vh;
+	text-align: center;
+	padding: 2vh 0;
+}
+.result ul{
+	list-style: none;
+	font-size: 3vh;
+	margin-top: 2vh;
+}
+.result ul.res li{
+	background-color: white;
+	width: 60.4vw;
+	padding: 2vh 4vh;
+	margin-bottom: 1vh;
+	border: 0.1vh #000 solid;
+	border-radius: 0.5vh;
+	
+}
+.result ul.res li .respoint{
+	margin-left: 2vh;
+}
+.respoint,.resscore{
+	float: right;
+}
+.resi{
+	margin-right: 2vh;
+}
+.result button{
+	height: 8vh;
+	background-color: white;
+	width: 15vw;
+	font-size: 3vh;
+	border: 0.1vh #000 solid;
+	border-radius: 0.5vh;
+	margin-top: 1vh;
+}
+.correction .planb{
+	width: 20vw;
+	float: right;
+	overflow: hidden;
+}
+.hint{
+	height: 86vh;
+	width: 86vw;
+	background: #eeeeeef6;
+	padding: 2vh 2vw;
+	margin-top: 5vh;
+	margin-left: 5vw;
+	border: 0.2vh solid black;
+	border-radius: 1vh;
+}
+.hint>h1{
+	font-size: 5vh;
+	text-align: center;
+	padding: 2vh 0;
+}
+.hint ul{
+	list-style: none;
+	font-size: 2.5vh;
+	margin-top: 2vh;
+}
+.tsukaikata{
+	margin: 1vh auto;
+	width:20vh;
+	height: 5vh;
+	background-color: #eee;
+	border: 0.1vh solid black;
+	border-radius: 0.5vh;
+	font-size: 3vh;
+	line-height: 5vh;
+	font-weight: 300;
+	text-align: center;
+}
+.dm li{
+	font-family: consolas;
+}
+.wapp{
+	color: #42d;
+	text-decoration: #42d;
+	cursor: pointer;
+}
