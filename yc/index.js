@@ -25,6 +25,7 @@ var agarisha = 0,
 	houchuusha_idx = 0,
 	fsA = 0,
 	fsB = 0;
+var json={};
 const fusu = [0, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100, 110]; //符数
 const upscore = [0, 0, 0, 0, 0, 8000, 12000, 16000, 24000, 32000, 64000, 96000, 128000, 160000, 192000]; //子家超5番荣和点数
 const uma = {
@@ -118,9 +119,11 @@ function wap(n) {
 			document.querySelectorAll(".res .respoint")[i - 1].innerText = str;
 		}
 		for (let i = 1; i <= 4; i++) score[i] = furui_score[i];
-		for (let i = 1; i <= 4; i++) logx("player " + i + " " + elem_player[i - 1].querySelector("input").value + " " +
-			score[i] + " " + rank[i] + " " + point[i]);
-
+		json={"type":"player_info","player":[]};
+		for (let i = 1; i <= 4; i++) {
+			json["player"].push({"id":i, "name":elem_player[i - 1].querySelector("input").value, "score":score[i],"rank":rank[i],"point":point[i]})
+		}
+		logx(json)
 	}
 
 }
@@ -266,14 +269,14 @@ function refresh_data() {
 }
 
 function show_round() {
-	logx("round " + round + " honnba " + honnba + " kyoutaku " + kyoutaku)
+	logx({"type":"round","round":round,"honnba":honnba,"kyoutaku":kyoutaku})
 }
 
 function reach(n) {
 	if (!reached[n]) {
 		score[n] -= 1000;
 		kyoutaku++;
-		logx("reach " + n + " -1000")
+		logx({"type":"reach","player":n})
 	} else {
 		score[n] += 1000;
 		kyoutaku--;
@@ -364,39 +367,39 @@ function submit() {
 	if (agaway == 1 && houchuusha == 0) return;
 	if (oyaku == 0 && agaway == 0) { //亲自摸
 		score[agarisha] += fsA * 3;
-		let s = "tsumo " + agarisha + " +" + fsA * 3 + "";
+		json = {"type":"tsumo","score":{[agarisha]:fsA*3}}
 		for (let i = 1; i <= 4; i++) {
 			if (i != agarisha) {
 				score[i] -= fsA;
-				s += " " + i + " -" + fsA;
+				json["score"][i]=-fsA;
 			}
 		}
-		logx(s)
+		logx(json)
 	} else if (oyaku == 1 && agaway == 0) { //子自摸
 		score[agarisha] += fsA * 2 + fsB;
-		let s = "tsumo " + agarisha + " +" + (fsA * 2 + fsB) + "";
+		json = {"type":"tsumo","score":{[agarisha]:(fsA*2+fsB)}}
 		for (let i = 1; i <= 4; i++) {
 			if (i != agarisha && i != nowoya) {
-				score[i] -= fsA;
-				s += " " + i + " -" + fsA;
+				score[i] -= fsA;;
+				json["score"][i]=-fsA;
 			} else if (i == nowoya) {
 				score[i] -= fsB;
-				s += " " + i + " -" + fsB;
+				json["score"][i]=-fsB;
 			}
 		}
-		logx(s)
+		logx(json)
 	} else if (oyaku == 0 && agaway == 1) { //亲荣和
 		score[agarisha] += fsA;
 		score[houchuusha] -= fsA;
-		logx("ron " + agarisha + " +" + fsA + " " + houchuusha + " -" + fsA)
+		logx({"type":"ron","score":{[agarisha]:fsA,[houchuusha]:-fsA}})
 	} else if (oyaku == 1 && agaway == 1) { //子荣和
 		score[agarisha] += fsA;
 		score[houchuusha] -= fsA;
-		logx("ron " + agarisha + " +" + fsA + " " + houchuusha + " -" + fsA)
+		logx({"type":"ron","score":{[agarisha]:fsA,[houchuusha]:-fsA}})
 	}
 	//交立直棒
 	score[agarisha] += kyoutaku * 1000;
-	if (kyoutaku != 0) logx("agari_kyoutaku " + agarisha + " +" + kyoutaku * 1000)
+	if (kyoutaku != 0) logx({"type":"agari_kyoutaku","player":agarisha,"score":kyoutaku*1000})
 	kyoutaku = 0;
 	for (let i = 1; i <= 4; i++) {
 		reached[i] = 0;
@@ -426,47 +429,46 @@ function tsuki(n) {
 		//荒牌流局
 		honnba++;
 		if (tennpaied[nowoya] != 1) round++;
-		let s = "howannpai_ryuukyoku";
+		json = {"type":"howannpai_ryuukyoku","score":{}};
 		//不听罚符
 		let tp_cnt = 0;
 		for (let i = 1; i <= 4; i++)
 			if (tennpaied[i]) tp_cnt++;
 
 		for (let i = 1; i <= 4; i++) {
-			if (tennpaied[i]) score[i] += batsu[tp_cnt][0], s += " " + i + " +" + batsu[tp_cnt][0];
-			else score[i] += batsu[tp_cnt][1], s += " " + i + " " + batsu[tp_cnt][1];
+			if (tennpaied[i]) score[i] += batsu[tp_cnt][0], json["score"][i]=batsu[tp_cnt][0];
+			else score[i] += batsu[tp_cnt][1], json["score"][i]=batsu[tp_cnt][1];
 		}
-		logx(s);
+		logx(json);
 		//流局满贯
 		for (let i = 1; i <= 4; i++) {
 			if (ryuumanned[i]) {
-				s = "ryuumann";
+				json={"type":"ryuumann","score":{}}
 				if (i == nowoya) {
 					score[i] += 12000;
-					s += " " + i + " +12000";
+					json["score"][i]=12000;
 					for (let j = 1; j <= 4; j++) {
-						if (i != j) score[j] -= 4000, s += " " + i + " -4000";
+						if (i != j) score[j] -= 4000, json["score"][i]=-4000;
 					}
 				} else {
 					score[i] += 8000;
-					s += " " + i + " +8000";
+					json["score"][i]=8000;
 					for (let j = 1; j <= 4; j++) {
-						if (i != j && nowoya != j) score[j] -= 2000, s += " " + i + " -2000";
-						else if (j == nowoya) score[j] -= 4000, s += " " + i + " -4000";
+						if (i != j && nowoya != j) score[j] -= 2000, json["score"][i]=-2000;
+						else if (j == nowoya) score[j] -= 4000, json["score"][i]=-4000;
 					}
 				}
-				logx(s);
+				logx(json);
 			}
 		}
 	} else if (n == 2) {
-		logx("chuuto_ryuukyoku");
+		logx({"type":"chuuto_ryuukyoku"});
 		honnba++;
 	} else {
 		return;
 	}
 	kieru();
 	show_round();
-	logx("score_check" + " 1 " + score[1] + " 2 " + score[2] + " 3 " + score[3] + " 4 " + score[4]);
 	agarisha = 0, houchuusha = 0;
 	tennpaied = [0, 0, 0, 0, 0];
 	ryuumanned = [0, 0, 0, 0, 0];
@@ -510,12 +512,12 @@ function correct() {
 	round = parseInt(elem_cr[0].value);
 	honnba = parseInt(elem_cr[1].value);
 	kyoutaku = parseInt(elem_cr[2].value);
-	let s = "correct" + " round " + round + " honnba " + honnba + " kyoutaku " + kyoutaku;
+	json={"type":"correct","round":round,"honnba":honnba,"kyoutaku":kyoutaku,"score":{}};
 	for (let i = 0; i < 4; i++) {
 		score[i + 1] = parseInt(elem_cr[3 + i].value);
-		s += " score " + (i + 1) + " " + score[i + 1];
+		json["score"][(i+1)]=score[i+1];
 	}
-	logx(s);
+	logx(json);
 	kieru();
 	refresh_data();
 }
@@ -556,15 +558,11 @@ function logx(s) {
 }
 
 function data_out() {
-	let s = "";
-	for (let i = 0; i < logs.length; i++) s += logs[i] + "\r\n";
-	download("TanyauData" + Date.now() + ".yc", s);
+	download("TanyauData" + Date.now() + ".json", JSON.stringify({"time":Date.now(),"logs":logs}));
 }
 
 function upload(){
-	let s = "";
-	for (let i = 0; i < logs.length; i++) s += logs[i] + "\r\n";
-	writein("TanyauData" + Date.now() + ".yc", s);
+	writein("TanyauData" + Date.now() + ".json", JSON.stringify({"time":Date.now(),"logs":logs}));
 }
 
 function new_game() {
@@ -575,6 +573,7 @@ function new_game() {
 	agarisha = 0, houchuusha = 0, houchuusha_idx = 0, fsA = 0, fsB = 0;
 	tennpaied = [0, 0, 0, 0, 0];
 	ryuumanned = [0, 0, 0, 0, 0];
+	logs=[];
 	wap(1);
 
 }
