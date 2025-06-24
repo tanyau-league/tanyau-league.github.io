@@ -22,10 +22,10 @@
 				<li>当前局（1~8）<input type="text"></li>
 				<li>本场数<input type="text"></li>
 				<li>供托数<input type="text"></li>
-				<li>选手1 <span></span> 点数<input type="text"></li>
-				<li>选手2 <span></span> 点数<input type="text"></li>
-				<li>选手3 <span></span> 点数<input type="text"></li>
-				<li>选手4 <span></span> 点数<input type="text"></li>
+				<li>选手 1 <span></span> 点数<input type="text"></li>
+				<li>选手 2 <span></span> 点数<input type="text"></li>
+				<li>选手 3 <span></span> 点数<input type="text"></li>
+				<li>选手 4 <span></span> 点数<input type="text"></li>
 				<br>
 				<li>核算总点数 <span></span> <button class="planb" onclick="chr()">地址栏不可隐藏点我</button></li>
 
@@ -134,7 +134,7 @@
 						<span class="kaze">北</span><input placeholder="请输入选手名" value="">
 					</div>
 					<div class="naka">
-						<p id="honnba">东1局 0 本场</p>
+						<p id="honnba">东 1 局 0 本场</p>
 						<p id="kyoutaku">立直棒 0</p>
 						<button onclick="ryuukyoku()">流局</button>
 					</div>
@@ -168,7 +168,7 @@
 						</li>
 					</ul>
 					<button style="margin-right:10vw;" onclick="new_game()">新的对局</button>
-					<button style="margin-right:10vw;" onclick="upload()">上传数据</button>
+					<button style="margin-right:10vw;" onclick="upload()">下载数据</button>
 					<button onclick="data_out()">数据文件</button>
 				</div>
 			</li>
@@ -177,6 +177,16 @@
 					<h1>使用说明</h1>
 					<ul>
 						<li><a onclick="wap(0)" class="wapp">回到主页</a></li>
+						<br>
+						<li style="font-size: 5vh; ">Haraki</li>
+						<li style="font-size: 3vh; ">2150864207@qq.com</li>
+						<br>
+						<li>本项目是为 <a href="https://tanyau-league.github.io/" target="_blank"
+								class="wapp">Tanyau-league</a> 组织而创作的. <a href="https://github.com/tanyau-league/tanyau-league.github.io/tree/master/yc"
+								target="_blank"
+								class="wapp">Github 项目地址</a></li>
+						<li>
+						</li>
 						<li>建议使用平板横屏使用，本软件的设计目标是电子场风盘。</li>
 						<li>如果要回到主页，直接刷新即可。</li>
 						<li>进入对局后，在每个方向的最外侧有输入选手名的输入框. 请按照东南西北对应座次输入。</li>
@@ -189,67 +199,7 @@
 						<li>目前所有规则均默认 tanyau-league 规则。</li>
 						<li>如果出现操作错误或存档丢失，可以点击修正按钮手动修正。</li>
 						<li>如果平板端等无法隐藏地址栏导致显示不全，可以点击修正按钮点击功能按钮。</li>
-						<li>——————————————————————————————————————</li>
-						<li><a onclick="wap(4)" class="wapp">关于数据文件 .yc 格式的解说</a></li>
-						<li><a onclick="wap(5)" class="wapp">开发者函数解释</a></li>
-						<li><a onclick="wap(6)" class="wapp">联系开发者</a></li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div class="hint">
-					<h1>数据文件.yc格式</h1>
-					<ul class="dm">
-						<li><a onclick="wap(3)" class="wapp">回到上一页</a></li>
-						<li>可以使用文本类阅读器打开，类似于 txt。</li>
-						<li>一共有多行，每一行是一个语句，语句的不同成分用空格分隔，句首单词代表本句种类。每行以 \r\n 结尾。</li>
-						<li>以下为所有语句种类：代表选手的数字 [X]等取值1~4 代表起家为东南西北顺</li>
-						<li>round [A] honnba [B] kyoutaku [C] 表示当前是第 [A] 场，本场数 [B]，供托 [C]。</li>
-						<li>reach [X] -1000 表示选手 [X] 立直</li>
-						<li>tsumo [X1] +[x1] [X2] -[x2] [X3] -[x3] [X4] -[x4] 表示 [X1] 自摸，选手后数字代表点数变动</li>
-						<li>ron [X1] +[x1] [X2] -[x2] 表示 [X1] 荣和 [X2]，选手后数字代表点数变动</li>
-						<li>agari_kyoutaku [X1] +[x1] 表示 [X1] 和牌后收取供托，选手后数字代表点数变动</li>
-						<li>howannpai_ryuukyoku [X1] [x1] [X2] [x2] [X3] [x3] [X4] [x4] 表示荒牌流局，后面为罚符</li>
-						<li>ryuumann [X1] +[x1] [X2] -[x2] [X3] -[x3] [X4] -[x4] 表示 [X1] 流局满贯，后面为点数变动</li>
-						<li>chuuto_ryuukyoku 表示中途流局</li>
-						<li>correct round [] honnba [] kyoutaku [] score 1 [] score 2 [] score 3 [] score 4 []
-							表示手动修正，将前面的变量改为后面的值</li>
-						<li>score_check [X1] [x1] [X2] [x2] [X3] [x3] [X4] [x4] 表示四家分数，供检查用，可不处理</li>
-						<li>以上为操作语句. 当 round 语句 A=9 时代表半庄终止，输出 score_check 后会按如下格式依1234次序输出选手信息：</li>
-						<li>player [n] [name] [score] [rank] [pt] 表示选手 [n(1~4)] 的名字为 [name]，终局点数 [score]，排名
-							[rank]（同分同排名），[pt] 代表段位分*10</li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div class="hint">
-					<h1>开发者函数解释</h1>
-					<ul class="dm">
-						<li><a onclick="wap(3)" class="wapp">回到上一页</a></li>
-						<li>以下均为 js 函数解释，可以在 console 中试验。</li>
-						<li>wap(n)：代表跳转到 n 页面. 0：主页，1：对局页面，2：结算页面，3：说明，4：数据格式说明，5：开发者函数解释，6：联系开发者</li>
-						<li>refresh_data()：刷新对局页面的渲染</li>
-						<li>logx("str")：输出日志到 logs</li>
-						<li>其他函数用法和变量请自行阅读，虽然代码逻辑较混乱.</li>
-						<li>禁用了缩放屏幕大小，以及safari强制的滑动缩放等。如果不能收起地址栏的平板，修正后中间板和自家板会向上移动。</li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div class="hint">
-					<h1>联系开发者</h1>
-					<ul class="dm">
-						<li><a onclick="wap(3)" class="wapp">回到上一页</a></li>
-						<br>
-						<li style="font-size: 5vh; ">Haraki</li>
-						<li style="font-size: 3vh; ">2150864207@qq.com</li>
-						<br>
-						<li>本项目是为 <a href="https://tanyau-league.github.io/" target="_blank"
-								class="wapp">Tanyau-league</a> 组织而创作的.</li>
-						<li>项目地址 <a href="https://github.com/tanyau-league/tanyau-league.github.io/tree/master/yc"
-								target="_blank"
-								class="wapp">https://github.com/tanyau-league/tanyau-league.github.io/tree/master/yc</a>
-						</li>
+
 					</ul>
 				</div>
 			</li>
