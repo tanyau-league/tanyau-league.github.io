@@ -1,6 +1,6 @@
 const apiUrl = `https://api.github.com/repos/tanyau-league/tanyau-league-data/contents/AllData.json`;
 async function getGitHubFile() {
-	let token=atob("Z2l0aHViX3BhdF8xMUJRV1dVUEkwaHl1elFZSGVjdEZhX3I4d0hKMlIwdlEycmpDRmRpUTJyUEVSQk1nZHhLNmR6ZUtaNzNnZ1FGdkVJVUNHSFFQT09LZVlydzBK");
+	let token="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";
 	try {
 		const response = await fetch(apiUrl, {
 			headers: {
