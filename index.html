@@ -261,7 +261,7 @@
 	</div>
 	<div id="clickEffectContainer"></div>
 	<script>
-		// 玩家数据结构定义（类似C语言的结构体）
+		// 玩家数据结构定义
 		class Player {
 			constructor(name, point, highScore, avoidanceRate) {
 				this.name = name;
@@ -270,7 +270,8 @@
 				this.avoidanceRate = avoidanceRate;
 			}
 		}
-		// 玩家数据库（类似结构体数组）
+
+		// 玩家数据库
 		const playerDatabase = [
 			new Player("2yrold", 0, 0, 0),
 			new Player("Haraki", 0, 0, 0),
@@ -280,6 +281,7 @@
 			new Player("Xiaobukeai", 0, 0, 0),
 			new Player("zhunzhun", 0, 0, 0)
 		];
+
 		// 玩家数据操作接口
 		const PlayerManager = {
 			// 获取所有玩家数据
@@ -336,6 +338,7 @@
 				return [...playerDatabase].sort((a, b) => b.avoidanceRate - a.avoidanceRate);
 			}
 		};
+
 		// 排行榜渲染器
 		const RankRenderer = {
 			// 生成单个玩家项的HTML
@@ -356,23 +359,23 @@
 				}
 
 				return `
-        <li style="background-color: ${bgColor}">
-            <ol>
-                <li>
-                    <svg width="24px" height="40px" style="vertical-align: middle;position: relative">
-                        <circle cx="12" cy="16" r="12" fill="white" />
-                        <text x="12" y="22" font-family="Times New Roman" font-size="16"
-                            text-anchor="middle" fill="${isFirst ? "#3b863e" : "black"}" 
-                            ${rank >= 3 ? 'style="font-weight:400"' : ''}>${rank + 1}
-                        </text>
-                    </svg>
-                    <p style="display:inline; color:${textColor}; ${rank >= 3 ? 'font-weight:400;' : ''}">
-                        ${player.name}
-                    </p>
-                    <span style="display:inline; color:${textColor}">${value}</span>
-                </li>
-            </ol>
-        </li>`;
+            <li style="background-color: ${bgColor}">
+                <ol>
+                    <li>
+                        <svg width="24px" height="40px" style="vertical-align: middle;position: relative">
+                            <circle cx="12" cy="16" r="12" fill="white" />
+                            <text x="12" y="22" font-family="Times New Roman" font-size="16"
+                                text-anchor="middle" fill="${isFirst ? "#3b863e" : "black"}" 
+                                ${rank >= 3 ? 'style="font-weight:400"' : ''}>${rank + 1}
+                            </text>
+                        </svg>
+                        <p style="display:inline; color:${textColor}; ${rank >= 3 ? 'font-weight:400;' : ''}">
+                            ${player.name}
+                        </p>
+                        <span style="display:inline; color:${textColor}">${value}</span>
+                    </li>
+                </ol>
+            </li>`;
 			},
 
 			// 渲染单个排行榜
@@ -392,45 +395,34 @@
 				this.renderRanking('avoidanceRanking', PlayerManager.sortByAvoidanceRate(), 'avoidanceRate');
 			}
 		};
+
 		// 页面加载时初始化排行榜
 		document.addEventListener('DOMContentLoaded', function () {
 			RankRenderer.renderAllRankings();
 		});
+
 		// 从GitHub获取并处理对局数据
 		async function updatePlayerData() {
 			try {
-				// 获取仓库文件列表
-				const response = await fetch('https://api.github.com/repos/tanyau-league/tanyau-league-data/contents/');
-				if (!response.ok) throw new Error('GitHub API请求失败: ' + response.status);
+				// 直接获取AllData.json文件
+				const response = await fetch('https://raw.githubusercontent.com/tanyau-league/tanyau-league-data/main/AllData.json');
+				if (!response.ok) throw new Error('GitHub数据请求失败: ' + response.status);
 
-				const files = await response.json();
+				const allMatches = await response.json();
 
-				// 筛选对局数据文件
-				const matchFiles = files.filter(file =>
-					file.name.startsWith('TanyauData') &&
-					file.name.endsWith('.json') &&
-					file.type === 'file'
-				).filter(file => {
-					// 添加这一行日期过滤代码
-					const timestamp = file.name.replace('TanyauData', '').replace('.json', '');
-					const fileDate = new Date(
-						parseInt(timestamp.substring(0, 4)),    // 年
-						parseInt(timestamp.substring(4, 6)) - 1, // 月（0-11）
-						parseInt(timestamp.substring(6, 8))      // 日
-					);
-					return fileDate >= new Date(2025, 8, 1); // 2025年9月1日
-				});
+				if (!Array.isArray(allMatches)) {
+					throw new Error('数据格式错误: 期望数组但得到其他类型');
+				}
 
-				// 处理每个对局文件
-				for (const file of matchFiles) {
+				// 处理每场对局
+				for (const match of allMatches) {
 					try {
-						const fileResponse = await fetch(file.download_url);
-						if (!fileResponse.ok) continue;
-
-						const matchData = await fileResponse.json();
+						// 使用match.time进行日期过滤（2025年9月1日之后）
+						const matchDate = new Date(match.time);
+						if (matchDate < new Date(2025, 8, 1)) continue;
 
 						// 查找终局玩家信息
-						const playerInfo = matchData.logs.find(log => log.type === 'player_info');
+						const playerInfo = match.logs.find(log => log.type === 'player_info');
 						if (!playerInfo || !playerInfo.player) continue;
 
 						// 更新每个玩家的统计数据
@@ -470,8 +462,8 @@
 								_stats: newStats
 							});
 						});
-					} catch (fileError) {
-						console.error(`处理文件 ${file.name} 时出错:`, fileError);
+					} catch (matchError) {
+						console.error(`处理比赛 ${match.time} 时出错:`, matchError);
 					}
 				}
 
@@ -494,6 +486,7 @@
 				console.error('数据更新失败:', error);
 			}
 		}
+
 		// 页面加载时自动更新数据
 		window.addEventListener('DOMContentLoaded', function () {
 			// 先渲染一次初始排行榜（显示0数据）

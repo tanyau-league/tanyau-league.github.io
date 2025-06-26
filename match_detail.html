@@ -519,59 +519,55 @@
             try {
                 const urlParams = new URLSearchParams(window.location.search);
                 const matchId = urlParams.get('matchId');
-
                 if (!matchId) {
                     throw new Error('缺少比赛ID参数');
                 }
+                // 获取所有比赛数据
+                const allMatches = await getAllMatchesData();
 
-                const matchData = await getMatchData(matchId);
+                // 查找特定比赛
+                const matchData = allMatches.find(match => match.time.toString() === matchId);
+
+                if (!matchData) {
+                    throw new Error('未找到对应的比赛数据');
+                }
                 hideLoading();
                 renderMatchDetails(matchData);
             } catch (error) {
                 console.error('加载比赛数据失败:', error);
                 showError("加载比赛数据失败: " + error.message);
             }
+            // 确保在DOM加载后绑定事件
+            // 返回按钮事件
+            document.getElementById('backBtn').addEventListener('click', function () {
+                window.history.back();
+            });
+            // 重试按钮事件
+            document.getElementById('retryBtn').addEventListener('click', function () {
+                window.location.reload();
+            });
         });
-
-        // 返回按钮事件
-        document.getElementById('backBtn').addEventListener('click', function () {
-            window.history.back();
-        });
-
-        // 重试按钮事件
-        document.getElementById('retryBtn').addEventListener('click', function () {
-            window.location.reload();
-        });
-
-        // 获取比赛数据
-        async function getMatchData(matchId) {
+        // 获取所有比赛数据
+        async function getAllMatchesData() {
             try {
-                const fileName = `TanyauData${matchId}.json`;
-                const apiUrl = `https://api.github.com/repos/tanyau-league/tanyau-league-data/contents/${fileName}`;
-
+                const apiUrl = `https://api.github.com/repos/tanyau-league/tanyau-league-data/contents/AllData.json`;
                 const response = await fetch(apiUrl, {
                     headers: { 'Accept': 'application/vnd.github.v3+json' }
                 });
-
                 if (!response.ok) {
                     throw new Error(`请求失败: ${response.status}`);
                 }
-
                 const fileData = await response.json();
-
-                // 关键修复点：直接从 content 字段获取 Base64 编码的内容
+                // 直接从 content 字段获取 Base64 编码的内容
                 const contentBase64 = fileData.content;
-
-                // 移除换行符（GitHub API 可能在 Base64 中添加换行）
+                // 移除换行符
                 const base64Data = contentBase64.replace(/\n/g, '');
-
                 // 解码 Base64
                 const contentJson = atob(base64Data);
-
                 return JSON.parse(contentJson);
             } catch (error) {
                 console.error("获取比赛数据失败:", error);
-                throw error; // 抛出错误以便上层处理
+                throw error;
             }
         }
 
