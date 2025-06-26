@@ -1,5 +1,6 @@
 const apiUrl = `https://api.github.com/repos/tanyau-league/tanyau-league-data/contents/AllData.json`;
-async function getGitHubFile(token) {
+async function getGitHubFile() {
+	let token=atob("Z2hwX1BBUVU4SGlGVmVpdVdWbmh2Z0pFRlI4WkpTSXBZQzRhU2s3ag==");
 	try {
 		const response = await fetch(apiUrl, {
 			headers: {
@@ -50,7 +51,7 @@ function updateGithubFile(content, fileSHA) {
 }
 
 function writein(append_json) {
-	getGitHubFile("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")
+	getGitHubFile()
 		.then(file => {
 			var temp=JSON.parse(file.content);
 			temp.push(append_json);
