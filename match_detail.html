@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Match Details</title>
+    <link rel="icon" href="img/main.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;500;700;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', 'Noto Sans SC', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: #e6e6e6;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        margin-bottom: 30px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-content {
+        flex: 1;
+    }
+
+    .back-btn {
+        background: rgba(33, 150, 243, 0.2);
+        color: #e6e6e6;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+        background: rgba(33, 150, 243, 0.4);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .match-title {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        background: linear-gradient(45deg, #4cc9f0, #f72585);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .match-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .info-item {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 15px;
+        border-radius: 10px;
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .info-label {
+        color: #b8c1ec;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+    }
+
+    .info-value {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .participants {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .participant-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 15px;
+        flex: 1;
+        min-width: 200px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .participant-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .player-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .player-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    .player-avatar img.loaded {
+        opacity: 1;
+    }
+
+    .player-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .player-point {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-left: auto;
+    }
+
+    .positive-point {
+        color: #4caf50;
+    }
+
+    .negative-point {
+        color: #f44336;
+    }
+
+    .match-details {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 30px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #4cc9f0;
+        border-bottom: 2px solid rgba(76, 201, 240, 0.3);
+        padding-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .round-container {
+        margin-bottom: 30px;
+        background: rgba(30, 30, 46, 0.5);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .round-header {
+        display: flex;
+        align-items: center;
+        background: rgba(76, 201, 240, 0.15);
+        padding: 12px 20px;
+        margin-bottom: 0;
+    }
+
+    .round-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #4cc9f0;
+    }
+
+    .round-info {
+        margin-left: auto;
+        font-size: 0.9rem;
+        color: #b8c1ec;
+        display: flex;
+        gap: 12px;
+    }
+
+    .round-info span {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 4px 10px;
+        border-radius: 20px;
+    }
+
+    .round-events {
+        padding: 10px 0;
+    }
+
+    .event-item {
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        transition: background 0.2s ease;
+    }
+
+    .event-item:not(:last-child):after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        right: 20px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .event-item:hover {
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    .event-type {
+        min-width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        font-size: 18px;
+    }
+
+    .reach-type {
+        background: rgba(255, 215, 0, 0.15);
+        color: #ffd700;
+    }
+
+    .ron-type {
+        background: rgba(76, 175, 80, 0.15);
+        color: #4caf50;
+    }
+
+    .tsumo-type {
+        background: rgba(33, 150, 243, 0.15);
+        color: #2196f3;
+    }
+
+    .ryukyoku-type {
+        background: rgba(255, 152, 0, 0.15);
+        color: #ff9800;
+    }
+
+    .kyotaku-type {
+        background: rgba(156, 39, 176, 0.15);
+        color: #9c27b0;
+    }
+
+    .round-type {
+        background: rgba(76, 201, 240, 0.15);
+        color: #4cc9f0;
+    }
+
+    .player-info-type {
+        background: rgba(244, 67, 54, 0.15);
+        color: #f44336;
+    }
+
+    .event-desc {
+        flex: 1;
+        font-size: 1.1rem;
+    }
+
+    .event-points {
+        min-width: 100px;
+        text-align: right;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    .player-highlight {
+        color: #4cc9f0;
+        font-weight: 600;
+    }
+
+    .score-change {
+        display: inline-block;
+        min-width: 60px;
+        text-align: right;
+        margin-left: 5px;
+    }
+
+    .positive {
+        color: #4caf50;
+    }
+
+    .negative {
+        color: #f44336;
+    }
+
+    .loading {
+        text-align: center;
+        padding: 50px;
+        font-size: 1.5rem;
+    }
+
+    .spinner {
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-top: 4px solid #4cc9f0;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .error {
+        text-align: center;
+        padding: 50px;
+        color: #f44336;
+        font-size: 1.2rem;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 30px;
+        margin-top: 50px;
+        color: #b8c1ec;
+        font-size: 0.9rem;
+    }
+
+    .summary-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .summary-title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: #b8c1ec;
+    }
+
+    .summary-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .summary-item {
+        flex: 1;
+        min-width: 180px;
+        text-align: center;
+        padding: 15px;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .summary-value {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .summary-label {
+        color: #b8c1ec;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .back-btn {
+            align-self: center;
+        }
+
+        .match-info {
+            flex-direction: column;
+        }
+
+        .participants {
+            flex-direction: column;
+        }
+
+        .event-item {
+            flex-wrap: wrap;
+        }
+
+        .event-desc {
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .event-points {
+            text-align: left;
+            min-width: 100%;
+            padding-left: 55px;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-left"></i> 返回历史事件
+            </button>
+            <div class="header-content">
+                <h1 class="match-title" id="matchTitle">对局详情</h1>
+                <div class="match-info">
+                    <div class="info-item">
+                        <div class="info-label">日期</div>
+                        <div class="info-value" id="matchDate">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">场次</div>
+                        <div class="info-value" id="matchRound">半庄战</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="participants" id="participantsContainer">
+            <!-- 参与者卡片将通过JavaScript动态生成 -->
+        </div>
+
+        <div class="match-details">
+            <h2 class="section-title"><i class="fas fa-list"></i> 对局明细</h2>
+            <div id="roundsContainer">
+                <!-- 对局明细将通过JavaScript动态生成 -->
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-title">对局统计摘要</div>
+                <div class="summary-content" id="summaryContainer">
+                    <!-- 统计摘要将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loadingContainer">
+            <div class="spinner"></div>
+            正在加载比赛数据...
+        </div>
+
+        <div class="error" id="errorContainer" style="display: none;">
+            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <p>无法加载比赛数据，请稍后再试。</p>
+            <button class="back-btn" style="margin-top: 20px;" id="retryBtn">
+                <i class="fas fa-redo"></i> 重新加载
+            </button>
+        </div>
+
+        <div class="footer">
+            <p>TanYauLEAGUE © 2025 | 比赛数据来源于tanyau-data数据库</p>
+        </div>
+    </div>
+    <div id="clickEffectContainer"></div>
+    <script>
+        // 页面加载时加载数据
+        document.addEventListener('DOMContentLoaded', async function () {
+            // 显示加载状态
+            showLoading();
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const matchId = urlParams.get('matchId');
+
+                if (!matchId) {
+                    throw new Error('缺少比赛ID参数');
+                }
+
+                const matchData = await getMatchData(matchId);
+                hideLoading();
+                renderMatchDetails(matchData);
+            } catch (error) {
+                console.error('加载比赛数据失败:', error);
+                showError("加载比赛数据失败: " + error.message);
+            }
+        });
+
+        // 返回按钮事件
+        document.getElementById('backBtn').addEventListener('click', function () {
+            window.history.back();
+        });
+
+        // 重试按钮事件
+        document.getElementById('retryBtn').addEventListener('click', function () {
+            window.location.reload();
+        });
+
+        // 获取比赛数据
+        async function getMatchData(matchId) {
+            try {
+                const fileName = `TanyauData${matchId}.json`;
+                const apiUrl = `https://api.github.com/repos/tanyau-league/tanyau-league-data/contents/${fileName}`;
+
+                const response = await fetch(apiUrl, {
+                    headers: { 'Accept': 'application/vnd.github.v3+json' }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`请求失败: ${response.status}`);
+                }
+
+                const fileData = await response.json();
+
+                // 关键修复点：直接从 content 字段获取 Base64 编码的内容
+                const contentBase64 = fileData.content;
+
+                // 移除换行符（GitHub API 可能在 Base64 中添加换行）
+                const base64Data = contentBase64.replace(/\n/g, '');
+
+                // 解码 Base64
+                const contentJson = atob(base64Data);
+
+                return JSON.parse(contentJson);
+            } catch (error) {
+                console.error("获取比赛数据失败:", error);
+                throw error; // 抛出错误以便上层处理
+            }
+        }
+
+
+        // 渲染比赛详情
+        function renderMatchDetails(matchData) {
+            // 设置比赛日期
+            if (matchData.time) {
+                const date = new Date(matchData.time);
+                document.getElementById('matchDate').textContent =
+                    `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日 ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+            }
+            // 获取玩家名字映射表
+            const playerMap = {};
+            const playerInfo = matchData.logs.find(log => log.type === 'player_info');
+            if (playerInfo) {
+                playerInfo.player.forEach((player, index) => {
+                    playerMap[index] = player.name;
+                });
+            }
+            // 渲染参与者
+            renderParticipants(matchData);
+
+            // 渲染对局明细
+            renderRounds(matchData, playerMap);
+
+            // 渲染统计摘要
+            renderSummary(matchData);
+        }
+
+        // 渲染参与者
+        function renderParticipants(matchData) {
+            const container = document.getElementById('participantsContainer');
+            container.innerHTML = '';
+            const playerInfo = matchData.logs.find(log => log.type === 'player_info');
+            if (!playerInfo) return;
+            playerInfo.player.forEach(player => {
+                const isPositive = player.point > 0;
+                const displayPoint = player.point / 10; // 点数除以10
+                const card = document.createElement('div');
+                card.className = 'participant-card';
+                card.innerHTML = `
+            <div class="player-avatar">
+                <img alt="${player.name}">
+            </div>
+            <div>
+                <div class="player-name">${player.name}</div>
+                <div class="info-label">${player.rank}位</div>
+            </div>
+            <div class="player-point ${isPositive ? 'positive-point' : 'negative-point'}">
+                ${displayPoint > 0 ? '+' : ''}${displayPoint}
+            </div>
+        `;
+
+                // 图片预加载
+                const img = new Image();
+                img.src = `img/members/${player.name}.jpg`;
+                img.onload = function () {
+                    const avatar = card.querySelector('img');
+                    avatar.src = this.src;
+                    avatar.classList.add('loaded');
+                };
+                img.onerror = function () {
+                    const avatar = card.querySelector('img');
+                    avatar.src = 'img/default_avatar.jpg';
+                    avatar.classList.add('loaded');
+                };
+
+                container.appendChild(card);
+            });
+        }
+
+        // 渲染对局明细
+        function renderRounds(matchData, playerMap) {
+            const container = document.getElementById('roundsContainer');
+            container.innerHTML = '';
+            let roundGroups = [];
+            let currentRound = null;
+            // 按局分组
+            matchData.logs.forEach(log => {
+                if (log.type === 'round') {
+                    // 创建新的局
+                    currentRound = {
+                        round: log.round,
+                        honnba: log.honnba,
+                        kyoutaku: log.kyoutaku,
+                        events: []
+                    };
+                    roundGroups.push(currentRound);
+                } else if (currentRound) {
+                    // 添加到当前局
+                    currentRound.events.push(log);
+                }
+            });
+            // 渲染每一局
+            roundGroups.forEach((round, index) => { // 添加 index 参数
+                const roundContainer = document.createElement('div');
+                roundContainer.className = 'round-container';
+                // 判断是否为最后一局
+                const isFinalRound = index === roundGroups.length - 1; // 正确定义 isFinalRound
+                const roundName = getRoundName(round.round, isFinalRound); // 传递 isFinalRound 参数
+                roundContainer.innerHTML = `
+            <div class="round-header">
+                <div class="round-title">${roundName}</div>
+                <div class="round-info">
+                    <span>${round.honnba}本场</span>
+                    <span>${round.kyoutaku}供托</span>
+                </div>
+            </div>
+            <div class="round-events">
+                <!-- 事件将通过JavaScript动态生成 -->
+            </div>
+        `;
+                container.appendChild(roundContainer);
+                // 渲染该局事件
+                const eventsContainer = roundContainer.querySelector('.round-events');
+                renderEvents(round.events, eventsContainer, playerMap);
+            });
+        }
+
+        // 获取局名
+        function getRoundName(roundNum, isFinalRound = false) { // 添加默认值
+            if (isFinalRound) {
+                return "终局";
+            }
+            const roundNames = ['東', '南', '西', '北'];
+            const roundIndex = Math.floor((roundNum - 1) / 4);
+            const roundInField = (roundNum - 1) % 4 + 1;
+            return `${roundNames[roundIndex]}${roundInField}局`;
+        }
+
+        // 渲染事件列表
+        function renderEvents(events, container, playerMap) {
+            events.forEach(event => {
+                const eventItem = document.createElement('div');
+                eventItem.className = 'event-item';
+
+                // 事件图标
+                let eventIcon = '';
+                let eventDesc = '';
+                let eventPoints = '';
+                let eventClass = '';
+
+                // 格式化事件描述
+                switch (event.type) {
+                    case 'reach':
+                        // 修正：event.player - 1
+                        eventDesc = `<span class="player-highlight">${playerMap[event.player - 1]}</span> 宣告立直`;
+                        eventIcon = '<i class="fas fa-flag"></i>'; // 添加图标
+                        eventClass = 'reach-type'; // 添加样式类
+                        break;
+                    case 'ron':
+                        const ronChanges = [];
+                        for (const [playerId, points] of Object.entries(event.score)) {
+                            // 修正：parseInt(playerId) - 1
+                            const playerName = playerMap[parseInt(playerId) - 1];
+                            ronChanges.push(`${playerName}: <span class="${points > 0 ? 'positive' : 'negative'}">${points > 0 ? '+' : ''}${points}</span>`);
+                        }
+                        eventDesc = `荣和！得分变化: ${ronChanges.join(', ')}`;
+                        eventIcon = '<i class="fas fa-hand-paper"></i>'; // 添加图标
+                        eventClass = 'ron-type'; // 添加样式类
+                        break;
+                    case 'tsumo':
+                        const tsumoChanges = [];
+                        for (const [playerId, points] of Object.entries(event.score)) {
+                            // 修正：parseInt(playerId) - 1
+                            const playerName = playerMap[parseInt(playerId) - 1];
+                            tsumoChanges.push(`${playerName}: <span class="${points > 0 ? 'positive' : 'negative'}">${points > 0 ? '+' : ''}${points}</span>`);
+                        }
+                        eventDesc = `自摸！得分变化: ${tsumoChanges.join(', ')}`;
+                        eventIcon = '<i class="fas fa-hand-holding"></i>'; // 添加图标
+                        eventClass = 'tsumo-type'; // 添加样式类
+                        break;
+                    case 'agari_kyoutaku':
+                        // 修正：event.player - 1
+                        eventDesc = `<span class="player-highlight">${playerMap[event.player - 1]}</span> 获得供托`;
+                        eventPoints = `+${event.score}`;
+                        eventIcon = '<i class="fas fa-coins"></i>'; // 添加图标
+                        eventClass = 'kyotaku-type'; // 添加样式类
+                        break;
+                    case 'howannpai_ryuukyoku':
+                        const ryuukyokuChanges = [];
+                        for (const [playerId, points] of Object.entries(event.score)) {
+                            // 修正：parseInt(playerId) - 1
+                            const playerName = playerMap[parseInt(playerId) - 1];
+                            ryuukyokuChanges.push(`${playerName}: <span class="${points > 0 ? 'positive' : 'negative'}">${points > 0 ? '+' : ''}${points}</span>`);
+                        }
+                        eventDesc = `流局！得分变化: ${ryuukyokuChanges.join(', ')}`;
+                        eventIcon = '<i class="fas fa-ban"></i>'; // 添加图标
+                        eventClass = 'ryukyoku-type'; // 添加样式类
+                        break;
+                    case 'player_info':
+                        eventIcon = '<i class="fas fa-info-circle"></i>';
+                        eventDesc = `最终得分和排名`;
+                        eventClass = 'player-info-type';
+                        break;
+                    default:
+                        eventIcon = '<i class="fas fa-circle"></i>';
+                        eventDesc = `未知事件: ${event.type}`;
+                        eventClass = '';
+                }
+
+                eventItem.innerHTML = `
+                    <div class="event-type ${eventClass}">${eventIcon}</div>
+                    <div class="event-desc">${eventDesc}</div>
+                    <div class="event-points">${eventPoints}</div>
+                `;
+
+                container.appendChild(eventItem);
+            });
+        }
+
+        // 渲染统计摘要
+        function renderSummary(matchData) {
+            const container = document.getElementById('summaryContainer');
+            container.innerHTML = '';
+
+            // 统计信息
+            let reachCount = 0;
+            let ronCount = 0;
+            let tsumoCount = 0;
+            let ryukyokuCount = 0;
+            let totalRounds = 0;
+
+            matchData.logs.forEach(log => {
+                switch (log.type) {
+                    case 'reach': reachCount++; break;
+                    case 'ron': ronCount++; break;
+                    case 'tsumo': tsumoCount++; break;
+                    case 'howannpai_ryuukyoku': ryukyokuCount++; break;
+                    case 'round': totalRounds++; break;
+                }
+            });
+
+            // 添加统计卡片
+            const summaryItems = [
+                { value: totalRounds, label: "总局数", icon: "fas fa-flag" },
+                { value: reachCount, label: "立直次数", icon: "fas fa-flag" },
+                { value: ronCount, label: "荣和次数", icon: "fas fa-hand-paper" },
+                { value: tsumoCount, label: "自摸次数", icon: "fas fa-hand-holding" },
+                { value: ryukyokuCount, label: "流局次数", icon: "fas fa-ban" }
+            ];
+
+            summaryItems.forEach(item => {
+                const summaryItem = document.createElement('div');
+                summaryItem.className = 'summary-item';
+                summaryItem.innerHTML = `
+                    <div><i class="${item.icon} fa-2x"></i></div>
+                    <div class="summary-value">${item.value}</div>
+                    <div class="summary-label">${item.label}</div>
+                `;
+                container.appendChild(summaryItem);
+            });
+        }
+
+        // 显示加载状态
+        function showLoading() {
+            document.getElementById('loadingContainer').style.display = 'block';
+            document.getElementById('errorContainer').style.display = 'none';
+        }
+
+        // 隐藏加载状态
+        function hideLoading() {
+            document.getElementById('loadingContainer').style.display = 'none';
+        }
+
+        // 显示错误信息
+        function showError(message) {
+            document.getElementById('loadingContainer').style.display = 'none';
+            const errorContainer = document.getElementById('errorContainer');
+            errorContainer.querySelector('p').textContent = message;
+            errorContainer.style.display = 'block';
+        }
+        ; (function () {
+            const TEXTS = [];
+            const TEXT_COLORS = [];
+            const container = document.createElement('div');
+            container.id = 'clickEffectContainer';
+            container.style.cssText = `
+        position: fixed; top: 0; left: 0; 
+        width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+    `;
+            document.body.appendChild(container);
+            const EXCLUDE_SELECTORS = [
+                'button', 'a', 'input', 'select', 'textarea',
+                '[onclick]', '.nav-item', '.menu-btn'
+            ];
+            document.addEventListener('click', (e) => {
+                if (!EXCLUDE_SELECTORS.some(sel => e.target.closest(sel))) {
+                    createTextEffect(e.clientX, e.clientY);
+                    createPeachBlossomEffect(e.clientX, e.clientY);
+                    window.clickCount = (window.clickCount || 0) + 1;
+                }
+            }, true);
+            function createTextEffect(x, y) {
+                const effect = document.createElement('div');
+                effect.style.cssText = `
+            position: absolute;
+            left: ${x}px; top: ${y}px;
+            font: bold 18px 楷体, KaiTi;
+            color: ${TEXT_COLORS[window.clickCount % TEXT_COLORS.length]};
+            pointer-events: none;
+            user-select: none;
+            animation: float 2s forwards;
+            text-shadow: 0 0 5px rgba(255,255,255,0.7);
+            z-index: 10000;
+        `;
+                effect.textContent = TEXTS[window.clickCount % TEXTS.length];
+                container.appendChild(effect);
+                setTimeout(() => effect.remove(), 2000);
+            }
+            function createPeachBlossomEffect(x, y) {
+                const petalCount = 15;
+                const duration = 3000;
+                const petalSVG = encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="#FFEEF7" d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M8.5,8C9.3,8 10,8.7 10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8M12,11C13.1,11 14,11.9 14,13C14,14.1 13.1,15 12,15C10.9,15 10,14.1 10,13C10,11.9 10.9,11 12,11M19,17V19H5V17C5,14.8 8.1,13 12,13C15.9,13 19,14.8 19,17Z"/>
+                <path fill="#FFD6EB" d="M12,4C11.4,4 11,4.4 11,5C11,5.6 11.4,6 12,6C12.6,6 13,5.6 13,5C13,4.4 12.6,4 12,4Z"/>
+            </svg>
+        `);
+                for (let i = 0; i < petalCount; i++) {
+                    const petal = document.createElement('div');
+                    const size = 15 + Math.random() * 10;
+                    const rotation = Math.random() * 360;
+                    const delay = Math.random() * 500;
+                    petal.style.cssText = `
+                position: absolute;
+                left: ${x}px;
+                top: ${y}px;
+                width: ${size}px;
+                height: ${size}px;
+                background: url('data:image/svg+xml;utf8,${petalSVG}');
+                background-size: contain;
+                pointer-events: none;
+                z-index: 9998;
+                opacity: 0.9;
+                transform: rotate(${rotation}deg);
+                animation: petal-fall ${duration}ms ease-out ${delay}ms forwards;
+                filter: drop-shadow(0 0 2px rgba(255,200,230,0.7));
+            `;
+                    container.appendChild(petal);
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = 50 + Math.random() * 100;
+                    const endX = x + Math.cos(angle) * distance;
+                    const endY = y + Math.sin(angle) * distance + 100;
+                    const keyframes = `
+                @keyframes petal-fall-${i} {
+                    0% { 
+                        transform: translate(0, 0) rotate(${rotation}deg); 
+                        opacity: 0.9;
+                    }
+                    100% { 
+                        transform: translate(${endX - x}px, ${endY - y}px) rotate(${rotation + 180}deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+                    const style = document.createElement('style');
+                    style.textContent = keyframes;
+                    document.head.appendChild(style);
+                    petal.style.animationName = `petal-fall-${i}`;
+                    setTimeout(() => petal.remove(), duration + delay);
+                }
+            }
+            const style = document.createElement('style');
+            style.textContent = `
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+    `;
+            document.head.appendChild(style);
+        })();
+    </script>
+</body>
+
+</html>
