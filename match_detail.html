@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<script src="getGithubFile.js"></script>
 </head>
 <style>
     * {
@@ -550,21 +551,7 @@
         // 获取所有比赛数据
         async function getAllMatchesData() {
             try {
-                const apiUrl = `https://api.github.com/repos/tanyau-league/tanyau-league-data/contents/AllData.json`;
-                const response = await fetch(apiUrl, {
-                    headers: { 'Accept': 'application/vnd.github.v3+json' }
-                });
-                if (!response.ok) {
-                    throw new Error(`请求失败: ${response.status}`);
-                }
-                const fileData = await response.json();
-                // 直接从 content 字段获取 Base64 编码的内容
-                const contentBase64 = fileData.content;
-                // 移除换行符
-                const base64Data = contentBase64.replace(/\n/g, '');
-                // 解码 Base64
-                const contentJson = atob(base64Data);
-                return JSON.parse(contentJson);
+                return JSON.parse((await getGitHubFile()).content);
             } catch (error) {
                 console.error("获取比赛数据失败:", error);
                 throw error;
