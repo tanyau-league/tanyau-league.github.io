@@ -16,6 +16,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<script src="getGithubFile.js"></script>
 </head>
 
 <body>
@@ -405,15 +406,7 @@
 		async function updatePlayerData() {
 			try {
 				// 直接获取AllData.json文件
-				const response = await fetch('https://raw.githubusercontent.com/tanyau-league/tanyau-league-data/main/AllData.json');
-				if (!response.ok) throw new Error('GitHub数据请求失败: ' + response.status);
-
-				const allMatches = await response.json();
-
-				if (!Array.isArray(allMatches)) {
-					throw new Error('数据格式错误: 期望数组但得到其他类型');
-				}
-
+				const allMatches = JSON.parse((await getGitHubFile()).content);
 				// 处理每场对局
 				for (const match of allMatches) {
 					try {
