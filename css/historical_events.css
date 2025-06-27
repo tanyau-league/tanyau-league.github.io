@@ -3,6 +3,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	border: none;
 }
 
 body {
@@ -17,9 +18,9 @@ body {
 	height: 100px;
 	background: white;
 	box-shadow: 0px 0px 10px 10px #00000033;
-	position: fixed;
-	top: 0;
 	z-index: 100;
+	position: absolute;
+	top: 0;
 }
 
 .top img {
@@ -29,23 +30,15 @@ body {
 	padding: 20px;
 	margin-left: 10%;
 	float: left;
+	cursor: pointer;
 }
 
-.logo-link {
-	display: inline-block;
-	transition: transform 0.3s ease;
-}
-
-.logo-link:hover {
-	transform: scale(1.05);
-	opacity: 0.9;
-}
 
 .header {
 	text-align: center;
 	padding: 80px 20px;
 	margin-bottom: 30px;
-	margin-top: 100px;
+	padding-top: 180px;
 	background: linear-gradient(45deg, #4cc9f0, #f72585);
 	border-radius: 0 0 15px 15px;
 	backdrop-filter: blur(10px);

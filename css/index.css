@@ -22,6 +22,7 @@
 	padding: 20px;
 	margin-left: 10%;
 	float: left;
+	cursor: pointer;
 }
 
 .top ul {
@@ -342,13 +343,6 @@
 
 .game .rightpart a span {
 	font-family: consolas;
-}
-.event .coming-events{
-	font-size: 50px;
-	text-align: center;
-	font-weight: 500;
-	font-family: 'kanit';
-	margin-bottom: 20px;
 }
 .event-card {
 	background: white;
@@ -708,10 +702,27 @@ strong>span {
 }
 .historical-link a{
 	display: inline-block;
-	background: linear-gradient(45deg, #e74c3c, #c0392b);
 	font-size: 25px;
-	padding:20px 60px;
+	padding:20px 70px;
 	color:#fff;
 	border-radius: 10px;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	font-weight: bold;
+}
+.historical-link a.historical-link-a{
+	background: #e74c3c;
+	background-size: 50px 50px;
+	background-image: linear-gradient(45deg, #00000008 25%, transparent 25%, transparent),
+		linear-gradient(-45deg, #00000008 25%, transparent 25%, transparent),
+		linear-gradient(45deg, transparent 75%, #00000008 75%),
+		linear-gradient(-45deg, transparent 75%, #00000008 75%);
+	margin-right: 30px;
+}
+.historical-link a{
+	background: #3b863e;
+	background-size: 50px 50px;
+	background-image: linear-gradient(45deg, #00000008 25%, transparent 25%, transparent),
+		linear-gradient(-45deg, #00000008 25%, transparent 25%, transparent),
+		linear-gradient(45deg, transparent 75%, #00000008 75%),
+		linear-gradient(-45deg, transparent 75%, #00000008 75%);
 }
