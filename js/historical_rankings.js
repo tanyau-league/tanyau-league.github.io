@@ -139,7 +139,7 @@ function renderAllSeasons() {
         <div class="season-rankings">
           <div class="game">
             <div class="leftpart">
-              <img src="img/${seasonId}.png" width="225" height="71">
+              <img src="img/${seasonId}.png" height="100">
             </div>
             <div class="ranklist">
               <div class="Title1">

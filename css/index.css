@@ -233,7 +233,6 @@
 
 .game .ranklist {
 	margin-left: 10%;
-	margin-top: 60px;
 	margin-right: 10%;
 	display: flex;
 	justify-content: space-between;
@@ -243,7 +242,7 @@
 .game .ranklist .Title1,
 .game .ranklist .Title2,
 .game .ranklist .Title3 {
-	margin-top: 240px;
+	margin-top: 180px;
 	width: 300px;
 	display: inline-block;
 }
