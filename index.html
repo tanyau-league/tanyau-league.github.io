@@ -1,267 +1,269 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<meta charset="utf-8" />
-	<title>TanYauLEAGUE</title>
-	<link rel="icon" href="img/main.ico">
-	<link rel="stylesheet" href="css/index.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;500;700;900&display=swap"
-		rel="stylesheet">
-	<link
-		href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-		rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<script src="js/getGithubFile.js"></script>
-</head>
+	<head>
+		<meta charset="utf-8" />
+		<title>TanYauLEAGUE</title>
+		<link rel="icon" href="img/main.ico">
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;500;700;900&display=swap"
+			rel="stylesheet">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<script src="js/getGithubFile.js"></script>
+	</head>
 
-<body>
-	<div class="top">
-		<img src="img/Group 1.svg" alt="logo" onclick="location.reload();">
-		<ul>
-			<li><a href="#" class="selected">首页</a></li>
-			<li>
-				<div class="dropdown">
-					<a class="dropbtn" href="#game-main">
-						赛事
-					</a>
-					<div class="dropdown-content">
-						<a href="#game" style="margin-top:10px">对战成绩</a>
-						<a href="#event" style="margin-top: 0">赛程安排</a>
+	<body>
+		<div class="top">
+			<img src="img/Group 1.svg" alt="logo" onclick="location.reload();">
+			<ul>
+				<li><a href="#" class="selected">首页</a></li>
+				<li>
+					<div class="dropdown">
+						<a class="dropbtn" href="#game-main">
+							赛事
+						</a>
+						<div class="dropdown-content">
+							<a href="#game" style="margin-top:10px">对战成绩</a>
+							<a href="#event" style="margin-top: 0">赛程安排</a>
+						</div>
 					</div>
-				</div>
-			</li>
-			<li><a href="#mate">成员</a></li>
-			<li><a href="#rule">规则</a></li>
-			<li><a href="#contact">联络</a></li>
-		</ul>
-	</div>
-	<a name="banner" class="target-fix"></a>
-	<div class="banner" id="bottom">
-		<h1>TanYau.LEAGUE,</h1>
-		<h2>麻雀の真実を求もう。</h2>
-		<p id="short_intro">
-			面向 THU 求真书院同学的立直麻将团体。<br>致力于推广立直麻将，以更科学的视角解读和研究麻将技术。
-		</p>
-		<a href="#contact">加入我们</a>
-		<ul>
-			<li><img src="img/1m.svg" alt=""></li>
-			<li><img src="img/9m.svg" alt=""></li>
-			<li><img src="img/1p.svg" alt=""></li>
-			<li><img src="img/9p.svg" alt=""></li>
-			<li><img src="img/1s.svg" alt=""></li>
-			<li><img src="img/9s.svg" alt=""></li><br>
-			<li><img src="img/1z.svg" alt=""></li>
-			<li><img src="img/2z.svg" alt=""></li>
-			<li><img src="img/3z.svg" alt=""></li>
-			<li><img src="img/4z.svg" alt=""></li>
-			<li><img src="img/5z.svg" alt=""></li>
-			<li><img src="img/6z.svg" alt=""></li>
-			<li><img src="img/7z.svg" alt=""></li>
-		</ul>
-	</div>
-	<a name="game-main" class="target-fix"></a>
-	<div class="game-main"></div>
-	<a name="game" class="target-fix"></a>
-	<div class="game">
-		<div class="rightpart">
-			<h1>リーチ麻雀、</h1>
-			<h2>好牌合理放铳，烂牌坚决不怂<br>有人立直加杠，搏敌生于非洲</h2>
-			<a href="historical_rankings.html" target="_blank">往届对战数据 <span> >>> </span></a>
+				</li>
+				<li><a href="#mate">成员</a></li>
+				<li><a href="#rule">规则</a></li>
+				<li><a href="#contact">联络</a></li>
+			</ul>
 		</div>
-		<div class="leftpart">
-			<img src="img/2025Autumn.png" width="225" height="71">
+		<a name="banner" class="target-fix"></a>
+		<div class="banner" id="bottom">
+			<h1>TanYau.LEAGUE,</h1>
+			<h2>麻雀の真実を求もう。</h2>
+			<p id="short_intro">
+				面向 THU 求真书院同学的立直麻将团体。<br>致力于推广立直麻将，以更科学的视角解读和研究麻将技术。
+			</p>
+			<a href="#contact">加入我们</a>
+			<ul>
+				<li><img src="img/1m.svg" alt=""></li>
+				<li><img src="img/9m.svg" alt=""></li>
+				<li><img src="img/1p.svg" alt=""></li>
+				<li><img src="img/9p.svg" alt=""></li>
+				<li><img src="img/1s.svg" alt=""></li>
+				<li><img src="img/9s.svg" alt=""></li><br>
+				<li><img src="img/1z.svg" alt=""></li>
+				<li><img src="img/2z.svg" alt=""></li>
+				<li><img src="img/3z.svg" alt=""></li>
+				<li><img src="img/4z.svg" alt=""></li>
+				<li><img src="img/5z.svg" alt=""></li>
+				<li><img src="img/6z.svg" alt=""></li>
+				<li><img src="img/7z.svg" alt=""></li>
+			</ul>
 		</div>
-		<div class="ranklist">
-			<div class="Title1">
-				<h3 style="font-size:36px">個人スコア</h3><br>
-				<ul id="pointRanking"></ul>
+		<a name="game-main" class="target-fix"></a>
+		<div class="game-main"></div>
+		<a name="game" class="target-fix"></a>
+		<div class="game">
+			<div class="rightpart">
+				<h1>リーチ麻雀、</h1>
+				<h2>好牌合理放铳，烂牌坚决不怂<br>有人立直加杠，搏敌生于非洲</h2>
+				<a href="historical_rankings.html" target="_blank">往届对战数据 <span> >>> </span></a>
 			</div>
-			<div class="Title2">
-				<h3 style="font-size:36px">最高スコア</h3><br>
-				<ul id="highScoreRanking"></ul>
+			<div class="leftpart">
+				<img src="img/2025Autumn.png" width="225" height="71">
 			</div>
-			<div class="Title3">
-				<h3 style="font-size:36px">4着回避率</h3><br>
-				<ul id="avoidanceRanking"></ul>
-			</div>
-		</div>
-	</div>
-	<a name="event" class="target-fix"></a>
-	<div class="event">
-		<div class="event-card">
-			<div class="event-header">
-				<span class="event-type">赛季开始</span>
-				<div class="event-title">
-					<i class="fas fa-flag-checkered"></i>
-					<h2>2025年秋季赛开赛</h2>
+			<div class="ranklist">
+				<div class="Title1">
+					<h3 style="font-size:36px">個人スコア</h3><br>
+					<ul id="pointRanking"></ul>
 				</div>
-				<div class="event-date">
-					<i class="far fa-calendar"></i> 2025年9月
+				<div class="Title2">
+					<h3 style="font-size:36px">最高スコア</h3><br>
+					<ul id="highScoreRanking"></ul>
 				</div>
-			</div>
-
-			<div class="event-content">
-				<div class="info-item">
-					<div class="info-icon">
-						<i class="fas fa-calendar-day"></i>
-					</div>
-					<div class="info-text">
-						<h3>比赛轮次</h3>
-						<p>15场正式比赛</p>
-					</div>
-				</div>
-
-				<div class="info-item">
-					<div class="info-icon">
-						<i class="fas fa-clock"></i>
-					</div>
-					<div class="info-text">
-						<h3>比赛频率</h3>
-						<p>每周举办1到2轮比赛</p>
-					</div>
-				</div>
-
-				<div class="participants-section">
-					<div class="section-title">
-						<i class="fas fa-users"></i>
-						<h3>参赛选手</h3>
-					</div>
-					<div class="participants-list">
-						<div class="participant">2yrold</div>
-						<div class="participant">Haraki</div>
-						<div class="participant">Dawn</div>
-						<div class="participant">Xiaobukeai</div>
-						<div class="participant">zhunzhun</div>
-						<div class="participant">Koihs</div>
-						<div class="participant">多元外卷人</div>
-					</div>
+				<div class="Title3">
+					<h3 style="font-size:36px">4着回避率</h3><br>
+					<ul id="avoidanceRanking"></ul>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="historical-link">
-		<a href="historical_events.html" class="historical-link-a" target="_blank">历史事件记录</a>
-		<a href="yc/" class="historical-link-yc" target="_blank">对局计分板</a>
-	</div>
-	<a name="mate" class="target-fix"></a>
-	<div class="mate">
-		<h1>团体成员<span>リーグメンバー</span></h1>
-		<ul>
-			<li>
-				<img src="img/gradeid/4p.svg" alt="">
-				<span>四代目雀士</span>
-				<ol>
-					<li>多元外卷人</li>
-					<li>Xiaobukeai</li>
-					<li>Koihs</li>
-				</ol>
-			</li>
-			<li>
-				<img src="img/gradeid/5p.svg" alt="">
-				<span>五代目雀士</span>
-				<ol>
-					<li>2yrold</li>
-					<li>Dawn</li>
-					<li>Haraki</li>
-					<li>zhunzhun</li>
-				</ol>
-			</li>
-		</ul>
-	</div>
-	<a name="rule" class="target-fix"></a>
-	<div class="rule">
-		<h1>—— 团体规则 ——</h1>
-		<h2>リーグルール</h2>
-		<h3>（2025年6月27日 修订）</h3>
-		<strong>
-			<p>一&nbsp;&nbsp;&nbsp;&nbsp;成员要求 </p><span></span>
-		</strong>
-		<p>我们只要求成员是求真书院（北京）的同学。为了更好地参与团体活动，建议对立直麻将有兴趣的初心者可以先在雀魂或其他平台进行简单的规则学习和对局练习。</p>
-		<p>加入团体是免费的。</p>
-		<p>成为本团体的成员之后，禁止有以下行为：</p>
-		<ol>
-			<li>
-				<p>在未得到许可的情况下、以个人名义发布邀请加入团体等宣传信息（具体地，邀请他人加入时或者发布宣传信息时应该征求大家的同意，以防使用不当言词导致的错误理解，容易招引不必要的误会）；</p>
-			</li>
-			<li>
-				<p>不应该阻碍团体活动正常进行（如多次无故临时拒绝到场、损坏用具等）；</p>
-			</li>
-			<li>
-				<p>不得以团体的名义或使用团体的名字、图标等作为个人私用，特别是营利或非法的目的；</p>
-			</li>
-			<li>
-				<p>行为违反法律法规和学校规定。</p>
-			</li>
-		</ol>
-		<p>违反以上规则的，特别是第 2-4 条，经讨论，一般建议退出团体。</p>
-		<strong>
-			<p>二&nbsp;&nbsp;&nbsp;&nbsp;比赛规则 </p><span></span>
-		</strong>
-		<p><a href="rule.html">积分赛规则</a></p>
-		<p>比赛犯规及处理：</p>
-		<ol>
-			<li>
-				<p>错和（未听、振听、无役、立直改形杠）、不可恢复的炸牌山、诈立直（流局检查）：罚满贯。</p>
-			</li>
-			<li>
-				<p>中途的多牌、少牌，错吃碰杠、误发声：和了放弃。</p>
-			</li>
-			<li>
-				<p>为提高效率，在参赛者一致同意情况下，部分可改正的犯规直接改正即可（如配牌少牌、轻微炸山等）。</p>
-			</li>
-			<li>
-				<p>罚满贯：若为庄家，支付4000all；若为子家，支付 2000,4000. 多人同时需要罚满贯时均计算。</p>
-			</li>
-			<li>
-				<p>和了放弃：不能吃碰杠立直和牌，流局时视为未听牌。</p>
-			</li>
-			<li>
-				<p>规则未能讨论的情况具体由在场者讨论决定。</p>
-			</li>
-		</ol>
-		<p>计分：每学期作为新的赛季，积分清零，另设最高得点赏、避四赏和役满赏.</p>
-		<strong>
-			<p>三&nbsp;&nbsp;&nbsp;&nbsp;团体活动 </p><span></span>
-		</strong>
-		<p>除进行比赛以外、团体还会举行其他活动。目前有作为娱乐项目的如线上雀魂友人间、线下万象修罗等对战，记录分数但不计入比赛分数。</p>
-		<strong>
-			<p>四&nbsp;&nbsp;&nbsp;&nbsp;团体组织和财务 </p><span></span>
-		</strong>
-		<p>团体目前没有设立组织者或管理者，主要事务由商议决定。</p>
-		<p>为避免麻将与赌博之嫌、团体决定不设置任何与金钱有关的竞技奖赏。</p>
-		<div class="clear"></div>
-	</div>
-	<a name="contact" class="target-fix"></a>
-	<div class="contact">
-		<h1>联系我们</h1>
-		<p><b>提交加入团体意愿：</b>联系微信号 harakiseki 或 robotsang 并注明班级和来意。我们很欢迎你的加入！</p>
-		<p><b>合作意向交流：</b>微信号 harakiseki、robotsang.</p>
-		<img src="img/9renn/1m.svg" alt="" id="firstimg">
-		<img src="img/9renn/1m.svg" alt="">
-		<img src="img/9renn/1m.svg" alt="">
-		<img src="img/9renn/2m.svg" alt="">
-		<img src="img/9renn/3m.svg" alt="">
-		<img src="img/9renn/4m.svg" alt="">
-		<img src="img/9renn/5m.svg" alt="">
-		<img src="img/9renn/6m.svg" alt="">
-		<img src="img/9renn/7m.svg" alt="">
-		<img src="img/9renn/8m.svg" alt="">
-		<img src="img/9renn/9m.svg" alt="">
-		<img src="img/9renn/9m.svg" alt="">
-		<img src="img/9renn/9m.svg" alt="">
-	</div>
-	<div class="footer">
-		<p>本团体的图标·名字等与现实人物、事情无关。</p>
-		<p>本团体为非盈利组织，仅为爱好者组织的个人团体。</p>
-		<p>页面编辑：Haraki&2yrold &nbsp;&nbsp;&nbsp;&nbsp; 最后编辑日期：2025 年 6 月 19 日</p>
-		<img src="img/Group 1w.svg" alt="">
-	</div>
-	<div id="clickEffectContainer"></div>
+		<a name="event" class="target-fix"></a>
+		<div class="event">
+			<div class="event-card">
+				<div class="event-header">
+					<span class="event-type">赛季开始</span>
+					<div class="event-title">
+						<i class="fas fa-flag-checkered"></i>
+						<h2>2025年秋季赛开赛</h2>
+					</div>
+					<div class="event-date">
+						<i class="far fa-calendar"></i> 2025年9月
+					</div>
+				</div>
+
+				<div class="event-content">
+					<div class="info-item">
+						<div class="info-icon">
+							<i class="fas fa-calendar-day"></i>
+						</div>
+						<div class="info-text">
+							<h3>比赛轮次</h3>
+							<p>15场正式比赛</p>
+						</div>
+					</div>
+
+					<div class="info-item">
+						<div class="info-icon">
+							<i class="fas fa-clock"></i>
+						</div>
+						<div class="info-text">
+							<h3>比赛频率</h3>
+							<p>每周举办1到2轮比赛</p>
+						</div>
+					</div>
+
+					<div class="participants-section">
+						<div class="section-title">
+							<i class="fas fa-users"></i>
+							<h3>参赛选手</h3>
+						</div>
+						<div class="participants-list">
+							<div class="participant">2yrold</div>
+							<div class="participant">Haraki</div>
+							<div class="participant">Dawn</div>
+							<div class="participant">Xiaobukeai</div>
+							<div class="participant">zhunzhun</div>
+							<div class="participant">Koihs</div>
+							<div class="participant">多元外卷人</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="historical-link">
+			<a href="historical_events.html" class="historical-link-a" target="_blank">历史事件记录</a>
+			<a href="yc/" class="historical-link-yc" target="_blank">对局计分板</a>
+		</div>
+		<a name="mate" class="target-fix"></a>
+		<div class="mate">
+			<h1>团体成员<span>リーグメンバー</span></h1>
+			<ul>
+				<li>
+					<img src="img/gradeid/4p.svg" alt="">
+					<span>四代目雀士</span>
+					<ol>
+						<li>多元外卷人</li>
+						<li>Xiaobukeai</li>
+						<li>Koihs</li>
+					</ol>
+				</li>
+				<li>
+					<img src="img/gradeid/5p.svg" alt="">
+					<span>五代目雀士</span>
+					<ol>
+						<li>2yrold</li>
+						<li>Dawn</li>
+						<li>Haraki</li>
+						<li>zhunzhun</li>
+					</ol>
+				</li>
+			</ul>
+		</div>
+		<a name="rule" class="target-fix"></a>
+		<div class="rule">
+			<h1>—— 团体规则 ——</h1>
+			<h2>リーグルール</h2>
+			<h3>（2025年6月27日 修订）</h3>
+			<strong>
+				<p>一&nbsp;&nbsp;&nbsp;&nbsp;成员要求 </p><span></span>
+			</strong>
+			<p>我们只要求成员是求真书院的同学。为了更好地参与团体活动，建议对立直麻将有兴趣的初心者可以先在雀魂或其他平台进行简单的规则学习和对局练习。</p>
+			<p>加入团体是免费的。</p>
+			<p>成为本团体的成员之后，禁止有以下行为：</p>
+			<ol>
+				<li>
+					<p>在未得到许可的情况下、以个人名义发布邀请加入团体等宣传信息；</p>
+				</li>
+				<li>
+					<p>阻碍团体活动正常进行（如多次无故临时拒绝到场、损坏用具等）；</p>
+				</li>
+				<li>
+					<p>以团体的名义或使用团体的名字、图标等作为个人私用，特别是营利或非法的目的；</p>
+				</li>
+				<li>
+					<p>行为违反法律法规和学校规定。</p>
+				</li>
+			</ol>
+			<p>违反以上规则的，特别是第 2-4 条，经讨论，一般建议退出团体。</p>
+			<strong>
+				<p>二&nbsp;&nbsp;&nbsp;&nbsp;比赛规则 </p><span></span>
+			</strong>
+			<p><a href="rule.html">积分赛规则</a></p>
+			<p>比赛犯规及处理：</p>
+			<ol>
+				<li>
+					<p>错和（未听、振听、无役、立直改形杠）、不可恢复的炸牌山、诈立直（流局检查）：罚满贯。</p>
+				</li>
+				<li>
+					<p>中途的多牌、少牌，错吃碰杠、误发声：和了放弃。</p>
+				</li>
+				<li>
+					<p>为提高效率，在参赛者一致同意情况下，部分可改正的犯规直接改正即可（如配牌少牌、轻微炸山等）。</p>
+				</li>
+				<li>
+					<p>罚满贯：若为庄家，支付 4000 ALL；若为子家，支付 2000,4000。 多人同时需要罚满贯时均计算。</p>
+				</li>
+				<li>
+					<p>和了放弃：不能吃碰杠立直和牌，流局时视为未听牌。</p>
+				</li>
+				<li>
+					<p>规则未能讨论的情况具体由在场者讨论决定。</p>
+				</li>
+			</ol>
+			<p>计分：每学期作为新的赛季，积分清零，计总分优胜以外，另设最高得点赏、四位回避赏、全勤赏和役满赏.</p>
+			<strong>
+				<p>三&nbsp;&nbsp;&nbsp;&nbsp;团体活动 </p><span></span>
+			</strong>
+			<p>除进行比赛以外，团体还会举行其他活动。目前有作为娱乐项目的如线上雀魂友人间、线下万象修罗等对战，记录分数但不计入比赛分数。</p>
+			<strong>
+				<p>四&nbsp;&nbsp;&nbsp;&nbsp;团体组织和财务 </p><span></span>
+			</strong>
+			<p>本联盟的名称为 TanYau.LEAGUE （大小写可修改、中间的.可以更换为-或不写出），统一使用「联盟」称呼。联盟的图标为页面左上方的图形（右侧的文字形式和图形的颜色可以修改）。</p>
+			<p>团体目前没有设立组织者或管理者，主要事务由商议决定。</p>
+			<p>为避免麻将与赌博之嫌，团体决定不设置任何与金钱有关的竞技奖赏。</p>
+			<div class="clear"></div>
+		</div>
+		<a name="contact" class="target-fix"></a>
+		<div class="contact">
+			<h1>联系我们</h1>
+			<p><b>提交加入团体意愿：</b>联系微信号 harakiseki 或 robotsang 并注明班级和来意。我们很欢迎你的加入！</p>
+			<p><b>合作意向交流：</b>微信号 harakiseki、robotsang.</p>
+			<img src="img/9renn/1m.svg" alt="" id="firstimg">
+			<img src="img/9renn/1m.svg" alt="">
+			<img src="img/9renn/1m.svg" alt="">
+			<img src="img/9renn/2m.svg" alt="">
+			<img src="img/9renn/3m.svg" alt="">
+			<img src="img/9renn/4m.svg" alt="">
+			<img src="img/9renn/5m.svg" alt="">
+			<img src="img/9renn/6m.svg" alt="">
+			<img src="img/9renn/7m.svg" alt="">
+			<img src="img/9renn/8m.svg" alt="">
+			<img src="img/9renn/9m.svg" alt="">
+			<img src="img/9renn/9m.svg" alt="">
+			<img src="img/9renn/9m.svg" alt="">
+		</div>
+		<div class="footer">
+			<p>本团体的图标·名字等与现实人物、事情无关。</p>
+			<p>本团体为非盈利组织，仅为爱好者组织的个人团体。</p>
+			<p>页面编辑：Haraki&2yrold &nbsp;&nbsp;&nbsp;&nbsp; 最后编辑日期：2025 年 6 月 19 日</p>
+			<img src="img/Group 1w.svg" alt="">
+		</div>
+		<div id="clickEffectContainer"></div>
+	</body>
 	<script src="js/index.js"></script>
 
 </html>

@@ -22,32 +22,22 @@
 	padding: 20px;
 	margin-left: 10%;
 	float: left;
+	cursor: pointer;
 }
 
 .season-rankings .game {
-    display: flex;
-    flex-direction: column; /* 改为垂直布局 */
-    align-items: center;
-    width: 100%; /* 保持100%宽度 */
-    background: white;
-    z-index: -1;
-    padding: 0px 60px; /* 调整内边距 */
-    border-radius: 15px;
-    overflow: hidden;
-    box-sizing: border-box; /* 确保内边距不影响宽度 */
-}
-
-/*.game {
-	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	width: 100%;
 	background: white;
 	z-index: -1;
-	padding-top: 100px;
-	padding-bottom: 100px;
+	padding: 0px 60px;
+	padding-bottom: 40px;
 	border-radius: 15px;
 	overflow: hidden;
-	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}*/
+	box-sizing: border-box;
+}
 
 .game .leftpart {
 	align-self: flex-start;
@@ -184,7 +174,8 @@ body {
 	align-items: center;
 	flex-direction: column;
 	margin: 0px;
-  	overflow-x: hidden; /* 防止水平滚动条 */
+	overflow-x: hidden;
+	/* 防止水平滚动条 */
 }
 
 .container {
@@ -192,7 +183,478 @@ body {
 	width: 0%;
 	padding: 20px;
 	display: flex;
-  	flex-direction: column;
-  	align-items: center;
+	flex-direction: column;
+	align-items: center;
 	margin: 0 auto;
+}
+
+.footer-note {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	text-align: left;
+	color: #ffffff33;
+	font-size: 0.9rem;
+	opacity: 0.8;
+	z-index: 0;
+}
+
+/* 新增全宽区块样式 */
+.full-section {
+	width: 100%;
+	max-width: 1200px;
+	margin: 60px auto;
+	box-sizing: border-box;
+}
+
+/* 排行榜全宽调整 */
+.season-rankings {
+	width: 100%;
+	padding: 0px;
+	box-sizing: border-box;
+	background: white;
+	/* 添加背景色 */
+	border-radius: 15px;
+	/* 添加圆角 */
+	position: relative;
+	/* 确保伪元素定位正确 */
+	overflow: hidden;
+	/* 隐藏超出圆角的部分 */
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+	/* 添加阴影 */
+}
+
+/* 排行榜内部布局调整 */
+.season-rankings .ranklist {
+	display: flex;
+	justify-content: space-between;
+	gap: 30px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.season-rankings .Title1,
+.season-rankings .Title2,
+.season-rankings .Title3 {
+	flex: 1;
+	min-width: 30%;
+	/* 确保最小宽度 */
+	background: white;
+	/* 添加背景色 */
+	border-radius: 15px;
+	/* 添加圆角 */
+	padding: 20px;
+	/* 添加内边距 */
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	/* 添加阴影 */
+	box-sizing: border-box;
+	/* 确保内边距不影响宽度 */
+}
+
+.season-rankings .Title1 h3,
+.season-rankings .Title2 h3,
+.season-rankings .Title3 h3 {
+	font-size: 36px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.season-rankings ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+@media (max-width: 1100px) {
+	.season-rankings .ranklist {
+		flex-wrap: wrap;
+	}
+
+	.season-rankings .Title1,
+	.season-rankings .Title2,
+	.season-rankings .Title3 {
+		min-width: 45%;
+		margin-bottom: 20px;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.season-rankings .Title1,
+	.season-rankings .Title2,
+	.season-rankings .Title3 {
+		min-width: 100%;
+	}
+}
+
+/* 奖项全宽调整 */
+.award-section {
+	width: 100%;
+	padding: 40px;
+	box-sizing: border-box;
+	background: white;
+	/* 添加背景色 */
+	border-radius: 15px;
+	/* 添加圆角 */
+	position: relative;
+	/* 确保伪元素定位正确 */
+	overflow: hidden;
+	/* 隐藏超出圆角的部分 */
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+	/* 添加阴影 */
+}
+
+.award-section::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 5px;
+	background: linear-gradient(to right, #e74c3c, #3498db, #2ecc71, #9b59b6);
+	z-index: 1;
+}
+
+.award-header {
+	text-align: center;
+	margin-bottom: 40px;
+	position: relative;
+}
+
+.award-header h2 {
+	font-size: 2.8rem;
+	color: #2c3e50;
+	margin-bottom: 15px;
+	position: relative;
+	display: inline-block;
+	padding: 0 20px;
+}
+
+.award-header h2::before,
+.award-header h2::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	width: 100px;
+	height: 3px;
+	background: linear-gradient(to right, #e74c3c, #3498db);
+}
+
+.award-header h2::before {
+	left: -110px;
+}
+
+.award-header h2::after {
+	right: -110px;
+}
+
+.award-header h2 i {
+	font-size: 40px;
+}
+
+.award-header p {
+	font-size: 1.2rem;
+	color: #7f8c8d;
+	max-width: 800px;
+	margin: 0 auto;
+	line-height: 1.6;
+}
+
+.season-info {
+	text-align: center;
+	background: #f8f9fa;
+	padding: 15px;
+	font-size: 1.1rem;
+	border-radius: 10px;
+	margin: 30px auto;
+	max-width: 800px;
+	border-left: 5px solid #e74c3c;
+	border-right: 5px solid #e74c3c;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.season-info span {
+	font-weight: bold;
+	color: #3498db;
+	margin: 0 10px;
+}
+
+.Award {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 20px;
+}
+
+@media (min-width: 1024px) {
+	.award-item {
+		flex: 1;
+		min-width: 230px;
+		max-width: 260px;
+	}
+}
+
+/* Larger screens */
+@media (min-width: 1280px) {
+	.award-item {
+		max-width: 280px;
+	}
+}
+
+.award-item {
+	width: 240px;
+	text-align: center;
+	background: white;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	position: relative;
+	z-index: 2;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.award-item:hover {
+	transform: translateY(-15px) scale(1.03);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+	z-index: 3;
+	transform: translateY(-5px);
+}
+
+.award-title {
+	color: white;
+	padding: 20px 15px;
+	font-size: 1.5rem;
+	font-weight: bold;
+	position: relative;
+	letter-spacing: 1px;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	overflow: visible;
+}
+
+.award-title.champion {
+	background: linear-gradient(45deg, #e74c3c, #c0392b);
+}
+
+.award-title.high-point {
+	background: linear-gradient(45deg, #3498db, #2980b9);
+}
+
+.award-title.avoid-fourth {
+	background: linear-gradient(45deg, #2ecc71, #27ae60);
+}
+
+.award-title.full-attendance {
+	background: linear-gradient(45deg, #9b59b6, #8e44ad);
+}
+
+.award-icon {
+	position: absolute;
+	top: 20px;
+	left: 10px;
+	background: white;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.award-icon i {
+	font-size: 24px;
+}
+
+.champion .award-icon i {
+	color: #e74c3c;
+}
+
+.high-point .award-icon i {
+	color: #3498db;
+}
+
+.avoid-fourth .award-icon i {
+	color: #2ecc71;
+}
+
+.full-attendance .award-icon i {
+	color: #9b59b6;
+}
+
+.player-photo {
+	padding: 25px 20px 20px;
+	position: relative;
+}
+
+/* 方形头像设计 */
+.player-photo img {
+	width: 160px;
+	height: 160px;
+	object-fit: cover;
+	border: 5px solid #ecf0f1;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+	border-radius: 8px;
+	transition: all 0.3s ease;
+}
+
+.award-item:hover .player-photo img {
+	transform: scale(1.05);
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.player-name {
+	padding: 20px 15px;
+	background: #f8f9fa;
+	font-size: 1.4rem;
+	font-weight: bold;
+	color: #2c3e50;
+	position: relative;
+}
+
+.player-name::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 60px;
+	height: 3px;
+	background: #3498db;
+}
+
+.medal {
+	position: absolute;
+	top: 5px;
+	/* Center vertically */
+	right: 20px;
+	transform: translateY(-50%);
+	/* Perfect vertical centering */
+	font-size: 40px !important;
+	width: 40px;
+	height: 40px;
+	filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+	z-index: 10;
+}
+
+.medal i {
+	/* Target the icon element directly */
+	display: inline-block !important;
+	width: 100% !important;
+	height: 100% !important;
+	font-size: inherit !important;
+	/* Force inheritance */
+}
+
+.champion .medal {
+	color: gold;
+}
+
+.high-point .medal {
+	color: #9b59b6;
+}
+
+.avoid-fourth .medal {
+	color: #9b59b6;
+}
+
+/* bronze */
+.full-attendance .medal {
+	color: silver;
+}
+
+.stats {
+	display: flex;
+	justify-content: center;
+	padding: 15px 10px;
+	background: #f1f2f6;
+	border-top: 1px solid #e0e0e0;
+}
+
+.stat-item {
+	padding: 0 15px;
+	border-right: 1px solid #ddd;
+}
+
+.stat-item:last-child {
+	border-right: none;
+}
+
+.stat-value {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #2c3e50;
+}
+
+.stat-label {
+	font-size: 0.85rem;
+	color: #7f8c8d;
+	margin-top: 5px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1100px) {
+	.Award {
+		gap: 25px;
+	}
+
+	.award-item {
+		width: 220px;
+	}
+}
+
+@media (max-width: 900px) {
+	.Award {
+		gap: 20px;
+	}
+
+	.award-item {
+		width: 45%;
+		max-width: 280px;
+	}
+
+	.award-header h2 {
+		font-size: 2.3rem;
+	}
+
+	.award-header h2::before,
+	.award-header h2::after {
+		width: 50px;
+	}
+
+	.award-header h2::before {
+		left: -60px;
+	}
+
+	.award-header h2::after {
+		right: -60px;
+	}
+}
+
+@media (max-width: 600px) {
+	.Award {
+		flex-direction: column;
+		align-items: center;
+		gap: 35px;
+	}
+
+	.award-item {
+		width: 90%;
+		max-width: 320px;
+	}
+
+	.award-header h2 {
+		font-size: 2rem;
+	}
+
+	.award-header h2::before,
+	.award-header h2::after {
+		display: none;
+	}
+
+	.award-section {
+		padding: 30px 20px;
+	}
 }

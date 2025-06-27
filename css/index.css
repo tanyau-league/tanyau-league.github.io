@@ -626,6 +626,20 @@ strong>span {
 	height: 100px;
 }
 
+.rule a{
+	color: #22519d;
+	text-decoration: none;
+	font-weight: bold;
+}
+.rule a:visited{
+	color: #22519d;
+}
+.rule a:hover{
+	color: #2494c7;
+	transition: color 0.1s;
+}
+
+
 .contact {
 	height: 520px;
 	width: 100%;
