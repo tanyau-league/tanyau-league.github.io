@@ -24,16 +24,6 @@
 	float: left;
 }
 
-.logo-link {
-	display: inline-block;
-	transition: transform 0.3s ease;
-}
-
-.logo-link:hover {
-	transform: scale(1.05);
-	opacity: 0.9;
-}
-
 .top ul {
 	list-style: none;
 	float: right;
