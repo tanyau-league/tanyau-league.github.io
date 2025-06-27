@@ -285,7 +285,7 @@ function reach(n) {
 		score[n] += 1000;
 		kyoutaku--;
 		for (let i = logs.length - 1; i >= 0; i--) {
-			if (logs[i] == ("reach " + n)) {
+			if (logs[i]["type"]=="reach" && logs[i]["player"]== n) {
 				logs.splice(i, 1);
 				break;
 			}
