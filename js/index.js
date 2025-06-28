@@ -19,20 +19,36 @@ const playerDatabase = [
 	new Player("zhunzhun", 0, 0, 0)
 ];
 
+document.addEventListener('DOMContentLoaded', () => {
+	// 选择所有选手列表项
+	const players = document.querySelectorAll('.mate ol li');
+
+	players.forEach(player => {
+		// 添加手型光标
+		player.style.cursor = 'pointer';
+
+		// 添加点击事件
+		player.addEventListener('click', () => {
+			const playerName = encodeURIComponent(player.textContent.trim());
+			window.location.href = `Personal_info.html?player=${playerName}`;
+		});
+	});
+});
+
 // 玩家数据操作接口
 const PlayerManager = {
 	// 获取所有玩家数据
-	getAllPlayers: function() {
+	getAllPlayers: function () {
 		return [...playerDatabase];
 	},
 
 	// 按名称查找玩家
-	getPlayerByName: function(name) {
+	getPlayerByName: function (name) {
 		return playerDatabase.find(player => player.name === name);
 	},
 
 	// 更新玩家数据
-	updatePlayer: function(name, data) {
+	updatePlayer: function (name, data) {
 		const player = this.getPlayerByName(name);
 		if (player) {
 			Object.assign(player, data);
@@ -42,7 +58,7 @@ const PlayerManager = {
 	},
 
 	// 添加新玩家
-	addPlayer: function(name, point = 0, highScore = 0, avoidanceRate = 0) {
+	addPlayer: function (name, point = 0, highScore = 0, avoidanceRate = 0) {
 		if (!this.getPlayerByName(name)) {
 			playerDatabase.push(new Player(name, point, highScore, avoidanceRate));
 			return true;
@@ -51,7 +67,7 @@ const PlayerManager = {
 	},
 
 	// 删除玩家
-	removePlayer: function(name) {
+	removePlayer: function (name) {
 		const index = playerDatabase.findIndex(p => p.name === name);
 		if (index !== -1) {
 			playerDatabase.splice(index, 1);
@@ -61,17 +77,17 @@ const PlayerManager = {
 	},
 
 	// 按积分排序
-	sortByPoints: function() {
+	sortByPoints: function () {
 		return [...playerDatabase].sort((a, b) => b.point - a.point);
 	},
 
 	// 按最高分排序
-	sortByHighScore: function() {
+	sortByHighScore: function () {
 		return [...playerDatabase].sort((a, b) => b.highScore - a.highScore);
 	},
 
 	// 按回避率排序
-	sortByAvoidanceRate: function() {
+	sortByAvoidanceRate: function () {
 		return [...playerDatabase].sort((a, b) => b.avoidanceRate - a.avoidanceRate);
 	}
 };
@@ -79,7 +95,7 @@ const PlayerManager = {
 // 排行榜渲染器
 const RankRenderer = {
 	// 生成单个玩家项的HTML
-	_generatePlayerHTML: function(player, rank, criteria) {
+	_generatePlayerHTML: function (player, rank, criteria) {
 		const isFirst = rank === 0;
 		const bgColor = isFirst ? "#3b863e" : "#ffffff";
 		const textColor = isFirst ? "white" : "black";
@@ -116,7 +132,7 @@ const RankRenderer = {
 	},
 
 	// 渲染单个排行榜
-	renderRanking: function(containerId, players, criteria) {
+	renderRanking: function (containerId, players, criteria) {
 		const container = document.getElementById(containerId);
 		if (!container) return;
 
@@ -126,7 +142,7 @@ const RankRenderer = {
 	},
 
 	// 渲染所有排行榜
-	renderAllRankings: function() {
+	renderAllRankings: function () {
 		this.renderRanking('pointRanking', PlayerManager.sortByPoints(), 'point');
 		this.renderRanking('highScoreRanking', PlayerManager.sortByHighScore(), 'highScore');
 		this.renderRanking('avoidanceRanking', PlayerManager.sortByAvoidanceRate(), 'avoidanceRate');
@@ -134,7 +150,7 @@ const RankRenderer = {
 };
 
 // 页面加载时初始化排行榜
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	RankRenderer.renderAllRankings();
 });
 
@@ -220,7 +236,7 @@ async function updatePlayerData() {
 }
 
 // 页面加载时自动更新数据
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
 	// 先渲染一次初始排行榜（显示0数据）
 	RankRenderer.renderAllRankings();
 
@@ -229,7 +245,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 ;
-(function() {
+(function () {
 	const TEXTS = [];
 	const TEXT_COLORS = [];
 	const container = document.createElement('div');
@@ -338,7 +354,7 @@ const directory = document.querySelectorAll('.target-fix');
 const links = document.querySelectorAll('.top a');
 const dropdownLinks = document.querySelectorAll('.dropdown-content a');
 const dropbtn = document.querySelector('.dropbtn');
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
 	let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 	let ed = -1;
 	links.forEach(link => link.classList.remove("selected"));

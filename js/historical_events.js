@@ -96,7 +96,7 @@ const manualEvents = [{
 		title: "4月19日比赛",
 		description: "精彩对局，4位选手参与",
 		participants: ["2yrold", "Haraki", "Dawn", "Xiaobukeai"],
-		pointChanges: ["+73.1", "+14.9", "-71.9", "-26.1"],
+		pointChanges: ["+73.1", "+14.9", "-71.9", "-16.1"],
 		icon: "fa-trophy"
 	},
 	{
@@ -157,6 +157,16 @@ const manualEvents = [{
 		description: "精彩对局，4位选手参与",
 		participants: ["2yrold", "Haraki", "Dawn", "Xiaobukeai"],
 		pointChanges: ["-22.1", "-60.6", "+82.0", "+0.7"],
+		icon: "fa-trophy"
+	},
+	{
+		id: "spring-match",
+		type: "match",
+		date: "2025-05-17",
+		title: "5月17日比赛",
+		description: "精彩对局，4位选手参与",
+		participants: ["2yrold", "Haraki", "Dawn", "Xiaobukeai"],
+		pointChanges: ["-18.3", "+64.6", "-55.6", "+9.3"],
 		icon: "fa-trophy"
 	},
 	{

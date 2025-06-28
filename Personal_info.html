@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/main.ico">
+    <link rel="stylesheet" href="css/Personal_info.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="top"> <img src="img/TanYau-League.png" alt="logo" onclick="location.reload();"> </div>
+    <div class="container">
+        <div class="player-header">
+            <div class="player-avatar">
+                <img id="player-avatar" alt="头像" onerror="handleAvatarError(this)">
+            </div>
+            <div class="player-info">
+                <h1 class="player-name" id="player-name">加载中...</h1>
+                <div class="player-id">数据统计来源于tanyau-data</div>
+            </div>
+        </div>
+
+        <div id="stats-container">
+            <div class="loader">
+                <i class="fas fa-spinner"></i>
+                <p>正在加载玩家数据...</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>TanYauLEAGUE数据统计系统 &copy; 2025 | 数据更新于 <span id="update-time"></span></p>
+        </div>
+    </div>
+    <script src="js/Personal_info.js"></script>
+</body>
+
+</html>
