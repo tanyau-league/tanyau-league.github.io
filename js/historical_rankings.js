@@ -207,7 +207,7 @@ function renderAllSeasons() {
 	// 添加点击事件
 	document.querySelectorAll('.award-item').forEach(card => {
 		card.addEventListener('click', () => {
-			window.open("award_instructions.html", "_blank");
+			window.open("Award_Instructions.html", "_blank");
 		});
 	});
 }
