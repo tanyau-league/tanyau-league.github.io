@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="_图层_1"
+   data-name="图层 1"
+   viewBox="0 0 19 26"
+   version="1.1"
+   sodipodi:docname="back.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="46.807692"
+     inkscape:cx="9.4963024"
+     inkscape:cy="13"
+     inkscape:window-width="2560"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="_图层_1" />
+  <defs
+     id="defs1">
+    <style
+       id="style1">
+      .cls-1 {
+        fill: #93989c;
+      }
+
+      .cls-2 {
+        fill: #f5f6f7;
+      }
+    </style>
+  </defs>
+  <rect
+     class="cls-2"
+     x=".12"
+     y=".12"
+     width="18.75"
+     height="25.75"
+     rx="1.88"
+     ry="1.88"
+     id="rect1"
+     style="fill:#e79c44;fill-opacity:1" />
+  <path
+     class="cls-1"
+     d="M17,.25c.96,0,1.75,.79,1.75,1.75V24c0,.96-.79,1.75-1.75,1.75H2c-.96,0-1.75-.79-1.75-1.75V2C.25,1.04,1.04,.25,2,.25h15m0-.25H2C.9,0,0,.9,0,2V24c0,1.1,.9,2,2,2h15c1.1,0,2-.9,2-2V2c0-1.1-.9-2-2-2h0Z"
+     id="path1"
+     style="fill:#dd923a;fill-opacity:1" />
+</svg>
