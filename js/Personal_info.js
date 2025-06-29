@@ -59,6 +59,7 @@ const getGitHubFile = async function () {
 // 存储玩家数据
 let playerHands = {};
 let playerAchievements = {};
+let playerDescriptions = {};
 
 // 加载玩家数据（牌型和称号）
 async function loadPlayerData() {
@@ -67,6 +68,11 @@ async function loadPlayerData() {
         const handsScript = document.createElement('script');
         handsScript.src = 'data/hands.js';
         document.head.appendChild(handsScript);
+
+        // 加载牌型描述 JS 文件
+        const descriptionsScript = document.createElement('script');
+        descriptionsScript.src = 'data/descriptions.js';
+        document.head.appendChild(descriptionsScript);
 
         // 加载称号数据 JS 文件
         const achievementsScript = document.createElement('script');
@@ -77,20 +83,28 @@ async function loadPlayerData() {
         await new Promise((resolve) => {
             let loadedCount = 0;
             const checkLoaded = () => {
-                if (++loadedCount === 2) resolve();
+                if (++loadedCount === 3) resolve();
             };
 
             handsScript.onload = checkLoaded;
+            descriptionsScript.onload = checkLoaded;
             achievementsScript.onload = checkLoaded;
+
+            // 添加错误处理
+            handsScript.onerror = checkLoaded;
+            descriptionsScript.onerror = checkLoaded;
+            achievementsScript.onerror = checkLoaded;
         });
 
         // 确保全局变量存在
         window.playerHands = window.playerHands || {};
+        window.playerDescriptions = window.playerDescriptions || {};
         window.playerAchievements = window.playerAchievements || {};
 
     } catch (error) {
         console.error('加载玩家数据失败:', error);
         window.playerHands = {};
+        window.playerDescriptions = {};
         window.playerAchievements = {};
     }
 }
@@ -292,6 +306,27 @@ function renderTiles(tiles) {
     return html;
 }
 
+//渲染和牌描述的函数
+function renderDescriptions(descriptions) {
+    // 确保 descriptions 是数组类型
+    if (!Array.isArray(descriptions)) {
+        descriptions = [descriptions];
+    }
+
+    // 处理描述不存在的情况
+    if (!descriptions || descriptions.length === 0) {
+        return '<div class="no-description">暂无牌型描述</div>';
+    }
+    
+    // 正确处理数组类型的描述
+    let html = '<div class="descriptions-container">';
+    descriptions.forEach(desc => {
+        html += `<p>${desc}</p>`;
+    });
+    html += '</div>';
+    return html;
+}
+
 // 渲染称号的函数
 function renderAchievements(achievements) {
     let html = '';
@@ -318,8 +353,15 @@ function renderStats(stats) {
     // 清空加载动画
     container.innerHTML = '';
 
+    // 调试信息 - 帮助我们查看实际加载的数据
+    console.log("Player Name:", playerName);
+    console.log("Player Hands:", window.playerHands[playerName]);
+    console.log("Player Descriptions:", window.playerDescriptions[playerName]);
+    console.log("Player Achievements:", window.playerAchievements[playerName]);
+
     // 获取当前玩家的牌型和称号
     const handTiles = window.playerHands[playerName] || [];
+    const descriptions = window.playerDescriptions[playerName] || [];
     const achievements = window.playerAchievements[playerName] || [];
 
     // 创建统计网格
@@ -336,6 +378,9 @@ function renderStats(stats) {
                     <h3><i class="fas fa-trophy"></i> 最近大和</h3>
                     <div class="mahjong-tiles">
                         ${renderTiles(handTiles)}
+                    </div>
+                    <div class="hand-description">
+                        ${renderDescriptions(descriptions)}
                     </div>
                 </div>
                 <div class="stat-card">
