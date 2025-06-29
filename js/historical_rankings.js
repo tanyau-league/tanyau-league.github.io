@@ -207,7 +207,7 @@ function renderAllSeasons() {
 	// 添加点击事件
 	document.querySelectorAll('.award-item').forEach(card => {
 		card.addEventListener('click', () => {
-			window.location.href = 'Award_Instructions.html';
+			window.open("award_instructions.html", "_blank");
 		});
 	});
 }
@@ -368,7 +368,7 @@ function generateAwardItem(award, type, title, icon) {
 })();
 document.querySelectorAll('.award-item').forEach(card => {
 	card.addEventListener('click', () => {
-		window.location.href = 'Award_Instructions.html';
+		window.open("award_instructions.html", "_blank");
 	});
 });
 const directory = document.querySelectorAll('.target-fix');

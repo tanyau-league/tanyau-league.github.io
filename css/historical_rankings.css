@@ -203,25 +203,21 @@ body {
 .full-section {
 	width: 100%;
 	max-width: 1200px;
-	margin: 60px auto;
+	margin: 30px auto;
 	box-sizing: border-box;
 }
-
+.full-section:nth-child(odd){
+	margin-top: 60px;
+}
 /* 排行榜全宽调整 */
 .season-rankings {
 	width: 100%;
 	padding: 0px;
 	box-sizing: border-box;
 	background: white;
-	/* 添加背景色 */
 	border-radius: 15px;
-	/* 添加圆角 */
 	position: relative;
-	/* 确保伪元素定位正确 */
 	overflow: hidden;
-	/* 隐藏超出圆角的部分 */
-	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-	/* 添加阴影 */
 }
 
 /* 排行榜内部布局调整 */
@@ -237,7 +233,7 @@ body {
 .season-rankings .Title2,
 .season-rankings .Title3 {
 	flex: 1;
-	min-width: 30%;
+	min-width: 33%;
 	/* 确保最小宽度 */
 	background: white;
 	/* 添加背景色 */
@@ -299,9 +295,6 @@ body {
 	position: relative;
 	/* 确保伪元素定位正确 */
 	overflow: hidden;
-	/* 隐藏超出圆角的部分 */
-	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-	/* 添加阴影 */
 }
 
 .award-section::before {
@@ -422,7 +415,6 @@ body {
 	z-index: 3;
 	transform: translateY(-5px);
 }
-
 .award-title {
 	color: white;
 	padding: 20px 15px;
@@ -461,7 +453,6 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .award-icon i {
@@ -502,7 +493,6 @@ body {
 
 .award-item:hover .player-photo img {
 	transform: scale(1.05);
-	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
 .player-name {
@@ -535,7 +525,6 @@ body {
 	font-size: 40px !important;
 	width: 40px;
 	height: 40px;
-	filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
 	z-index: 10;
 }
 
@@ -553,16 +542,16 @@ body {
 }
 
 .high-point .medal {
-	color: #9b59b6;
+	color: #25ffbe;
 }
 
 .avoid-fourth .medal {
-	color: #9b59b6;
+	color: #c7ff0e;
 }
 
 /* bronze */
 .full-attendance .medal {
-	color: silver;
+	color: #ffcafa;
 }
 
 .stats {
