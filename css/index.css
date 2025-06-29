@@ -516,39 +516,68 @@
 
 .mate ul>li {
 	margin-left: 5%;
-	margin-top: 20px;
+	margin-top: 40px;
 }
 
 .mate ul>li>img {
-	height: 25px;
+	height: 40px;
 	box-shadow: 0px 0px 0px 3px #c52922;
+	vertical-align: middle;
 }
 
 .mate ul>li span {
 	font-size: 30px;
-	margin-left: 5px;
+	margin-left: 10px;
 	font-weight: bold;
 	color: #c52922;
 	font-family: "Noto Serif SC";
+	vertical-align: middle;
 }
 
 .mate ul ol li {
 	font-size: 20px;
-	display: inline;
-	margin-right: 50px;
+	display: inline-block;
+	margin-right: 0px;
+	
 }
-
+.mate ul ol li a{
+	display: block;
+	width: auto;
+	height: 50px;
+	color: #000;
+	text-decoration: none;
+	padding: 20px 40px 20px 20px;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+	transition: background 0.1s;
+}
+.mate ul ol li a:hover{
+	background: #c52922;
+	color: #fff;
+}
+.mate ul ol li p{
+	display: inline-block;
+	font-size: 25px;
+	line-height: 50px;
+	vertical-align: middle;
+	font-weight: 300;
+}
+.mate ul ol li img{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	vertical-align: middle;
+	margin-right: 20px;
+	border: 3px solid #fff;
+}
 .mate ol li {
 	margin: 5px 0;
-	padding: 5px 10px;
+	padding: 0px 5px;
 	cursor: pointer;
 	transition: background-color 0.3s;
 }
 
-.mate ol li:hover {
-	background-color: #e6f7ff;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
 
 .rule {
 	height: auto;

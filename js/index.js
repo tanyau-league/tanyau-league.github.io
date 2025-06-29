@@ -19,21 +19,6 @@ const playerDatabase = [
 	new Player("zhunzhun", 0, 0, 0)
 ];
 
-document.addEventListener('DOMContentLoaded', () => {
-	// 选择所有选手列表项
-	const players = document.querySelectorAll('.mate ol li');
-
-	players.forEach(player => {
-		// 添加手型光标
-		player.style.cursor = 'pointer';
-
-		// 添加点击事件
-		player.addEventListener('click', () => {
-			const playerName = encodeURIComponent(player.textContent.trim());
-			window.location.href = `Personal_info.html?player=${playerName}`;
-		});
-	});
-});
 
 // 玩家数据操作接口
 const PlayerManager = {
