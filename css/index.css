@@ -168,8 +168,11 @@
 	position: absolute;
 	font-family: "Noto Serif SC";
 	z-index: 30;
+	transition: margin-left 0.1s;
 }
-
+.banner a:hover{
+	margin-left: 11%;
+}
 .banner a::after {
 	content: " >";
 	font-size: 36px;
@@ -242,7 +245,7 @@
 .game .ranklist .Title1,
 .game .ranklist .Title2,
 .game .ranklist .Title3 {
-	margin-top: 180px;
+	margin-top: 200px;
 	width: 300px;
 	display: inline-block;
 }
@@ -338,8 +341,16 @@
 	margin-top: 150px;
 	text-align: right;
 	margin-right: 70px;
+	transition: all 0.1s;
 }
-
+.game .rightpart a:hover{
+	background: #48a54b;
+	background-size: 50px 50px;
+	background-image: linear-gradient(45deg, #00000010 25%, transparent 25%, transparent),
+		linear-gradient(-45deg, #00000010 25%, transparent 25%, transparent),
+		linear-gradient(45deg, transparent 75%, #00000010 75%),
+		linear-gradient(-45deg, transparent 75%, #00000010 75%);
+}
 .game .rightpart a span {
 	font-family: consolas;
 }
@@ -469,6 +480,7 @@
 	border-radius: 30px;
 	font-size: 0.95rem;
 	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+	cursor: pointer;
 }
 
 .historical-link a {
@@ -562,6 +574,7 @@
 	line-height: 50px;
 	vertical-align: middle;
 	font-weight: 300;
+	font-family: "noto sans sc";
 }
 .mate ul ol li img{
 	height: 50px;
@@ -773,10 +786,28 @@ strong>span {
 		linear-gradient(45deg, transparent 75%, #00000008 75%),
 		linear-gradient(-45deg, transparent 75%, #00000008 75%);
 	margin-right: 30px;
+	transition: all 0.1s;
 }
-
+.historical-link a.historical-link-a:hover {
+	background: #fc5141;
+	background-size: 50px 50px;
+	background-image: linear-gradient(45deg, #00000008 25%, transparent 25%, transparent),
+		linear-gradient(-45deg, #00000008 25%, transparent 25%, transparent),
+		linear-gradient(45deg, transparent 75%, #00000008 75%),
+		linear-gradient(-45deg, transparent 75%, #00000008 75%);
+	margin-right: 30px;
+}
 .historical-link a {
 	background: #3b863e;
+	background-size: 50px 50px;
+	background-image: linear-gradient(45deg, #00000008 25%, transparent 25%, transparent),
+		linear-gradient(-45deg, #00000008 25%, transparent 25%, transparent),
+		linear-gradient(45deg, transparent 75%, #00000008 75%),
+		linear-gradient(-45deg, transparent 75%, #00000008 75%);
+	transition: all 0.1s;
+}
+.historical-link a:hover{
+	background: #48a54b;
 	background-size: 50px 50px;
 	background-image: linear-gradient(45deg, #00000008 25%, transparent 25%, transparent),
 		linear-gradient(-45deg, #00000008 25%, transparent 25%, transparent),

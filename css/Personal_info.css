@@ -118,10 +118,6 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
 
 .stat-card h3 {
     font-size: 1.4rem;
@@ -144,8 +140,6 @@ body {
 /* 添加全宽卡片样式 */
 .stat-card.full-width {
     grid-column: 1 / -1;
-    /* 占据所有列 */
-    margin-top: 30px;
 }
 
 /* 称号墙样式 - 修改为单独一行 */
@@ -168,11 +162,6 @@ body {
     box-shadow: 0 3px 8px var(--shadow-color);
     overflow: hidden;
     transition: transform 0.3s ease;
-}
-
-.achievement-slot:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .achievement-slot img {
@@ -204,11 +193,6 @@ body {
     margin: 0 -1px; /* 负边距使牌重叠 */
 }
 
-.tile-slot:hover {
-    background: #e9ecef;
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
 
 /* 添加麻将牌样式 */
 .tile-slot .mahjong-tile {

@@ -168,9 +168,9 @@ body {
 	z-index: 10;
 }
 
-.event-card:hover {
+.event-card.match:hover {
 	transform: translateY(-5px) scale(1.02);
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 3px 6px #00000033;
 }
 
 .event-card.club {
@@ -432,7 +432,7 @@ body {
 	}
 }
 .footer {
-	height: 150px;
+	height: 200px;
 	width: 100%;
 	background: #383838;
 	padding-top: 50px;

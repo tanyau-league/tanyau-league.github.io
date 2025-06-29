@@ -165,7 +165,6 @@ function renderAllSeasons() {
         <div class="award-section">
           <div class="award-header">
             <h2><i class="fas fa-trophy"></i> 获奖名单</h2>
-            <p>经过激烈角逐，以下选手在比赛中脱颖而出，获得了各项荣誉奖项</p>
           </div>
           <div class="season-info">
             <i class="fas fa-calendar-alt"></i> 比赛赛季: <span>${season.seasonName}</span> |
