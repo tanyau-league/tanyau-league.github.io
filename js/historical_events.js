@@ -1,4 +1,5 @@
 // 手动添加的事件数据
+var signal_rev=0;
 const manualEvents = [{
 		id: "spring-match",
 		type: "match",
@@ -495,9 +496,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		this.classList.toggle('active');
 		const timeline = document.getElementById('timeline');
 		const cards = Array.from(timeline.children);
-
-		// 反转顺序
-		cards.reverse().forEach(card => timeline.appendChild(card));
+		signal_rev=1-signal_rev;
+		if(signal_rev)cards.reverse().forEach(card => timeline.appendChild(card));
+		else cards.forEach(card => timeline.appendChild(card));
+		
 	});
 
 	// 刷新缓存按钮
