@@ -1,0 +1,93 @@
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans SC';
+            font-size: 16px;
+        }
+
+        body {
+            background: #3b863e;
+            background-size: 100px 100px;
+            background-image: linear-gradient(45deg, #00000008 25%, transparent 25%, transparent),
+                linear-gradient(-45deg, #00000008 25%, transparent 25%, transparent),
+                linear-gradient(45deg, transparent 75%, #00000008 75%),
+                linear-gradient(-45deg, transparent 75%, #00000008 75%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top {
+            width: 100%;
+            height: 100px;
+            background: white;
+            box-shadow: 0px 0px 10px 10px #00000033;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top img {
+            height: 60px;
+            width: auto;
+            display: inline;
+            padding: 20px;
+            margin-left: 10%;
+            float: left;
+        }
+        .award-explanation {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+		.award-explanation>.award-section{
+			margin-bottom: 10px;
+			margin-top: 20px;
+		}
+		.award-explanation>.award-section>h1{
+			font-size: 50px;
+		}
+		.award-explanation>.award-section>p{
+			font-size: 18px;
+		}
+        .award-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .award-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            position: relative;
+        }
+
+        .award-icon {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 40px;
+            color: #ffd700;
+            /* 金色图标 */
+        }
+
+        .award-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        @media (min-width: 768px) {
+            .award-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
