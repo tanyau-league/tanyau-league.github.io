@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日麻俱乐部 - 玩家数据统计</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #8a2be2, #4169e1);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: #4169e1;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .player-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .player-card {
+            background: linear-gradient(135deg, #f0f8ff, #e6e6fa);
+            border-radius: 8px;
+            padding: 15px;
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .player-card h3 {
+            margin: 0 0 10px 0;
+            color: #8a2be2;
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            padding: 5px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .stat-name {
+            font-weight: bold;
+        }
+
+        .control-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #4169e1, #8a2be2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(65, 105, 225, 0.4);
+        }
+
+        .status {
+            background: #e0e0e0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            min-height: 100px;
+            overflow-y: auto;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #4169e1, #8a2be2);
+            width: 0;
+            transition: width 0.5s ease;
+        }
+
+        .highlight {
+            color: #4169e1;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>日麻俱乐部玩家数据统计系统</h1>
+        <p>从GitHub仓库自动获取对局数据并更新玩家统计信息</p>
+    </header>
+
+    <div class="container">
+        <div class="panel">
+            <h2>玩家数据统计</h2>
+            <div class="player-list" id="playerList">
+                <!-- 玩家卡片将通过JavaScript动态生成 -->
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>数据控制面板</h2>
+            <div class="control-panel">
+                <button id="updateBtn">从GitHub更新数据</button>
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <div class="status" id="statusPanel">就绪。点击"更新数据"按钮开始同步...</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>数据来源: https://github.com/tanyau-league/tanyau-league-data</p>
+        <p>© 2023 日麻俱乐部数据统计系统 | 最后更新: <span id="lastUpdate"></span></p>
+    </footer>
+
+    <script>
+        // 玩家数据结构定义
+        class Player {
+            constructor(name, point, highScore, avoidanceRate) {
+                this.name = name;
+                this.point = point;
+                this.highScore = highScore;
+                this.avoidanceRate = avoidanceRate;
+            }
+        }
+
+        // 玩家数据库
+        const playerDatabase = [
+            new Player("2yrold", 0, 0, 0),
+            new Player("Haraki", 0, 0, 0),
+            new Player("多元外卷人", 0, 0, 0),
+            new Player("Dawn", 0, 0, 0),
+            new Player("Koihs", 0, 0, 0),
+            new Player("Xiaobukeai", 0, 0, 0),
+            new Player("zhunzhun", 0, 0, 0),
+            new Player("cos_squared", 0, 0, 0),
+            new Player("tooru", 0, 0, 0),
+            new Player("Feat", 0, 0, 0)
+        ];
+
+        // 玩家统计数据存储
+        const playerStats = {};
+
+        // 初始化玩家统计对象
+        function initPlayerStats() {
+            playerDatabase.forEach(player => {
+                playerStats[player.name] = {
+                    totalGames: 0,
+                    fourthPlace: 0,
+                    totalPoint: 0,
+                    highScore: 0
+                };
+            });
+        }
+
+        // 从GitHub获取并处理对局数据
+        async function updatePlayerData() {
+            const statusPanel = document.getElementById('statusPanel');
+            const progressBar = document.getElementById('progressBar');
+            const updateBtn = document.getElementById('updateBtn');
+
+            // 禁用按钮防止重复点击
+            updateBtn.disabled = true;
+            updateBtn.textContent = '数据更新中...';
+
+            // 更新状态
+            statusPanel.innerHTML = '正在初始化统计数据...';
+            progressBar.style.width = '10%';
+
+            // 初始化统计数据
+            initPlayerStats();
+
+            // GitHub仓库API URL (指向单个AllData.json文件)
+            const dataFileUrl = 'https://raw.githubusercontent.com/tanyau-league/tanyau-league-data/main/AllData.json';
+
+            try {
+                statusPanel.innerHTML += '<br>正在连接GitHub仓库...';
+                progressBar.style.width = '30%';
+
+                // 获取单个数据文件
+                const response = await fetch(dataFileUrl);
+                if (!response.ok) throw new Error('GitHub API请求失败: ' + response.status);
+
+                statusPanel.innerHTML += '<br>成功获取数据文件，开始处理...';
+                progressBar.style.width = '50%';
+
+                const allMatches = await response.json();
+
+                if (!Array.isArray(allMatches)) {
+                    throw new Error('数据格式错误: 期望数组但得到其他类型');
+                }
+
+                statusPanel.innerHTML += `<br>找到 ${allMatches.length} 场对局数据，开始处理...`;
+
+                // 处理每场对局
+                let processedMatches = 0;
+                for (const match of allMatches) {
+                    try {
+                        processMatchData(match);
+                        processedMatches++;
+
+                        // 更新进度条 (50%开始，每场增加50%/总场数)
+                        const progress = 50 + (processedMatches / allMatches.length) * 50;
+                        progressBar.style.width = `${progress}%`;
+
+                    } catch (matchError) {
+                        statusPanel.innerHTML += `<br>❌ 处理对局 ${match.time} 时出错: ${matchError.message}`;
+                    }
+                }
+
+                // 更新玩家数据库
+                updatePlayerDatabase();
+
+                // 渲染玩家数据
+                renderPlayerData();
+
+                statusPanel.innerHTML += `<br><br><span class="highlight">✅ 数据更新完成! 处理了 ${processedMatches}/${allMatches.length} 场对局</span>`;
+                progressBar.style.width = '100%';
+
+                // 更新最后更新时间
+                const now = new Date();
+                document.getElementById('lastUpdate').textContent =
+                    `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+            } catch (error) {
+                statusPanel.innerHTML += `<br><br><span style="color:red;">❌ 发生错误: ${error.message}</span>`;
+                progressBar.style.width = '0%';
+            } finally {
+                updateBtn.disabled = false;
+                updateBtn.textContent = '从GitHub更新数据';
+            }
+        }
+
+        // 处理单场对局数据
+        function processMatchData(matchData) {
+            // 查找终局玩家信息
+            const playerInfo = matchData.logs.find(log => log.type === 'player_info');
+            if (!playerInfo || !playerInfo.player) return;
+
+            // 更新每个玩家的统计数据
+            playerInfo.player.forEach(player => {
+                const stats = playerStats[player.name];
+                if (!stats) return;
+
+                // 更新统计数据
+                stats.totalGames++;
+                stats.totalPoint += player.point;
+                if (player.rank === 4) stats.fourthPlace++;
+                if (player.score > stats.highScore) stats.highScore = player.score;
+            });
+        }
+
+        // 更新玩家数据库
+        function updatePlayerDatabase() {
+            playerDatabase.forEach(player => {
+                const stats = playerStats[player.name];
+                if (stats && stats.totalGames > 0) {
+                    // 更新段位分
+                    player.point = stats.totalPoint;
+
+                    // 更新最高得点
+                    player.highScore = stats.highScore;
+
+                    // 计算避四率
+                    player.avoidanceRate = (stats.totalGames - stats.fourthPlace) / stats.totalGames;
+                }
+            });
+        }
+
+        // 渲染玩家数据到页面
+        function renderPlayerData() {
+            const playerList = document.getElementById('playerList');
+            playerList.innerHTML = '';
+
+            playerDatabase.forEach(player => {
+                const playerCard = document.createElement('div');
+                playerCard.className = 'player-card';
+
+                playerCard.innerHTML = `
+                <h3>${player.name}</h3>
+                <div class="stat">
+                    <span class="stat-name">段位分:</span>
+                    <span>${player.point}</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-name">最高得点:</span>
+                    <span>${player.highScore}</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-name">避四率:</span>
+                    <span>${(player.avoidanceRate * 100).toFixed(2)}%</span>
+                </div>
+            `;
+
+                playerList.appendChild(playerCard);
+            });
+        }
+
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function () {
+            // 初始化统计数据
+            initPlayerStats();
+
+            // 初始渲染玩家数据
+            renderPlayerData();
+
+            // 添加按钮事件监听
+            document.getElementById('updateBtn').addEventListener('click', updatePlayerData);
+
+            // 设置最后更新时间
+            const now = new Date();
+            document.getElementById('lastUpdate').textContent =
+                `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+        });
+    </script>
+
+</body>
+
+</html>
