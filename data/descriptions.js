@@ -6,4 +6,7 @@ window.playerDescriptions = {
   "Koihs": [],
   "多元外卷人": [],
   "zhunzhun": [],
+  "cos_squared":[],
+  "tooru":[],
+  "Feat":[]
 };

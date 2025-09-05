@@ -6,4 +6,7 @@ window.playerAchievements = {
     "zhunzhun":["zhunzhun"],
     "Koihs":[],
     "多元外卷人":[],
+    "cos_squared":[],
+    "tooru":[],
+    "Feat":["Feat"]
 };
