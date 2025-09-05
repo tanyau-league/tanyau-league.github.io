@@ -231,7 +231,7 @@ function calculateStats(data, targetPlayerName) {
     const winRate = stats.totalRounds > 0 ? stats.winCount / stats.totalRounds : 0;
     const tsumoRate = stats.totalRounds > 0 ? stats.tsumoCount / stats.winCount : 0;
     const dealInRate = stats.totalRounds > 0 ? stats.dealInCount / stats.totalRounds : 0;
-    const riichiRate = stats.totalRounds > 0 ? stats.riichiCount / stats.winCount : 0;
+    const riichiRate = stats.totalRounds > 0 ? stats.riichiCount / stats.totalRounds : 0;
 
     const avgWinPoints = stats.winCount > 0 ? stats.totalWinPoints / stats.winCount : 0;
     const avgDealInPoints = stats.dealInCount > 0 ? stats.totalDealInPoints / stats.dealInCount : 0;
@@ -384,7 +384,7 @@ function renderStats(stats) {
                 <div class="stat-card">
                     <h3><i class="fas fa-flag"></i> 立直率</h3>
                     <div class="stat-value">${(stats.riichiRate * 100).toFixed(1)}%</div>
-                    <div class="stat-desc">${Math.round(stats.riichiRate * stats.winRate * stats.totalRounds)} 次立直</div>
+                    <div class="stat-desc">${Math.round(stats.riichiRate * stats.totalRounds)} 次立直</div>
                 </div>
               
                 <div class="stat-card">
