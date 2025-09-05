@@ -18,7 +18,8 @@ const playerDatabase = [
 	new Player("Xiaobukeai", 0, 0, 0),
 	new Player("zhunzhun", 0, 0, 0),
 	new Player("cos_squared", 0, 0, 0),
-    new Player("tooru", 0, 0, 0)
+    new Player("tooru", 0, 0, 0),
+	new Player("Feat", 0, 0, 0)
 ];
 
 
