@@ -265,6 +265,22 @@ const manualEvents = [{
 		icon: "fa-user-plus"
 	},
 	{
+		id: "new-member",
+		type: "club",
+		date: "2025-08-23",
+		title: "新成员加入",
+		description: "欢迎新成员tooru加入TanYauLEAGUE！",
+		icon: "fa-user-plus"
+	},
+	{
+		id: "new-member",
+		type: "club",
+		date: "2025-08-23",
+		title: "新成员加入",
+		description: "欢迎新成员cos_squared加入TanYauLEAGUE！",
+		icon: "fa-user-plus"
+	},
+	{
 		id: "club-formation",
 		type: "club",
 		date: "2025-3-01",

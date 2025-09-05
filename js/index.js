@@ -16,7 +16,9 @@ const playerDatabase = [
 	new Player("Dawn", 0, 0, 0),
 	new Player("Koihs", 0, 0, 0),
 	new Player("Xiaobukeai", 0, 0, 0),
-	new Player("zhunzhun", 0, 0, 0)
+	new Player("zhunzhun", 0, 0, 0),
+	new Player("cos_squared", 0, 0, 0),
+    new Player("tooru", 0, 0, 0)
 ];
 
 
