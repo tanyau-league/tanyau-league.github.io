@@ -524,6 +524,7 @@
 	list-style: none;
 	margin-left: 3%;
 	margin-top: 5px;
+	width: 80%;
 }
 
 .mate ul>li {
@@ -813,4 +814,5 @@ strong>span {
 		linear-gradient(-45deg, #00000008 25%, transparent 25%, transparent),
 		linear-gradient(45deg, transparent 75%, #00000008 75%),
 		linear-gradient(-45deg, transparent 75%, #00000008 75%);
+
 }
