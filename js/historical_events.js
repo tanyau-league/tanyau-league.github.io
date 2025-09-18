@@ -229,7 +229,7 @@ const manualEvents = [{
 		type: "season",
 		date: "2025-09-20",
 		title: "2025年秋季赛开始",
-		description: "TanYauLEAGUE2025年秋季赛正式开始，为期16周共120场比赛。",
+		description: "TanYauLEAGUE2025年秋季赛正式开始，为期16周共120人次参与比赛。",
 		icon: "fa-flag"
 	},
 	{
