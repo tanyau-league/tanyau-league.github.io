@@ -566,7 +566,7 @@ function data_out() {
 }
 
 function upload(){
-	writein("TanyauData" + Date.now() + ".json", JSON.stringify({"time":Date.now(),"logs":logs}));
+	writein({"time":Date.now(),"logs":logs});
 }
 
 function new_game() {
