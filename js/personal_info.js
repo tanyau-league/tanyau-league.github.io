@@ -18,7 +18,7 @@ function handleAvatarError(imgElement) {
 }
 
 // 更新页面标题和玩家姓名
-document.title = `${playerName} - 日麻俱乐部数据统计`;
+document.title = `${playerName} - 数据统计`;
 document.getElementById('player-name').textContent = playerName;
 
 // 更新数据更新时间
@@ -571,4 +571,5 @@ window.onresize = () => {
     if (window.innerWidth < 686) document.querySelector('.top ul').style.display = "none";
     else document.querySelector('.top ul').style.display = "block";
 }
+
 
